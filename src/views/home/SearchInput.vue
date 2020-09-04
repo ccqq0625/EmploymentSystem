@@ -45,6 +45,7 @@ export default {
 <style>
 .search-input{
     display: flex;
+    margin: 15px;
     
 }
 label{
