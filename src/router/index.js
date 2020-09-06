@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 
 const Home =() => import('../views/home/Home');
 const test =() => import('../views/test/test');
+const Post=() => import('../views/Post/Post');
 Vue.use(VueRouter);
 
 const routes = [
@@ -13,6 +14,10 @@ const routes = [
   {
     path: '/home',
     component: Home
+  },
+  {
+    path:'/post',
+    component:Post,
   },
   {
     path:'/test',

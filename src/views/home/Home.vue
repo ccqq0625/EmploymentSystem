@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style>
-.search-input{
+/* .search-input{
     margin-top: 35px;
 }
 .crumbs{
@@ -34,5 +34,5 @@ export default {
     font-family: "微软雅黑";
     font-size: 5;
     width: 400px;
-}
+} */
 </style>

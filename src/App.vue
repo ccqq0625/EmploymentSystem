@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <navigation></navigation>
-     <router-view/>
+    <el-container>
+      <el-header><navigation></navigation></el-header>
+      <el-main><router-view/></el-main>
+    </el-container>
   </div>
 </template>
 <script>
@@ -10,9 +12,40 @@ export default {
   name:"App",
   components:{
     Navigation,
+  },
+  methods:{
+    // tabClick(){
+    //   console.log("跳转成功");
+    // }
   }
 }
 </script>
 <style lang="scss">
 @import './assets/css/base.css';
+.el-header {
+    background-color: #B3C0D1;
+    color: #333;
+    text-align: center;
+    padding: 0 !important;
+    margin: 0 !important;
+   
+  }
+  
+  .el-main {
+    background-color: #E9EEF3;
+    color: #333;
+    text-align: center;
+    padding: 0 !important;
+    margin: 0 !important;
+ 
+  }
+  
+  // .el-container:nth-child(5) .el-aside,
+  // .el-container:nth-child(6) .el-aside {
+  //   line-height: 260px;
+  // }
+  
+  // .el-container:nth-child(7) .el-aside {
+  //   line-height: 320px;
+  // }
 </style>

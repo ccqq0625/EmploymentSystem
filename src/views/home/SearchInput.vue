@@ -43,24 +43,6 @@ export default {
 </script>
 
 <style>
-.search-input{
-    display: flex;
-    margin: 15px;
-    
-}
-label{
-    float: left;
-}
-.el-col{
-    margin-left: 10px;
-}
-.el-input{
-    flex: 2;
-    float:right;
-}
-/* .demo-form-inline{
-    text-align:center;
-    margin:0 auto
-} */
+
 
 </style>

@@ -19,6 +19,8 @@ export default {
     .swiper{
         padding: 0;
         margin: 0;
+        width: 100%;
+        margin-bottom: 30px;
     }
     .el-carousel__item h3 {
     color: #475669;

@@ -9,7 +9,7 @@
         <el-breadcrumb-item>待定</el-breadcrumb-item>
         <el-breadcrumb-item>待定</el-breadcrumb-item>
         </el-breadcrumb>
-        <br>
+      
         <el-breadcrumb separator="/">
         <el-breadcrumb-item>首页</el-breadcrumb-item>
         <el-breadcrumb-item>活动管理</el-breadcrumb-item>
@@ -17,7 +17,7 @@
         <el-breadcrumb-item>活动详情</el-breadcrumb-item>
         <el-breadcrumb-item>待定</el-breadcrumb-item>
         <el-breadcrumb-item>待定</el-breadcrumb-item>
-        </el-breadcrumb><br>
+        </el-breadcrumb>
         <el-breadcrumb separator="/">
         <el-breadcrumb-item>首页</el-breadcrumb-item>
         <el-breadcrumb-item>活动管理</el-breadcrumb-item>
@@ -25,7 +25,7 @@
         <el-breadcrumb-item>活动详情</el-breadcrumb-item>
         <el-breadcrumb-item>待定</el-breadcrumb-item>
         <el-breadcrumb-item>待定</el-breadcrumb-item>
-        </el-breadcrumb><br>
+        </el-breadcrumb>
         <el-breadcrumb separator="/">
         <el-breadcrumb-item>首页</el-breadcrumb-item>
         <el-breadcrumb-item>活动管理</el-breadcrumb-item>
@@ -33,7 +33,7 @@
         <el-breadcrumb-item>活动详情</el-breadcrumb-item>
         <el-breadcrumb-item>待定</el-breadcrumb-item>
         <el-breadcrumb-item>待定</el-breadcrumb-item>
-        </el-breadcrumb><br>
+        </el-breadcrumb>
          <el-breadcrumb separator="/">
         <el-breadcrumb-item>首页</el-breadcrumb-item>
         <el-breadcrumb-item>活动管理</el-breadcrumb-item>
