@@ -1,6 +1,6 @@
 <template>
   <div class="post-show">
-    <div>
+    <!-- <div>
         <ul>
             <li>
                 <div class="show-li">
@@ -14,7 +14,22 @@
                 </div>
             </li>
         </ul>
-    </div>
+    </div> -->
+    <el-row :gutter="40">
+     <el-col :xs="24" :sm="24" :lg="4" v-for="(item,index) in arr" :key="index">
+        <el-card>
+            <img src="https://img.bosszhipin.com/beijin/mcs/chatphoto/20180228/b5919329a5813e7c5c411febb87bbad4cfcd208495d565ef66e7dff9f98764da.jpg?x-oss-process=image/resize,w_120,limit_0" class="image">
+            <div style="padding: 14px;">
+                <span>{{item.name}}</span>
+                <div class="bottom clearfix">
+         
+                <time class="time">{{currentDate}}</time>
+                <!-- <el-button type="text" class="button">操作按钮</el-button> -->
+                </div>
+            </div>
+        </el-card>
+     </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -24,6 +39,24 @@ export default {
     data(){
         return{
              currentDate: new Date(),
+             arr:[
+                 {name:"名称1"},
+                 {name:"名称2"},
+                 {name:"名称3"},
+                 {name:"名称4"},
+                 {name:"名称5"},
+                 {name:"名称6"},
+                 {name:"名称7"},
+                 {name:"名称8"},
+                 {name:"名称5"},
+                 {name:"名称6"},
+                 {name:"名称7"},
+                 {name:"名称8"},
+                 {name:"名称5"},
+                 {name:"名称6"},
+                 {name:"名称7"},
+                 {name:"名称8"},
+             ]
         }
     },
     components:{
@@ -33,52 +66,42 @@ export default {
 </script>
 
 <style>
-.post-show{
+/* .post-show{
     margin-top: 20px;
-}
-.post-show ul{
-    list-style:none;
-}
-.show-li{
-    display: block;
-    height: 140px;
-    width:284px;
-    background-color: #ffffff;
-    box-shadow: 5px 5px 20px rgba(0,0,0,0.05);
-    position: absolute;
-    z-index: 10;
-    margin: 20px;
-}
-.show-info img{
-    height:60px;
-    width: 60px;
-    float: left;
-    border-radius: 10px;
-    border:solid 1px #f2f5fa;
-}
-.show-text h4{
-    float:right;
-    height: 25px;
-    padding: 5px;
-    line-height: 25px;
-    font-size: 16px;
-    font-weight: 400;
-    /* white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; */
-} 
-.show-text p{
-    padding: 0px;
-    margin: 0px;
-    height:40px;
-    line-height:41px;
-    color:#898e9d;
-    font-size:12px;
-    display:inline-block;
-    /* white-space:nowrap;
-    -webkit-tap-highlight-color:transparent; */
-}
+    /* width: 300px; */
+    
+    /* display: block; */
+    
+
+.time {
+    font-size: 13px;
+    color: #999;
+  }
   
+  .bottom {
+    margin-top: 13px;
+    line-height: 12px;
+  }
+
+  .button {
+    padding: 0;
+    float: right;
+  }
+
+  .image {
+    width: 100%;
+    display: block;
+  }
+
+  .clearfix:before,
+  .clearfix:after {
+      display: table;
+      content: "";
+  }
+  
+  .clearfix:after {
+      clear: both
+  }
   
   
    
