@@ -41,9 +41,8 @@ export default {
     /* border:1px solid rgb(80, 76, 76); */
     height: 100px;
   }
-  span{
-      /* float: left; */
-      /* width: 14px; */
+  .box-card span{
+     
       display: block;
       left: 10px;
       position: absolute;

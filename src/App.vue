@@ -14,9 +14,9 @@ export default {
     Navigation,
   },
   methods:{
-    // tabClick(){
-    //   console.log("跳转成功");
-    // }
+    tabClick(){
+      console.log("跳转成功");
+    }
   }
 }
 </script>

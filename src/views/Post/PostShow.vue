@@ -1,29 +1,14 @@
 <template>
   <div class="post-show">
-    <!-- <div>
-        <ul>
-            <li>
-                <div class="show-li">
-                    <a class="show-info" href="">
-                        <img src="https://img.bosszhipin.com/beijin/mcs/chatphoto/20180228/b5919329a5813e7c5c411febb87bbad4cfcd208495d565ef66e7dff9f98764da.jpg?x-oss-process=image/resize,w_120,limit_0" alt="">
-                        <div class="show-text">
-                            <h4>名称</h4>
-                            <p>行业类型</p>
-                        </div>
-                    </a>
-                </div>
-            </li>
-        </ul>
-    </div> -->
     <el-row :gutter="40">
-     <el-col :xs="24" :sm="24" :lg="4" v-for="(item,index) in arr" :key="index">
+     <el-col :xs="24" :sm="24" :lg="6" v-for="(item,index) in arr" :key="index">
         <el-card>
             <img src="https://img.bosszhipin.com/beijin/mcs/chatphoto/20180228/b5919329a5813e7c5c411febb87bbad4cfcd208495d565ef66e7dff9f98764da.jpg?x-oss-process=image/resize,w_120,limit_0" class="image">
             <div style="padding: 14px;">
                 <span>{{item.name}}</span>
                 <div class="bottom clearfix">
-         
-                <time class="time">{{currentDate}}</time>
+                <!-- <time class="time">{{currentDate}}</time> -->
+                <time class="time">热招：<u class="h">{{item.post}}</u>------{{item.salary}}</time>
                 <!-- <el-button type="text" class="button">操作按钮</el-button> -->
                 </div>
             </div>
@@ -40,22 +25,17 @@ export default {
         return{
              currentDate: new Date(),
              arr:[
-                 {name:"名称1"},
-                 {name:"名称2"},
-                 {name:"名称3"},
-                 {name:"名称4"},
-                 {name:"名称5"},
-                 {name:"名称6"},
-                 {name:"名称7"},
-                 {name:"名称8"},
-                 {name:"名称5"},
-                 {name:"名称6"},
-                 {name:"名称7"},
-                 {name:"名称8"},
-                 {name:"名称5"},
-                 {name:"名称6"},
-                 {name:"名称7"},
-                 {name:"名称8"},
+                 {name:"名称1",post:"这里是岗位",salary:"15-30k"},
+                 {name:"名称2",post:"这里是岗位",salary:"15-30k"},
+                 {name:"名称3",post:"这里是岗位",salary:"15-30k"},
+                 {name:"名称4",post:"这里是岗位",salary:"15-30k"},
+                 {name:"名称5",post:"这里是岗位",salary:"15-30k"},
+                 {name:"名称6",post:"这里是岗位",salary:"15-30k"},
+                 {name:"名称7",post:"这里是岗位",salary:"15-30k"},
+                 {name:"名称8",post:"这里是岗位",salary:"15-30k"},
+                 {name:"名称9",post:"这里是岗位",salary:"15-30k"},
+                 {name:"名称10",post:"这里是岗位",salary:"15-30k"},
+                 {name:"名称11",post:"这里是岗位",salary:"15-30k"},
              ]
         }
     },
@@ -66,13 +46,19 @@ export default {
 </script>
 
 <style>
-/* .post-show{
+.post-show{
     margin-top: 20px;
-    /* width: 300px; */
     
-    /* display: block; */
     
-
+     /* display: block; */
+    
+}
+.h{
+    color:#00c2b3;
+}
+.el-col{
+    margin-bottom: 5px;
+}
 .time {
     font-size: 13px;
     color: #999;
@@ -89,8 +75,10 @@ export default {
   }
 
   .image {
-    width: 100%;
+    width: 50%;
     display: block;
+    margin: 0 auto;
+
   }
 
   .clearfix:before,
