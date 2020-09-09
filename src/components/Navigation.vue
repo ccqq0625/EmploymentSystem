@@ -31,8 +31,8 @@
     </div>
     <div></div>
    <div class="menu-but">
-        <el-button size="mini" round @click.native="menClick" active-text-color="rgb(93,213,200)">登录</el-button>
-        <el-button size="mini" round>注册</el-button>
+        <el-button size="mini" round @click.native="loginClick" active-text-color="rgb(93,213,200)">登录</el-button>
+        <el-button size="mini" round @click.native="regClick">注册</el-button>
    </div>
 </el-menu>
 <div class="line"></div>
@@ -61,9 +61,12 @@ export default {
         //     console.log(this.path);
         //     this.$emit("tabClick");
         // }
-        menClick(){
+        loginClick(){
           this.$router.replace("/login");
           // console.log(path);
+        },
+        regClick(){
+          this.$router.replace("/register");
         }
 
     },

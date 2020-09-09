@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <el-container>
-      <el-header><navigation></navigation></el-header>
+      <el-header v-show="$route.meta.navShow"><navigation></navigation></el-header>
       <el-main><router-view/></el-main>
     </el-container>
   </div>

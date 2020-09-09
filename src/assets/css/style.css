@@ -86,9 +86,9 @@ form {
   border-radius: 0.3em;
   -o-border-radius: 0.3em;
   -moz-border-radius: 0.3em;
-  /* -webkit- border-radius: 0.3em;
+  border-radius: 0.3em;
   margin:0.7em 0;
-   background: url("../images/icons.png") no-repeat 14px 16px #474a55; */
+   background: url(".././img/icons.png") no-repeat 14px 16px #474a55;
 }
   .app-location input[type="password"]{
       background: url("../img/icons.png") no-repeat 13px -61px #474a55;
