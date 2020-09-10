@@ -1,6 +1,6 @@
 <template>
-  <div class="login">
-      <h1 class="login-text">Register Form</h1>
+  <div class="register">
+      <h1 class="register-text">Register Form</h1>
 		<div class="app-location">
 			<h2>Welcome New Friends</h2>
 			<div class="line"><span></span></div>
@@ -24,13 +24,14 @@
 
 <script>
 export default {
-    name:"Register"
+    name:"Register",
+
 }
 </script>
 
 <style>
 @import url('../.././assets/css/style.css');
-.login-text{
+.register-text{
 	padding: 5px;
 }
 

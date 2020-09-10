@@ -14,7 +14,7 @@
 				<div class="clear"></div>
 				<div class="new">
 					<h3><a href="#">Forgot password ?</a></h3>
-					<h4><a href="#">New here ? Sign Up</a></h4>
+					<h4 @click="toRegister"><a>New here ? Sign Up</a></h4>
 					<div class="clear"></div>
 				</div>
 			</form>
@@ -24,7 +24,12 @@
 
 <script>
 export default {
-    name:"Login"
+	name:"Login",
+	methods:{
+		toRegister(){
+			this.$router.replace("/register");
+		}
+	}
 }
 </script>
 
@@ -33,5 +38,6 @@ export default {
 .login-text{
 	padding: 5px;
 }
+
 
 </style>
