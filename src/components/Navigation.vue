@@ -35,9 +35,8 @@
         <el-button size="mini" round @click.native="regClick">注册</el-button>
    </div>
 </el-menu>
-<div class="line"></div>
-
   </div>
+
 </template>
 
 <script>
