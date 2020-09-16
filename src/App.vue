@@ -22,6 +22,7 @@ export default {
 </script>
 <style lang="scss">
 @import './assets/css/base.css';
+@import './assets/css/reset.scss';
 .el-header {
     background-color: #B3C0D1;
     color: #333;
@@ -35,6 +36,7 @@ export default {
     background-color: #E9EEF3;
     color: #333;
     text-align: center;
+    height: 100%;
     padding: 0 !important;
     margin: 0 !important;
  

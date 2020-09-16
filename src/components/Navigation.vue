@@ -26,7 +26,7 @@
   <el-menu-item index="/post">企业信息</el-menu-item>
   <el-menu-item index="/postmatch">职业匹配</el-menu-item>
   
-   <el-menu-item index="">数据分布</el-menu-item>
+   <el-menu-item index="/show">数据分布</el-menu-item>
    <el-menu-item index="/test">待定3</el-menu-item>
     </div>
     <div></div>

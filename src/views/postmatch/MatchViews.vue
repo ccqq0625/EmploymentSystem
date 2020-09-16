@@ -143,7 +143,8 @@ export default {
             cityValue: '',
             salaryOptions:["不限","3k以下","3-5k","5-10k","10-15k","15-20k","20-30k","30-50k","50k以上"],
             salaryValue:'',
-            table:false
+            table:false,
+            gridData:{},
         }
     },
     methods:{
