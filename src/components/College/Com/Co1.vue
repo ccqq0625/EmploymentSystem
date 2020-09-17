@@ -4,7 +4,7 @@
         <h1><strong>2017届计算机工程学院计算机科学与技术就业情况</strong></h1>
         <el-breadcrumb class="title" separator="/">
           <el-breadcrumb-item :to="{ path: '/show' }"><span style="font-size:20px">首页</span></el-breadcrumb-item>
-          <el-breadcrumb-item><span style="font-size:20px">计算机院</span></el-breadcrumb-item>
+          <el-breadcrumb-item :to="{ path: '/show' }"><span style="font-size:20px">计算机院</span></el-breadcrumb-item>
           <el-breadcrumb-item><span style="font-size:20px">计算机科学与技术</span></el-breadcrumb-item>
         
         </el-breadcrumb>

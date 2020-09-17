@@ -13,14 +13,14 @@
         mode="horizontal"
         class="el-menu-vertical-demo"
         @select="handleSelect">
-            <el-menu-item index="1">
+            <el-menu-item index="/College/Com/Co1">
                 <span slot="title">计算机科学与技术</span>          
             </el-menu-item>
-        <el-menu-item index="2">
+        <el-menu-item index="">
             <span slot="title">软件工程</span>
             
         </el-menu-item>
-        <el-menu-item index="3">
+        <el-menu-item index="/College/Com/Co3">
             <span slot="title">物联网</span>
             
         </el-menu-item>
