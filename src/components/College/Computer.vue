@@ -158,7 +158,19 @@ mounted(){
             },
             series: [{
                 data: this.seriesData,
-                type: 'bar'
+                type: 'bar',
+                itemStyle: {        //上方显示数值
+                normal: {
+                    label: {
+                        show: true, //开启显示
+                        position: 'top', //在上方显示
+                        textStyle: { //数值样式
+                            color: 'black',
+                            fontSize: 16
+                        }
+                    }
+                }
+            }
             }]
         };
          this.myChart.setOption(option)
@@ -233,7 +245,19 @@ mounted(){
             series: [{
                 data: this.seriesData1,
                 type: 'bar',
-                color: 'rgba(180, 220, 220, 0.8)'
+                // color: 'rgba(180, 220, 220, 0.8)'
+                itemStyle: {        //上方显示数值
+                normal: {
+                    label: {
+                        show: true, //开启显示
+                        position: 'top', //在上方显示
+                        textStyle: { //数值样式
+                            color: 'black',
+                            fontSize: 16
+                        }
+                    }
+                }
+            }
                
             }]
         };
@@ -303,7 +327,19 @@ let option5 = {
             series: [{
                 data: this.seriesData2,
                 type: 'bar',
-                color: 'rgba(180, 170, 220, 0.8)'
+                color: 'rgba(180, 170, 220, 0.8)',
+                itemStyle: {        //上方显示数值
+                normal: {
+                    label: {
+                        show: true, //开启显示
+                        position: 'top', //在上方显示
+                        textStyle: { //数值样式
+                            color: 'black',
+                            fontSize: 16
+                        }
+                    }
+                }
+            }
                
             }]
         };

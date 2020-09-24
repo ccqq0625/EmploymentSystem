@@ -109,13 +109,11 @@ export default {
           tabPosition: 'left'
     }
     },
-    mounted() {
-       let myChart = echarts.init(document.getElementById('left'),"shine");
-
+   mounted() {
+        let myChart = echarts.init(document.getElementById('left'),"shine");
         let Chart2 = echarts.init(document.getElementById('right'),"shine");
         let Chart3 = echarts.init(document.getElementById('left1'),"roma");
         let Chart4 = echarts.init(document.getElementById('right1'),"roma");
-
         let Chart5 = echarts.init(document.getElementById('left2'),'macarons');
         let Chart6 = echarts.init(document.getElementById('right2'),'macarons');
 
@@ -145,8 +143,20 @@ export default {
                 type: 'value'
             },
             series: [{
-                data:this.seriesData,
-                type: 'bar'
+                data: this.seriesData,
+                type: 'bar',
+                itemStyle: {        //上方显示数值
+                normal: {
+                    label: {
+                        show: true, //开启显示
+                        position: 'top', //在上方显示
+                        textStyle: { //数值样式
+                            color: 'black',
+                            fontSize: 16
+                        }
+                    }
+                }
+            }
             }]
         };
          myChart.setOption(option)
@@ -213,7 +223,19 @@ export default {
             series: [{
                 data: this.seriesData1,
                 type: 'bar',
-                color: 'rgba(180, 220, 220, 0.8)'
+                color: 'rgba(180, 220, 220, 0.8)',
+                itemStyle: {        //上方显示数值
+                normal: {
+                    label: {
+                        show: true, //开启显示
+                        position: 'top', //在上方显示
+                        textStyle: { //数值样式
+                            color: 'black',
+                            fontSize: 16
+                        }
+                    }
+                }
+            }
                
             }]
         };
@@ -285,7 +307,19 @@ let option5 = {
             series: [{
                 data: this.seriesData2,
                 type: 'bar',
-                color: 'rgba(180, 170, 220, 0.8)'
+                color: 'rgba(180, 170, 220, 0.8)',
+                itemStyle: {        //上方显示数值
+                normal: {
+                    label: {
+                        show: true, //开启显示
+                        position: 'top', //在上方显示
+                        textStyle: { //数值样式
+                            color: 'black',
+                            fontSize: 16
+                        }
+                    }
+                }
+            }
                
             }]
         };
@@ -315,7 +349,7 @@ let option5 = {
             radius: '65%',
             center: ['50%', '50%'],
             selectedMode: 'single',
-            data:this.datacwx2,
+            data: this.datacwx2,
             emphasis: {
                 itemStyle: {
                     shadowBlur: 10,
@@ -350,7 +384,7 @@ let option5 = {
         padding: 0;
         background-color: oldlace;
     } */
-   h1{
+    h1{
         text-align: center;
         padding: 0;
         margin-top: 30px;

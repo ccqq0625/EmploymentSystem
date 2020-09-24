@@ -110,13 +110,11 @@ export default {
           tabPosition: 'left'
     }
     },
-    mounted() {
+   mounted() {
         let myChart = echarts.init(document.getElementById('left'),'macarons');
-
         let Chart2 = echarts.init(document.getElementById('right'),'macarons');
         let Chart3 = echarts.init(document.getElementById('left1'),"roma");
         let Chart4 = echarts.init(document.getElementById('right1'),"roma");
-
         let Chart5 = echarts.init(document.getElementById('left2'),"shine");
         let Chart6 = echarts.init(document.getElementById('right2'),"shine");
 
@@ -147,7 +145,19 @@ export default {
             },
             series: [{
                 data: this.seriesData,
-                type: 'bar'
+                type: 'bar',
+                itemStyle: {        //上方显示数值
+                normal: {
+                    label: {
+                        show: true, //开启显示
+                        position: 'top', //在上方显示
+                        textStyle: { //数值样式
+                            color: 'black',
+                            fontSize: 16
+                        }
+                    }
+                }
+            }
             }]
         };
          myChart.setOption(option)
@@ -214,7 +224,19 @@ export default {
             series: [{
                 data: this.seriesData1,
                 type: 'bar',
-                color: 'rgba(180, 220, 220, 0.8)'
+                color: 'rgba(180, 220, 220, 0.8)',
+                itemStyle: {        //上方显示数值
+                normal: {
+                    label: {
+                        show: true, //开启显示
+                        position: 'top', //在上方显示
+                        textStyle: { //数值样式
+                            color: 'black',
+                            fontSize: 16
+                        }
+                    }
+                }
+            }
                
             }]
         };
@@ -286,7 +308,19 @@ let option5 = {
             series: [{
                 data: this.seriesData2,
                 type: 'bar',
-                color: 'rgba(180, 170, 220, 0.8)'
+                color: 'rgba(180, 170, 220, 0.8)',
+                itemStyle: {        //上方显示数值
+                normal: {
+                    label: {
+                        show: true, //开启显示
+                        position: 'top', //在上方显示
+                        textStyle: { //数值样式
+                            color: 'black',
+                            fontSize: 16
+                        }
+                    }
+                }
+            }
                
             }]
         };
@@ -301,7 +335,7 @@ let option5 = {
             },
         tooltip: {
             trigger: 'item',
-            formatter:'数据 <br/>{b} : {c} <br/>({d}%)'
+            formatter: '数据 <br/>{b} : {c} <br/>({d}%)'
         },
         legend: {
             // orient: 'vertical',
@@ -346,11 +380,11 @@ let option5 = {
 </script>
 
 <style>
-    body{
+    /* body{
         margin: 0;
         padding: 0;
-        /* background-color: oldlace; */
-    }
+        background-color: oldlace;
+    } */
     h1{
         text-align: center;
         padding: 0;
@@ -358,11 +392,6 @@ let option5 = {
         font-size: 35px;
         color:#666699;
         font-family:'Courier New', Courier, monospace
-    }
-
-    .title{
-        text-align: center;
-        margin-left: 40px;
     }
     .el-col{
         position: relative;
@@ -417,6 +446,7 @@ let option5 = {
         height: 450px;
     }
     
+
     .box-card1 {
         width: 550px;
         height: 500px;
@@ -472,5 +502,4 @@ let option5 = {
     .el-divider{
         margin-bottom: 0;
     }
-
 </style>
