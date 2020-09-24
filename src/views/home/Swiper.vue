@@ -23,7 +23,7 @@ export default {
         margin-bottom: 30px;
     }
     .el-carousel__item h3 {
-    color: #475669;
+    color:red;
     font-size: 18px;
     opacity: 0.75;
     line-height: 300px;
@@ -31,10 +31,10 @@ export default {
   }
   
   .el-carousel__item:nth-child(2n) {
-    background-color: #99a9bf;
+    background-color: green;
   }
   
   .el-carousel__item:nth-child(2n+1) {
-    background-color: #d3dce6;
+    background-color:black;
   }
 </style>

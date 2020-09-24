@@ -1,6 +1,6 @@
 <template>
   <div class="match-views">
-      <el-row :gutter="20">
+      <el-row :gutter="20" class="row">
         <el-col :span="12" :offset="6">
             <el-card class="box-card">
                     <el-form ref="form" :model="form" label-width="80px">
@@ -157,11 +157,11 @@ export default {
 </script>
 
 <style>
-.el-row{
+.row{
     /* overflow:hidden, */
     margin-left: 0 !important;
-    margin-right: 0 !important;
-    
+    margin-right: 0 !important;  
+    height: 480px !important;
 }
 /* .match-views{
     width: 100%;

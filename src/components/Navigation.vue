@@ -24,7 +24,7 @@
   </el-submenu> -->
   <!-- <el-menu-item index="3" disabled>待定</el-menu-item> -->
   <el-menu-item index="/post">企业信息</el-menu-item>
-  <el-menu-item index="/postmatch">职业匹配</el-menu-item>
+  <el-menu-item index="/postmatch" @click="reload()">职业匹配</el-menu-item>
   
    <el-menu-item index="/show">数据分布</el-menu-item>
    <el-menu-item index="/test">待定3</el-menu-item>
@@ -53,8 +53,16 @@ export default {
     },
     methods: {
       handleSelect(key, keyPath) {
-        console.log(key, keyPath);
+        // console.log(key)
+        // console.log(keyPath)
         },
+
+       reload(){
+         if(this.$router.history.current.path==='/postmatch')
+        {
+          this.$router.go(0)
+        }
+       },
         // itemClick(path){
         //     this.$router.replace(path);
         //     console.log(this.path);
@@ -66,8 +74,7 @@ export default {
         },
         regClick(){
           this.$router.replace("/register");
-        }
-
+        },
     },
   
 }

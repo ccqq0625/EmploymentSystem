@@ -20,23 +20,29 @@ const test =() => import('../views/test/test');
 const Post=() => import('../views/Post/Post');
 const PostMatch=() => import('../views/postmatch/PostMatch');
 //const School=() => import('../components/School');
-const Computer= () =>import('../components/College/Computer');
-const Co1=() => import('../components/College/Com/Co1');
-const Co2=() => import('../components/College/Com/Co2');
-const Co3=() => import('../components/College/Com/Co3');
-const Co11=() => import('../components/College/Com/Co11');
+const Index= () =>import('../components/College/index.vue');
+const Co1Main=() => import('../components/College/Com/Co1Main');
+const Co2Main=() => import('../components/College/Com/Co2Main');
+const Co3Main=() => import('../components/College/Com/Co3Main');
+const Co11Main=() => import('../components/College/Com/Co11Main');
+const Co12Main=() => import('../components/College/Com/Co12Main');
+const Co21Main=() => import('../components/College/Com/Co21Main');
+const Co22Main=() => import('../components/College/Com/Co22Main');
+const Co31Main=() => import('../components/College/Com/Co31Main');
+const Co32Main=() => import('../components/College/Com/Co32Main');
 const Login=() =>import('../views/login/Login');
 const Register=() =>import('../views/register/Register');
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '',
+    path: '/',
     redirect: '/home',
   },
   {
     path: '/home',
     component: Home,
+    name:'Home',
     meta:{
       navShow:true
     }
@@ -71,28 +77,54 @@ const routes = [
   },
   {
     path:'/show',
-    component:Computer,
+    component:Index,
   },
   {
-    path: '/College/Com/Co1',
-    name: 'Co1',
-    component: Co1
+    path: '/College/Com/Co1Main',
+    name: 'Co1Main',
+    component: Co1Main,
   },
   {
-    path: '/College/Com/Co2',
-    name: 'Co2',
-    component: Co2
+    path: '/College/Com/Co1/Co11Main',
+    name: 'Co11Main',
+    component: Co11Main
   },
   {
-    path: '/College/Com/Co3',
-    name: 'Co3',
-    component: Co3
+    path: '/College/Com/Co1/Co12Main',
+    name: 'Co12Main',
+    component: Co12Main
   },
   {
-    path: '/College/Com/Co11',
-    name: 'Co11',
-    component: Co11
+    path: '/College/Com/Co2Main',
+    name: 'Co2Main',
+    component: Co2Main
   },
+  {
+    path: '/College/Com/Co2/Co21Main',
+    name: 'Co21Main',
+    component: Co21Main
+  },
+  {
+    path: '/College/Com/Co2/Co22Main',
+    name: 'Co22Main',
+    component: Co22Main
+  },
+  {
+    path: '/College/Com/Co3Main',
+    name: 'Co3Main',
+    component: Co3Main
+  },
+  {
+    path: '/College/Com/Co3/Co31Main',
+    name: 'Co31Main',
+    component: Co31Main
+  },
+  {
+    path: '/College/Com/Co3/Co32Main',
+    name: 'Co32Main',
+    component: Co32Main
+  },
+  
   {
     path:'/test',
     component:test,

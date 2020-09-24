@@ -3,10 +3,8 @@
      <div id="head">
         <h1><strong>2017届计算机工程学院计算机科学与技术就业情况</strong></h1>
         <el-breadcrumb class="title" separator="/">
-          <el-breadcrumb-item :to="{ path: '/show' }"><span style="font-size:20px">首页</span></el-breadcrumb-item>
-          <el-breadcrumb-item :to="{ path: '/show' }"><span style="font-size:20px">计算机院</span></el-breadcrumb-item>
+          <el-breadcrumb-item :to="{ path: '/show' }"><span style="font-size:20px">计算机工程学院</span></el-breadcrumb-item>
           <el-breadcrumb-item><span style="font-size:20px">计算机科学与技术</span></el-breadcrumb-item>
-        
         </el-breadcrumb>
     </div>
     <el-divider class="divde"></el-divider>
@@ -14,54 +12,97 @@
     <el-row class="tac"> 
         <el-col :span="6.5">
         <el-menu
-        :router=true
-        default-active="0"
+        :router="true"
+        default-active="activerouter"
+        background-color="rgb(145,199,174)"
+        text-color="white"
+        active-text-color="#ffd04b"
         mode="horizontal"
         class="el-menu-vertical-demo"
         @select="handleSelect">
-            <el-menu-item index="/College/Com/Co11">
+            <el-menu-item index="/College/Com/Co1/Co11Main">
                 <span slot="title">计科1711</span>          
             </el-menu-item>
-            <el-menu-item index="">
+            <el-menu-item index="/College/Com/Co1/Co12Main">
                 <span slot="title">计科1712</span>            
             </el-menu-item>
         </el-menu>
     </el-col>
     </el-row>
     </div>
-    <el-tabs class="line" v-model="activeName" @tab-click="handleClick" :tab-position="tabPosition" style="height:550px">
+    <el-tabs class="line" v-model="activeName" @tab-click="handleClick" :tab-position="tabPosition" style="height:550px" type="card">
             <el-tab-pane label="总体情况" name="first">
                 <el-card class="box-card1" shadow="hover">
-                    <div id="left"></div>
+                    <div id="left" :style="{width:width ,height:height}"></div>
                     </el-card>
                     <el-card class="box-card2" shadow="hover">
-                    <div id="right"></div>
+                    <div id="right" :style="{width:width ,height:height}"></div>
                 </el-card>
             </el-tab-pane>
             <el-tab-pane label="就业类型" name="second">
                 <el-card class="box-card3" shadow="hover">
-                    <div id="left1"></div>
+                    <div id="left1" :style="{width:width ,height:height}"></div>
                     </el-card>
                     <el-card class="box-card4" shadow="hover">
-                    <div id="right1"></div>
+                    <div id="right1" :style="{width:width ,height:height}"></div>
                     </el-card>
             </el-tab-pane>
             <el-tab-pane label="考公类型" name="third">
                 <el-card class="box-card5" shadow="hover">
-                    <div id="left2"></div>
+                    <div id="left2" :style="{width:width ,height:height}"></div>
                     </el-card>
                     <el-card class="box-card6" shadow="hover">
-                    <div id="right2"></div>
+                    <div id="right2" :style="{width:width ,height:height}"></div>
                     </el-card>
             </el-tab-pane>
         </el-tabs>
-     
 </div>
 </template>
 
 <script>
 import echarts from 'echarts'
+import 'echarts/theme/macarons'
+import 'echarts/theme/roma'
+import 'echarts/theme/shine'
+
 export default {
+        props:{
+        datacwx:{
+            type:Array,
+        },
+        Legends:{
+            type:Array
+        },
+        seriesData:{
+            type:Array
+        },
+        datacwx1:{
+            type:Array,
+        },
+        Legends1:{
+            type:Array
+        },
+        seriesData1:{
+            type:Array
+        },
+        datacwx2:{
+            type:Array,
+        },
+        Legends2:{
+            type:Array
+        },
+        seriesData2:{
+            type:Array
+        },
+        width:{
+            type:String,
+            default:'500px'
+        },
+         height:{
+            type:String,
+            default:'400px'
+        },
+    },
     data() {
       return {
           activeName: 'first',
@@ -69,15 +110,14 @@ export default {
     }
     },
     mounted() {
-        let this_ = this;
-        let myChart = echarts.init(document.getElementById('left'));
+        let myChart = echarts.init(document.getElementById('left'),'roma');
 
-        let Chart2 = echarts.init(document.getElementById('right'));
-        let Chart3 = echarts.init(document.getElementById('left1'));
-        let Chart4 = echarts.init(document.getElementById('right1'));
+        let Chart2 = echarts.init(document.getElementById('right'),'roma');
+        let Chart3 = echarts.init(document.getElementById('left1'),'macarons');
+        let Chart4 = echarts.init(document.getElementById('right1'),'macarons');
 
-        let Chart5 = echarts.init(document.getElementById('left2'));
-        let Chart6 = echarts.init(document.getElementById('right2'));
+        let Chart5 = echarts.init(document.getElementById('left2'),'shine');
+        let Chart6 = echarts.init(document.getElementById('right2'),'shine');
 
 
         var weatherIcons = {};
@@ -96,7 +136,7 @@ export default {
             },
             xAxis: {
                 type: 'category',
-                data: ['就业', '考研', '考公', '自主创业', '未就业'],
+                data: this.Legends,
                 axisTick: {
               alignWithLabel: true
             }
@@ -105,7 +145,7 @@ export default {
                 type: 'value'
             },
             series: [{
-                data: [210, 50, 20, 10, 180],
+                data: this.seriesData,
                 type: 'bar'
             }]
         };
@@ -120,14 +160,14 @@ export default {
             },
         tooltip: {
             trigger: 'item',
-            formatter: '{a} <br/>{b} : {c} ({d}%)'
+            formatter: '数据 <br/>{b} : {c} <br/>({d}%)'
         },
         legend: {
             // orient: 'vertical',
             // top: 'middle',
             bottom: 10,
             left: 'center',
-            data: ['已就业', '考公', '考研', '自主创业', '未就业']
+            data: this.Legends
         },
     series: [
         {
@@ -135,13 +175,7 @@ export default {
             radius: '65%',
             center: ['50%', '50%'],
             selectedMode: 'single',
-            data: [
-                {value: 850,name: '已就业'},  
-                {value: 535, name: '考公'},
-                {value: 510, name: '考研'},
-                {value: 320, name: '自主创业'},
-                {value: 735, name: '未就业'}
-            ],
+            data: this.datacwx,
             emphasis: {
                 itemStyle: {
                     shadowBlur: 10,
@@ -168,7 +202,7 @@ export default {
             },
             xAxis: {
                 type: 'category',
-                data: ['前端', '服务端', '移动端', '运维', '硬件'],
+                data: this.Legends1,
                 axisTick: {
               alignWithLabel: true
             }
@@ -177,7 +211,7 @@ export default {
                 type: 'value'
             },
             series: [{
-                data: [120, 200, 150, 80, 70],
+                data: this.seriesData1,
                 type: 'bar',
                 color: 'rgba(180, 220, 220, 0.8)'
                
@@ -194,14 +228,14 @@ export default {
             },
         tooltip: {
             trigger: 'item',
-            formatter: '{a} <br/>{b} : {c} ({d}%)'
+            formatter: '数据 <br/>{b} : {c} <br/>({d}%)'
         },
         legend: {
             // orient: 'vertical',
             // top: 'middle',
             bottom: 10,
             left: 'center',
-            data: ['前端', '服务端', '移动端', '运维', '硬件']
+            data: this.Legends1
         },
     series: [
         {
@@ -209,13 +243,7 @@ export default {
             radius: '65%',
             center: ['50%', '50%'],
             selectedMode: 'single',
-            data: [
-                {value: 850,name: '前端'},  
-                {value: 535, name: '服务端'},
-                {value: 510, name: '移动端'},
-                {value: 320, name: '运维'},
-                {value: 735, name: '硬件'}
-            ],
+            data: this.datacwx1,
             emphasis: {
                 itemStyle: {
                     shadowBlur: 10,
@@ -242,16 +270,21 @@ let option5 = {
             },
             xAxis: {
                 type: 'category',
-                data: ['公职类公务员', '事业单位', '教师', '西部计划', '三支一扶'],
+                data: this.Legends2,
                 axisTick: {
               alignWithLabel: true
-            }
+            },
+            
+                axisLabel: {
+                   interval: 0,
+                   rotate: 20
+                    }
             },
             yAxis: {
                 type: 'value'
             },
             series: [{
-                data: [120, 200, 150, 80, 70, 110, 130],
+                data: this.seriesData2,
                 type: 'bar',
                 color: 'rgba(180, 170, 220, 0.8)'
                
@@ -268,14 +301,14 @@ let option5 = {
             },
         tooltip: {
             trigger: 'item',
-            formatter: '{a} <br/>{b} : {c} ({d}%)'
+            formatter: '数据 <br/>{b} : {c} <br/>({d}%)'
         },
         legend: {
             // orient: 'vertical',
             // top: 'middle',
             bottom: 10,
             left: 'center',
-            data: ['公职类公务员', '事业单位', '教师', '西部计划', '三支一扶']
+            data: this.Legends2
         },
     series: [
         {
@@ -283,13 +316,7 @@ let option5 = {
             radius: '65%',
             center: ['50%', '50%'],
             selectedMode: 'single',
-            data: [
-                {value: 850,name: '公职类公务员'},  
-                {value: 535, name: '事业单位'},
-                {value: 510, name: '教师'},
-                {value: 320, name: '西部计划'},
-                {value: 735, name: '三支一扶'}
-            ],
+            data: this.datacwx2,
             emphasis: {
                 itemStyle: {
                     shadowBlur: 10,
@@ -311,7 +338,7 @@ let option5 = {
       },
       handleClick(tab, event) {
         console.log(tab, event);
-      }
+      },
         
     }
     
@@ -327,9 +354,10 @@ let option5 = {
     h1{
         text-align: center;
         padding: 0;
-        margin-top: 20px;
-        font-size: 18px;
-
+        margin-top: 30px;
+        font-size: 35px;
+        color:#666699;
+        font-family:'Courier New', Courier, monospace
     }
 
     .title{
@@ -338,7 +366,7 @@ let option5 = {
     }
     .el-col{
         position: relative;
-        left: 43%;
+        left: 45%;
     }
     .containner{
         margin: 0;
