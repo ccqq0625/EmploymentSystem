@@ -206,9 +206,18 @@ mounted(){
                     shadowOffsetX: 0,
                     shadowColor: 'rgba(0, 0, 0, 0.5)'
                 }
+            },
+            itemStyle: {
+                normal: {
+                     label: {
+                         show: true,
+                        //  position: 'inner',
+                         formatter: '{b}({d}%)'
+                         }
+                        }
+                    }
             }
-        }
-    ]
+        ]
 };
         this.Chart2.setOption(option2);
 
@@ -293,7 +302,17 @@ mounted(){
                     shadowOffsetX: 0,
                     shadowColor: 'rgba(0, 0, 0, 0.5)',
                 }
-            }
+            },
+            //让数据直接显示在页面上。不通过鼠标
+            itemStyle: {
+                normal: {
+                     label: {
+                         show: true,
+                        //  position: 'inner',
+                         formatter: '{b}({d}%)'
+                         }
+                        }
+                    }
         }
     ]
 };
@@ -375,7 +394,16 @@ let option5 = {
                     shadowOffsetX: 0,
                     shadowColor: 'rgba(0, 0, 0, 0.5)'
                 }
-            }
+            },
+            itemStyle: {
+                normal: {
+                     label: {
+                         show: true,
+                        //  position: 'inner',
+                         formatter: '{b}({d}%)'
+                         }
+                        }
+                    }
         }
     ]
 };
