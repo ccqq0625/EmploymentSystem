@@ -46,10 +46,5 @@ request.interceptors.response.use(response =>{
     return Promise.reject(error);
 })
 
-//  request.get('/db.json').then( response =>{
-//      const data=response.data
-//      console.log(data)
-
-//  })
 
 export default request

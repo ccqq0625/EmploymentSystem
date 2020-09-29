@@ -37,7 +37,7 @@ export default {
   },
   methods:{
       fecthData(){
-          dataApi.fecth().then(Response=>{
+          dataApi.fecth(null,'计算机科学与技术',null).then(Response=>{
             const resp=Response.data
             this.datacwx=resp.data.listData
             this.Legends=resp.data.listName

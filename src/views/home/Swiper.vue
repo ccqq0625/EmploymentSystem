@@ -2,8 +2,8 @@
   <div class="swiper">
       <!-- <p>这是轮播图</p> -->
       <el-carousel :interval="5000" arrow="always">
-        <el-carousel-item v-for="item in 4" :key="item">
-        <h3>{{ item }}</h3>
+        <el-carousel-item v-for="item in imagesBox" :key="item">
+        <!-- <img :src="item.idView" class="image"> -->
       </el-carousel-item>
       </el-carousel>
   </div>
@@ -12,6 +12,17 @@
 <script>
 export default {
     name:"Swiper",
+    data(){
+      return{
+        imagesBox:[
+          // {id:0,idView:require("../../assets/img/@6@MDS[%4BMK69421Q1`4W1.png")},
+          // {id:1,idView:require("../../assets/img/CNT_OBUBM01I4PZ(%W_VQ0P.png")},
+          // {id:2,idView:require("../../assets/img/icons.png")},
+          // {id:3,idView:require("../../assets/img/PKWC~%AL1{(~93JHU%}BM_0.png")}
+          ],
+        fiveNews: []
+      }
+}
 }
 </script>
 
@@ -31,10 +42,12 @@ export default {
   }
   
   .el-carousel__item:nth-child(2n) {
-    background-color: green;
+    background-color: aqua;
+    
   }
   
   .el-carousel__item:nth-child(2n+1) {
-    background-color:black;
+    background-color: green;
+    
   }
 </style>

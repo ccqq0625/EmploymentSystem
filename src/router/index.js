@@ -2,18 +2,6 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 
 
-// import Each from '@/components/Each'
-// import Picture from '@/components/Picture'
-// import Pic1 from '@/components/Pic1'
-// import Pic2 from '@/components/Pic2'
-// import School from '@/components/School'
-// import Physical from '@/components/College/Physical'
-// import Phy1 from '@/components/College/Phy/Phy1'
-// import Computer from '@/components/College/Computer'
-// import Co1 from '@/components/College/Com/Co1'
-//import Co2 from '@/components/College/Com/Co2'
-// import Co3 from '@/components/College/Com/Co3'
-//import Co11 from '@/components/College/Com/Co11'
 
 const Home =() => import('../views/home/Home');
 const test =() => import('../views/test/test');
@@ -137,7 +125,8 @@ const routes = [
 
 const router = new VueRouter({
   routes,
-  mode:'history'
+  mode:'history',
+  base:'/dist'
 });
 
 const originalPush = VueRouter.prototype.push

@@ -37,7 +37,7 @@ export default {
   },
   methods:{
       fecthData(){
-          dataApi.fecth().then(Response=>{
+          dataApi.fecth(null,'软件工程',null).then(Response=>{
             const resp=Response.data
             this.datacwx=resp.data.listData
             this.Legends=resp.data.listName

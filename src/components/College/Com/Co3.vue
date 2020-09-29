@@ -211,7 +211,7 @@ export default {
 
       let option3 = {
             title: {
-            text: '从事IT条形统计图',
+            text: '就业类型条形图',
             left: 'center'
             },
             tooltip: {
@@ -225,7 +225,11 @@ export default {
                 data: this.Legends1,
                 axisTick: {
               alignWithLabel: true
-            }
+            },
+            axisLabel: {
+                interval: 0,
+                rotate: 20
+                }
             },
             yAxis: {
                 type: 'value'
@@ -255,7 +259,7 @@ export default {
         //就业饼状图
         let option4 = {
             title: {
-            text: '从事IT扇形统计图',
+            text: '就业类型饼图',
             left: 'center'
             },
         tooltip: {
@@ -316,10 +320,10 @@ let option5 = {
                 axisTick: {
               alignWithLabel: true
             },
-            axisLabel: {
-                interval: 0,
-                rotate: 20
-                }
+            // axisLabel: {
+            //     interval: 0,
+            //     rotate: 20
+            //     }
             },
             yAxis: {
                 type: 'value'
@@ -397,10 +401,10 @@ let option5 = {
 },
  methods: {
       handleSelect(key, keyPath) {
-        console.log(key, keyPath);
+        // console.log(key, keyPath);
       },
       handleClick(tab, event) {
-        console.log(tab, event);
+        // console.log(tab, event);
       }
         
     }

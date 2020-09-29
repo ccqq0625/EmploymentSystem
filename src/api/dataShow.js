@@ -1,27 +1,27 @@
 import request from '@/utils/request.js'
 
 export default {
-    fecth(){
+    //总体类型
+    fecth(college,profession,classStudent){
         return request({
-            url:'/student/employment',
+            url:'/student/total',
             method:'post',
             data:{
-                college:null,
-                profession:null,
-                classStudent:'物联网1712',
+                college:college,
+                profession:profession,
+                classStudent:classStudent,
                 list:[
-                    "前端",
-                    "服务端",
-                    "移动端",
-                    "硬件",
-                    "运维",
-                    "非本行业"
+                    "公职",
+                    "参军入伍",
+                    "升学出国",
+                    "就业",
+                    "暂不就业"
                 ]
-
             }
-            
         })
     },
+
+    //就业类型
     workFecth(college,profession,classStudent){
         return request({
             url:'/student/employment',
@@ -31,17 +31,18 @@ export default {
                 profession:profession,
                 classStudent:classStudent,
                 list:[
-                    "前端",
-                    "服务端",
-                    "移动端",
-                    "硬件",
-                    "运维",
-                    "非本行业"
+                    '内资企业',
+                    '国外投资企业',
+                    '不限',
+                    '社会团体',
+                    '其他'
                 ]
 
             }
         })
     },
+
+    // 公职类型
     eduFecth(college,profession,classStudent){
         return request({
             url:'/student/employment',
@@ -50,7 +51,10 @@ export default {
                 college:college,
                 profession:profession,
                 classStudent:classStudent,
-                list:['公职类公务员', '事业单位', '教师', '西部计划', '三支一扶']
+                list:[
+                    '事业单位',     
+                    '党政机关'
+                ]
 
             }
         })

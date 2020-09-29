@@ -196,7 +196,7 @@ mounted(){
     series: [
         {
             type: 'pie',
-            radius: '65%',
+            radius: '55%',
             center: ['50%', '50%'],
             selectedMode: 'single',
             data:this.datacwx,
@@ -223,7 +223,7 @@ mounted(){
 
       let option3 = {
             title: {
-            text: '从事IT条形统计图',
+            text: '就业类型条形图',
             left: 'center'
             },
             tooltip: {
@@ -237,7 +237,11 @@ mounted(){
                 data: this.Legends1,
                 axisTick: {
               alignWithLabel: true
-            }
+            },
+            axisLabel: {
+                interval: 0,
+                rotate: 20
+                }
             },
             yAxis: {
                 type: 'value'
@@ -275,7 +279,7 @@ mounted(){
         //就业饼状图
         let option4 = {
             title: {
-            text: '从事IT扇形统计图',
+            text: '就业类型饼图',
             left: 'center'
             },
         tooltip: {
@@ -292,7 +296,7 @@ mounted(){
     series: [
         {
             type: 'pie',
-            radius: '65%',
+            radius: '55%',
             center: ['50%', '50%'],
             selectedMode: 'single',
             data:this.datacwx1,
@@ -335,10 +339,10 @@ let option5 = {
                 axisTick: {
               alignWithLabel: true
             },
-            axisLabel: {
-                interval: 0,
-                rotate: 20
-            }
+            // axisLabel: {
+            //     interval: 0,
+            //     rotate: 20
+            // }
             },
             yAxis: {
                 type: 'value'
@@ -384,7 +388,7 @@ let option5 = {
     series: [
         {
             type: 'pie',
-            radius: '65%',
+            radius: '55%',
             center: ['50%', '50%'],
             selectedMode: 'single',
             data: this.datacwx2,
@@ -409,20 +413,15 @@ let option5 = {
 };
 
    
-        this.Chart6.setOption(option6);
-    
-       
+        this.Chart6.setOption(option6);    
 },
 
       handleSelect(key, keyPath) {
-        console.log(key, keyPath);
+        // console.log(key, keyPath);
       },
       handleClick(tab, event) {
         // console.log(tab, event);
         // console.log(this.activeName)
-        console.log(this.seriesData)
-        console.log(this.Legends)
-        console.log(this.datacwx)
       },
 
       replace(){

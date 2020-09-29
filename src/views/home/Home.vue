@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="re">
       <!-- 轮播图占位 -->
       <swiper/>
       <!-- 输入框 -->
@@ -35,4 +35,7 @@ export default {
     font-size: 5;
     width: 400px;
 } */
+#re{
+    overflow: hidden;
+}
 </style>

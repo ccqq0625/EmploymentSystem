@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Com v-if="flag2&&flag1&&flag3" :datacwx="datacwx" :Legends="Legends" :seriesData="seriesData" :datacwx1="datacwx1" :Legends1="Legends1" :seriesData1="seriesData1" :datacwx2="datacwx2" :Legends2="Legends2" :seriesData2="seriesData2"></Com>
+    <Com v-if="flag1&&flag2&&flag3"   :datacwx="datacwx" :Legends="Legends" :seriesData="seriesData" :datacwx1="datacwx1" :Legends1="Legends1" :seriesData1="seriesData1" :datacwx2="datacwx2" :Legends2="Legends2" :seriesData2="seriesData2"></Com>
   </div>
 </template>
 
@@ -36,18 +36,16 @@ export default {
   },
   methods:{
       fecthData(){
-          dataApi.fecth().then(Response=>{
+          dataApi.fecth('计算机工程学院',null,null).then(Response=>{
             const resp=Response.data
-            console.log(resp)
             this.datacwx=resp.data.listData
             this.Legends=resp.data.listName
             this.seriesData=resp.data.listValue
-            console.log(resp)
             this.flag1=true
 
           })
 
-          dataApi.workFecth().then(Response=>{
+          dataApi.workFecth('计算机工程学院',null,null).then(Response=>{
             const resp1=Response.data
             this.datacwx1=resp1.data.listData
             this.Legends1=resp1.data.listName
@@ -55,9 +53,8 @@ export default {
             this.flag2=true
           })
 
-          dataApi.eduFecth().then(Response=>{
+          dataApi.eduFecth('计算机工程学院',null,null).then(Response=>{
             const resp2=Response.data
-            console.log(resp2)
             this.datacwx2=resp2.data.listData
             this.Legends2=resp2.data.listName
             this.seriesData2=resp2.data.listValue

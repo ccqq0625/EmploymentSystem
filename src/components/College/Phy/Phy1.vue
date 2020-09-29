@@ -23,7 +23,6 @@ export default {
     }
     },
     mounted() {
-        let this_ = this;
         let myChart = echarts.init(document.getElementById('left'));
         let Chart2 = echarts.init(document.getElementById('right'));
         var weatherIcons = {};
