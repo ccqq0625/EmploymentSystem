@@ -42,7 +42,6 @@ export default {
             this.Legends=resp.data.listName
             this.seriesData=resp.data.listValue
             this.flag1=true
-
           })
 
           dataApi.workFecth('计算机工程学院',null,null).then(Response=>{

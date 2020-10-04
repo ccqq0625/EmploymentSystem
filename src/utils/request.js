@@ -26,7 +26,7 @@ const loading={
 
 
 const request =axios.create({
-    baseURL:process.env.VUE_APP_BASE_API,
+    baseURL: process.env.NODE_ENV === 'development' ?  process.env.VUE_APP_BASE_API : process.env.VUE_APP_SERVICE_URL,
     timeout:5000
 })
 //拦截器

@@ -4,7 +4,7 @@ export default {
     //总体类型
     fecth(college,profession,classStudent){
         return request({
-            url:'/student/total',
+            url:'/student/total/',
             method:'post',
             data:{
                 college:college,
@@ -24,7 +24,7 @@ export default {
     //就业类型
     workFecth(college,profession,classStudent){
         return request({
-            url:'/student/employment',
+            url:'/student/employment/',
             method:'post',
             data:{
                 college:college,
@@ -45,7 +45,7 @@ export default {
     // 公职类型
     eduFecth(college,profession,classStudent){
         return request({
-            url:'/student/employment',
+            url:'/student/employment/',
             method:'post',
             data:{
                 college:college,

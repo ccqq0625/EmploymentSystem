@@ -126,7 +126,7 @@ const routes = [
 const router = new VueRouter({
   routes,
   mode:'history',
-  base:'/dist'
+  base:'/dist/'
 });
 
 const originalPush = VueRouter.prototype.push
