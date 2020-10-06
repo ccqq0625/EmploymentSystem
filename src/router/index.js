@@ -4,7 +4,7 @@ import VueRouter from "vue-router";
 
 
 const Home =() => import('../views/home/Home');
-const test =() => import('../views/test/test');
+const info=() => import('../views/info/info');
 const Post=() => import('../views/Post/Post');
 const PostMatch=() => import('../views/postmatch/PostMatch');
 //const School=() => import('../components/School');
@@ -114,8 +114,8 @@ const routes = [
   },
   
   {
-    path:'/test',
-    component:test,
+    path:'/info',
+    component:info,
     meta:{
       navShow:true
     }

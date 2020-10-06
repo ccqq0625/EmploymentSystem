@@ -5,6 +5,11 @@ import store from "./store";
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
+import vueToPdf from 'vue-to-pdf';
+import VueEasyPrinter from 'vue-easy-printer';
+
+Vue.use(vueToPdf);
+Vue.use(VueEasyPrinter);
 Vue.use(ElementUI);
 Vue.config.productionTip = false;
 

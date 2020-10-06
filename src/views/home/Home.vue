@@ -4,7 +4,9 @@
       <swiper/>
       <!-- 输入框 -->
       <div class="search-input"><search-input></search-input></div>
-        <div class="crumbs"><crumbs></crumbs></div>
+        <div class="crumbs">
+            <!-- <crumbs></crumbs> -->
+        </div>
   </div>
 </template>
 

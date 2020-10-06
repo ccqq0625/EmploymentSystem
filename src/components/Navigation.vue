@@ -27,7 +27,7 @@
   <el-menu-item index="/postmatch" @click="reload()">职业匹配</el-menu-item>
   
    <el-menu-item index="/show">数据分布</el-menu-item>
-   <el-menu-item index="/test">待定3</el-menu-item>
+   <el-menu-item index="/info">信息查询</el-menu-item>
     </div>
     <div></div>
    <div class="menu-but">
