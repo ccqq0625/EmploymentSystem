@@ -105,7 +105,7 @@
   </el-table>
 
   <!-- 弹出框 -->
-  <div id="cpbg">
+  <div id="pdfDom">
       <el-dialog title="详细信息" :visible.sync="dialogFormVisible">
       <el-form>
         <el-form-item label="学号" :label-width="formLabelWidth">
@@ -258,7 +258,7 @@
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">关闭</el-button>
-        <el-button type="primary" @click="getPdf()">打印PDF</el-button>
+        <el-button type="primary" @click="download">打印PDF</el-button>
         <!-- <el-button type="primary" @click="savePdf">导出PDF</el-button> -->
       </div>
     </el-dialog>
@@ -449,6 +449,9 @@ export default {
     methods: {
       onSubmit() {
         console.log('submit!');
+      },
+      download(){
+        this.getPdf('pdfDom','学生详细信息');
       },
       //打印
       printPdf(){

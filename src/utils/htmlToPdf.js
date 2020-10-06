@@ -1,11 +1,9 @@
-// 导出页面为PDF格式
-import html2Canvas from 'html2canvas';
-import jsPDF from 'jspdf'
+import html2Canvas from 'html2canvas'
+import JsPDF from 'jspdf'
 export default{
   install (Vue, options) {
-    Vue.prototype.getPdf = function () {
-      var title = "高新技术企业认定测评报告";
-      html2Canvas(document.querySelector('#cpbg'), {
+    Vue.prototype.getPdf = function (idStr, title) {
+      html2Canvas(document.querySelector('#' + idStr), {
         allowTaint: true
       }).then(function (canvas) {
         let contentWidth = canvas.width
@@ -16,7 +14,7 @@ export default{
         let imgWidth = 595.28
         let imgHeight = 592.28 / contentWidth * contentHeight
         let pageData = canvas.toDataURL('image/jpeg', 1.0)
-        let PDF = new jsPDF('', 'pt', 'a4');
+        let PDF = new JsPDF('', 'pt', 'a4')
         if (leftHeight < pageHeight) {
           PDF.addImage(pageData, 'JPEG', 0, 0, imgWidth, imgHeight)
         } else {
