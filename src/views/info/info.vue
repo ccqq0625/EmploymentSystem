@@ -213,10 +213,10 @@
             </el-form-item>
         </el-form>
        <el-form :inline="true" :model="formInline" class="demo-form-inline">
-             <el-form-item label="主修外语语种" :label-width="formLabelWidth">
+             <el-form-item label="主修外语语种" label-width="100px">
               <el-input v-model="tableData.foreignLanguage" autocomplete="off"></el-input>
             </el-form-item>
-            <el-form-item label="主修外语级别" :label-width="formLabelWidth">
+            <el-form-item label="主修外语级别" label-width="100px">
               <el-input v-model="tableData.foreignLanguageLevel" autocomplete="off"></el-input>
             </el-form-item>
         </el-form>
@@ -314,6 +314,7 @@ export default {
     name:"info",
     data() {
       return {
+        htmlTitle:'学生信息表',
         //表单
         formInline: {
           // 学号
@@ -493,7 +494,7 @@ export default {
         console.log('submit!');
       },
       download(){
-        this.getPdf('pdfDom','学生详细信息');
+        this.getPdf('#pdfDom','学生详细信息');
       },
       //打印
       printPdf(){
