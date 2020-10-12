@@ -20,6 +20,7 @@ const Co31Main=() => import('../components/College/Com/Co31Main');
 const Co32Main=() => import('../components/College/Com/Co32Main');
 const Login=() =>import('../views/login/Login');
 const Register=() =>import('../views/register/Register');
+const pdfTest=() => import('../views/info/pdfTest');
 Vue.use(VueRouter);
 
 const routes = [
@@ -112,12 +113,19 @@ const routes = [
     name: 'Co32Main',
     component: Co32Main
   },
-  
   {
     path:'/info',
     component:info,
     meta:{
       navShow:true
+    }
+
+  },
+  {
+    path:'/pdfTest',
+    component:pdfTest,
+    meta:{
+      navShow:false
     }
 
   }

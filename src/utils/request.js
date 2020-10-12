@@ -24,7 +24,7 @@ const loading={
     }
 }
 
-
+//axios实例
 const request =axios.create({
     baseURL: process.env.NODE_ENV === 'development' ?  process.env.VUE_APP_BASE_API : process.env.VUE_APP_SERVICE_URL,
     timeout:5000
