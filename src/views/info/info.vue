@@ -18,9 +18,9 @@
       <el-form-item label="班级" label-width="70px">
         <el-input v-model="formInline.class" placeholder="班级"></el-input>
       </el-form-item>
-      <!-- </el-form>
+      </el-form>
 
-      <el-form :inline="true" :model="formInline" class="demo-form-inline" > -->
+      <el-form :inline="true" :model="formInline" class="demo-form-inline" >
         <el-form-item label="就业地区" label-width="70px">
          <el-select v-model="formInline.city" placeholder="请选择" style="width:178px">
           <el-option-group
@@ -38,11 +38,13 @@
       </el-form-item>
       <el-form-item label="薪资待遇" inline="true" label-width="70px">
         <el-col :span="11">
-          <el-input v-model="formInline.salaryMin" placeholder="最小薪资"></el-input>
+          <el-input v-model="formInline.salaryMin" placeholder="最小薪资" style="width:178px"></el-input>
         </el-col>
-        <el-col :span="1">-</el-col>
+        <el-col :span="2" style="text-align: center;">
+          <span style=" font-size: 20px;text-align: center;">~</span>
+          </el-col>
         <el-col :span="11">
-          <el-input v-model="formInline.salaryMax" placeholder="最大薪资"></el-input>
+          <el-input v-model="formInline.salaryMax" placeholder="最大薪资"  style="padding:0 0 5px 0"></el-input>
         </el-col>
       </el-form-item>
       <!-- <el-form-item label="是否本行业就业" label-width="110px">
@@ -564,8 +566,10 @@ export default {
 <style lang="scss" scoped>
 .info-from{
   margin-top: 5%;
+  padding:0 9%;
   align-items: center;
   text-align: center;
+ 
 }
 .el-input__inner {
   padding:0;
@@ -576,6 +580,9 @@ export default {
 }
 .el-table-column{
   padding: 25px;
+}
+.info-from[data-v-7e055576]{
+  text-align: left;
 }
 
  
