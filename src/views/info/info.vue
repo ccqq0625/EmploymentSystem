@@ -2,25 +2,27 @@
 <div>
   <div class="info-from">
       <el-form :inline="true" :model="formInline" class="demo-form-inline">
-      <el-form-item label="学号">
+      <el-form-item label="学号" label-width="70px">
         <el-input v-model="formInline.id" placeholder="学号"></el-input>
       </el-form-item>
-      <el-form-item label="姓名">
+      <el-form-item label="姓名" label-width="70px">
         <el-input v-model="formInline.name" placeholder="姓名"></el-input>
       </el-form-item>
-       <el-form-item label="专业">
-        <el-select v-model="formInline.major" placeholder="选择专业">
+       <el-form-item label="专业" label-width="70px">
+        <el-select v-model="formInline.major" placeholder="选择专业" style="width:178px">
           <el-option label="计算机科学与技术" value="计科"></el-option>
           <el-option label="软件工程" value="软工"></el-option>
           <el-option label="物联网" value="物联网"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="班级">
+      <el-form-item label="班级" label-width="70px">
         <el-input v-model="formInline.class" placeholder="班级"></el-input>
       </el-form-item>
-      <el-form-item label="就业地区">
-        <!-- <el-input v-model="formInline.user" placeholder="就业地区"></el-input> -->
-         <el-select v-model="formInline.city" placeholder="请选择">
+      </el-form>
+
+      <el-form :inline="true" :model="formInline" class="demo-form-inline" >
+        <el-form-item label="就业地区" label-width="70px" style="margin-left: 50px;">
+         <el-select v-model="formInline.city" placeholder="请选择" style="width:178px">
           <el-option-group
             v-for="group in options"
             :key="group.label"
@@ -34,36 +36,38 @@
           </el-option-group>
         </el-select>
       </el-form-item>
-      <el-form-item label="薪资待遇" inline="true">
+      <el-form-item label="薪资待遇" inline="true" label-width="70px">
         <el-col :span="11">
           <el-input v-model="formInline.salaryMin" placeholder="最小薪资"></el-input>
         </el-col>
-        <el-col :span="2">-</el-col>
+        <el-col :span="1">-</el-col>
         <el-col :span="11">
           <el-input v-model="formInline.salaryMax" placeholder="最大薪资"></el-input>
         </el-col>
       </el-form-item>
-      <el-form-item label="是否本行业就业">
+      <!-- <el-form-item label="是否本行业就业" label-width="110px">
         <el-select v-model="formInline.sele" placeholder="是/否">
             <el-option label="是" value="Yes"></el-option>
             <el-option label="否" value="No"></el-option>
         </el-select>
-      </el-form-item>
-      <el-form-item label="公司名称">
+      </el-form-item> -->
+      <!-- <el-form-item label="公司名称">
         <el-input v-model="formInline.comName" placeholder="公司名称"></el-input>
       </el-form-item>
-      <el-form-item>
+      <el-form-item> -->
         <el-button type="primary" @click="onSubmit">查询</el-button>
       </el-form-item>
     </el-form>
+
   </div>
 
    <el-table
+    header-cell-style="text-align: center;"
+    cell-style="text-align: center;"
     :data="tableData"
     style="width: 100%"
     min-height="45%">
     <el-table-column
-      fixed
       prop="id"
       label="学号"
       width="">
@@ -555,15 +559,20 @@ export default {
 
 <style lang="scss" scoped>
 .info-from{
-  margin-top: 7%;
+  margin-top: 5%;
   align-items: center;
   text-align: center;
 }
 .el-input__inner {
   padding:0;
+  width: 178px !important;
 }
 .el-dialog__body{
   padding-right:0 10px;
 }
+.el-table-column{
+  padding: 25px;
+}
+// s
 
 </style>

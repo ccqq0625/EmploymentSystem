@@ -157,6 +157,10 @@ export default {
 </script>
 
 <style>
+.match-views{
+    margin-top: 20px;
+    height: 100%;
+}
 .row{
     /* overflow:hidden, */
     margin-left: 0 !important;
