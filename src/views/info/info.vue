@@ -18,10 +18,10 @@
       <el-form-item label="班级" label-width="70px">
         <el-input v-model="formInline.class" placeholder="班级"></el-input>
       </el-form-item>
-      </el-form>
+      <!-- </el-form>
 
-      <el-form :inline="true" :model="formInline" class="demo-form-inline" >
-        <el-form-item label="就业地区" label-width="70px" style="margin-left: 50px;">
+      <el-form :inline="true" :model="formInline" class="demo-form-inline" > -->
+        <el-form-item label="就业地区" label-width="70px">
          <el-select v-model="formInline.city" placeholder="请选择" style="width:178px">
           <el-option-group
             v-for="group in options"
@@ -62,8 +62,8 @@
   </div>
 
    <el-table
-    header-cell-style="text-align: center;"
-    cell-style="text-align: center;"
+    :header-cell-style="cellstyle"
+    :cell-style="cellstyle"
     :data="tableData"
     style="width: 100%"
     min-height="45%">
@@ -550,6 +550,10 @@ export default {
       
       
     },
+
+      cellstyle(row, column, rowIndex, columnIndex){
+        return "text-align: center";
+      },
     },
     components:{
 
@@ -573,6 +577,7 @@ export default {
 .el-table-column{
   padding: 25px;
 }
-// s
+
+ 
 
 </style>
