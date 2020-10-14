@@ -1,7 +1,7 @@
 <template>
 <div>
   <div class="info-from">
-      <el-form :inline="true" :model="formInline" class="demo-form-inline">
+      <el-form :inline="true" :model="formInline" class="demo-form-inline" style="width:auto">
       <el-form-item label="学号" label-width="70px">
         <el-input v-model="formInline.id" placeholder="学号"></el-input>
       </el-form-item>
@@ -22,7 +22,7 @@
 
       <el-form :inline="true" :model="formInline" class="demo-form-inline" >
         <el-form-item label="就业地区" label-width="70px">
-         <el-select v-model="formInline.city" placeholder="请选择" style="width:178px">
+         <el-select v-model="formInline.city" placeholder="请选择" style="width:208px">
           <el-option-group
             v-for="group in options"
             :key="group.label"
@@ -37,15 +37,15 @@
         </el-select>
       </el-form-item>
       <el-form-item label="薪资待遇" inline="true" label-width="70px">
-        <el-col :span="11">
-          <el-input v-model="formInline.salaryMin" placeholder="最小薪资" style="width:178px"></el-input>
-        </el-col>
-        <el-col :span="2" style="text-align: center;">
+        <!-- <el-col :span="11"> -->
+          <el-input v-model="formInline.salaryMin" placeholder="最小薪资" style="width:208px"></el-input>
+        <!-- </el-col> -->
+        <!-- <el-col :span="2" style="text-align: center;"> -->
           <span style=" font-size: 20px;text-align: center;">~</span>
-          </el-col>
-        <el-col :span="11">
-          <el-input v-model="formInline.salaryMax" placeholder="最大薪资"  style="padding:0 0 5px 0"></el-input>
-        </el-col>
+          <!-- </el-col> -->
+        <!-- <el-col :span="11"> -->
+          <el-input v-model="formInline.salaryMax" placeholder="最大薪资"  style="width:208px;"></el-input>
+        <!-- </el-col> -->
       </el-form-item>
       <!-- <el-form-item label="是否本行业就业" label-width="110px">
         <el-select v-model="formInline.sele" placeholder="是/否">
@@ -566,14 +566,14 @@ export default {
 <style lang="scss" scoped>
 .info-from{
   margin-top: 5%;
-  padding:0 9%;
+  padding:0 5%;
   align-items: center;
   text-align: center;
  
 }
 .el-input__inner {
   padding:0;
-  width: 178px !important;
+ // width: 178px !important;
 }
 .el-dialog__body{
   padding-right:0 10px;
