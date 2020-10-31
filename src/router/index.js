@@ -4,7 +4,8 @@ import VueRouter from "vue-router";
 
 
 const Home =() => import('../views/home/Home');
-const info=() => import('../views/info/info');
+const StuInfo=() => import('../views/info/StuInfo');
+const ComInfo=() => import('../views/info/ComInfo')
 const Post=() => import('../views/Post/Post');
 const PostMatch=() => import('../views/postmatch/PostMatch');
 //const School=() => import('../components/School');
@@ -114,12 +115,19 @@ const routes = [
     component: Co32Main
   },
   {
-    path:'/info',
-    component:info,
+    path:'/StuInfo',
+    component:StuInfo,
     meta:{
       navShow:true
     }
 
+  },
+  {
+    path:'/ComInfo',
+    component:ComInfo,
+    meta:{
+      navShow:true
+    }
   },
   {
     path:'/pdfTest',
@@ -127,8 +135,8 @@ const routes = [
     meta:{
       navShow:false
     }
-
-  }
+  },
+ 
 ];
 
 const router = new VueRouter({

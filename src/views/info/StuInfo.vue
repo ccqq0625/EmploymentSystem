@@ -57,6 +57,7 @@
         <el-input v-model="formInline.comName" placeholder="公司名称"></el-input>
       </el-form-item>
       <el-form-item> -->
+      <el-form-item>
         <el-button type="primary" @click="onSubmit">查询</el-button>
       </el-form-item>
     </el-form>
@@ -69,6 +70,10 @@
     :data="tableData"
     style="width: 100%"
     min-height="45%">
+     <el-table-column
+      type="index"
+      width="50">
+    </el-table-column>
     <el-table-column
       prop="id"
       label="学号"
@@ -227,7 +232,7 @@
                       <el-input v-model="tableData.comName" autocomplete="off"></el-input>
                     </el-form-item>
                 </el-form>
-                </el-form> 
+                
                 <el-form :inline="true" :model="formInline" class="demo-form-inline">
                     <el-form-item label="出生日期" :label-width="formLabelWidth">
                       <el-input v-model="tableData.birthday" autocomplete="off"></el-input>
@@ -354,7 +359,7 @@
 <script>
 import htmlToPdf from '../.././utils/htmlToPdf';
 export default {
-    name:"info",
+    name:"StuInfo",
     data() {
       return {
         htmlTitle:'学生信息表',
@@ -416,7 +421,7 @@ export default {
           // 专业
           major:'计算机科学与技术',
           // 班级
-          class:'普陀区',
+          class:'',
           // 就业城市
           city:'',
           //薪资
@@ -581,7 +586,7 @@ export default {
 .el-table-column{
   padding: 25px;
 }
-.info-from[data-v-7e055576]{
+.info-from[data-v-8dbae5ca]{
   text-align: left;
 }
 

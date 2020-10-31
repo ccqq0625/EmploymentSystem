@@ -114,7 +114,7 @@
                       <el-input v-model="tableData.comName" autocomplete="off"></el-input>
                     </el-form-item>
                 </el-form>
-                </el-form> 
+              
                 <el-form :inline="true" :model="formInline" class="demo-form-inline">
                     <el-form-item label="出生日期" :label-width="formLabelWidth">
                       <el-input v-model="tableData.birthday" autocomplete="off"></el-input>
@@ -390,7 +390,7 @@ export default {
 
         //10秒后跳转上一个页面/info
         setTimeout(function(){
-          this.$router.push('/info');
+          this.$router.push('/StuInfo');
         }.bind(this),10000);
 
     },
