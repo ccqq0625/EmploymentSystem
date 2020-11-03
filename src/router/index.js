@@ -6,7 +6,7 @@ import VueRouter from "vue-router";
 const Home =() => import('../views/home/Home');
 const StuInfo=() => import('../views/info/StuInfo');
 const ComInfo=() => import('../views/info/ComInfo')
-const Post=() => import('../views/Post/Post');
+//const Post=() => import('../views/Post/Post');
 const PostMatch=() => import('../views/postmatch/PostMatch');
 //const School=() => import('../components/School');
 const Index= () =>import('../components/College/index.vue');
@@ -37,13 +37,13 @@ const routes = [
       navShow:true
     }
   },
-  {
-    path:'/post',
-    component:Post,
-    meta:{
-      navShow:true
-    }
-  },
+  // {
+  //   path:'/post',
+  //   component:Post,
+  //   meta:{
+  //     navShow:true
+  //   }
+  // },
   {
     path:"/postmatch",
     component:PostMatch,

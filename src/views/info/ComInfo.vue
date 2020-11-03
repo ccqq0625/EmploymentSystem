@@ -11,12 +11,7 @@
           <el-input v-model="formInline.salaryMax" placeholder="最大薪资"  style="width:208px;"></el-input>
       </el-form-item>
       </el-form>
-
-      <el-form :inline="true" :model="formInline" class="demo-form-inline" >
-         <!-- <el-form-item label="联系电话" label-width="70px">
-        <el-input v-model="formInline.class" placeholder="联系电话"></el-input>
-      </el-form-item> -->
-     
+      <el-form :inline="true" :model="formInline" class="demo-form-inline" >     
        <el-form-item label="招聘岗位" label-width="70px">
         <el-input v-model="formInline.class" placeholder="招聘岗位"></el-input>
       </el-form-item>
@@ -41,6 +36,11 @@
       <el-form-item>
         <el-button type="primary">新增</el-button>
       </el-form-item>
+      <el-form-item>
+        <!-- <el-button type="primary" @click="toggleSelection(tableData)" v-if='ButShowChange'>多选</el-button> -->
+        <el-button type="primary" @click="ButShow()" v-if='ButShowChange'>多选</el-button>
+        <el-button type="primary" @click="DelSelect()" v-if='!ButShowChange'>确认删除</el-button>
+      </el-form-item>
     </el-form>
 
   </div>
@@ -49,8 +49,17 @@
     :header-cell-style="cellstyle"
     :cell-style="cellstyle"
     :data="tableData"
+    ref="multipleTable"
+    :select-on-indeterminate="true"
+    highlight-current-row
+     @selection-change="handleSelectionChange"
     style="width: 100%"
     min-height="45%">
+       <el-table-column
+       v-if="!ButShowChange"
+      type="selection"
+      width="">
+    </el-table-column>
      <el-table-column
       type="index"
       width="50">
@@ -177,6 +186,11 @@ export default {
          dialogTableVisible: false,
         dialogFormVisible: false,
         formLabelWidth: '90px',
+        currentRow: null,
+        isALLselect:false,
+        //多选的状态转换
+        ButShowChange:true,
+        multipleTable:[],
       }
     },
     methods: {
@@ -186,7 +200,6 @@ export default {
           //打印
           changeVue(){
             const h = this.$createElement;
-
             this.$notify({
               title: '提示',
               message: h('i', { style: 'color: teal'}, '准备打印，即将跳转PDF预览页'),
@@ -204,6 +217,42 @@ export default {
           },
           handleDelete(index, row) {
             console.log(index, row);
+          },
+          selectALL(selection,first){
+            if(!first){
+              this.isAllSelect=!this.isAllSelect;
+            }
+          },
+            toggleSelection(rows) {
+              if (rows) {
+                rows.forEach(row => {
+                  this.$refs.multipleTable.toggleRowSelection(row);
+                });
+              } else {
+                this.$refs.multipleTable.clearSelection();
+              }
+            },
+           handleSelectionChange(val) {
+            this.currentRow = val;
+          },
+          //按钮的变化和多选框的显示
+          ButShow(){
+            this.ButShowChange=!this.ButShowChange;
+            console.log(this.ButShowChange);
+          },
+          DelSelect(){
+              //console.log(this.$refs.multipleTable.selection);
+              //获取被选择的行
+              this.multipleTable=this.$refs.multipleTable.selection;
+              //console.log(this.multipleTable);
+              //删除表格中被选择的行
+              this.multipleTable.forEach(mul => {
+                this.tableData.splice(mul,1);
+              });
+              this.ButShowChange=!this.ButShowChange;
+          },
+          CheckboxShow(){
+            return !this.ButShowChange;
           }
     },
     components:{
@@ -235,6 +284,8 @@ export default {
 .info-from[data-v-0344b368]{
    text-align: left;
 }
-
+// .el-checkbox__inner{
+//   display:none !important;
+// }
 
 </style>
