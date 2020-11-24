@@ -14,7 +14,7 @@
   
    <el-menu-item index="/show">数据分布</el-menu-item>
 
-       <el-submenu>
+       <el-submenu index="">
           <template slot="title">信息查询</template>
           <el-menu-item index="/StuInfo">学生信息</el-menu-item>
           <el-menu-item index="/ComInfo">企业信息</el-menu-item>

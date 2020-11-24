@@ -6,9 +6,9 @@
         <el-input v-model="formInline.name" placeholder="企业名称"></el-input>
       </el-form-item>
       <el-form-item label="薪资待遇" inline="true" label-width="70px">
-          <el-input v-model="formInline.salaryMin" placeholder="最小薪资" style="width:208px"></el-input>
+          <el-input v-model="formInline.salaryMin" placeholder="最低薪资" style="width:208px"></el-input>
           <span style=" font-size: 20px;text-align: center;">~</span>
-          <el-input v-model="formInline.salaryMax" placeholder="最大薪资"  style="width:208px;"></el-input>
+          <el-input v-model="formInline.salaryMax" placeholder="最高薪资"  style="width:208px;"></el-input>
       </el-form-item>
       </el-form>
       <el-form :inline="true" :model="formInline" class="demo-form-inline" >     
@@ -16,25 +16,13 @@
         <el-input v-model="formInline.class" placeholder="招聘岗位"></el-input>
       </el-form-item>
       <el-form-item label="就业地区" label-width="70px">
-         <el-select v-model="formInline.city" placeholder="请选择" style="width:208px">
-          <el-option-group
-            v-for="group in options"
-            :key="group.label"
-            :label="group.label">
-            <el-option
-              v-for="item in group.options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">
-            </el-option>
-          </el-option-group>
-        </el-select>
+        <el-input v-model="formInline.city" placeholder="就业地区"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">查询</el-button>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary">新增</el-button>
+        <el-button type="primary" @click="handleAdd">新增</el-button>
       </el-form-item>
       <el-form-item>
         <!-- <el-button type="primary" @click="toggleSelection(tableData)" v-if='ButShowChange'>多选</el-button> -->
@@ -80,8 +68,13 @@
       width="">
     </el-table-column>
     <el-table-column
-      prop="salary"
-      label="薪资待遇"
+      prop="salaryMin"
+      label="最低薪资"
+      width="">
+    </el-table-column>
+    <el-table-column
+      prop="salaryMax"
+      label="最高薪资"
       width="">
     </el-table-column>
       <el-table-column
@@ -102,11 +95,23 @@
     </el-table-column>
   </el-table>
 
+  <el-pagination
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      :current-page="current"
+      :page-sizes="[1, 5, 10]"
+      :hide-on-single-page="value"
+      :page-size="size"
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="total">
+  </el-pagination>
+
 
 </div>
 </template>
 
 <script>
+import api from '../../api/industryInfo';
 import htmlToPdf from '../.././utils/htmlToPdf';
 export default {
     name:"StuInfo",
@@ -117,73 +122,26 @@ export default {
         formInline: {
          
         },
-         options: [{
-          label: '热门城市',
-          options: [{
-            value: 'Shanghai',
-            label: '上海'
-          }, {
-            value: 'Beijing',
-            label: '北京'
-          }]
-        }, {
-          label: '城市名',
-          options: [{
-            value: 'Chengdu',
-            label: '成都'
-          }, {
-            value: 'Shenzhen',
-            label: '深圳'
-          }, {
-            value: 'Guangzhou',
-            label: '广州'
-          }, {
-            value: 'Dalian',
-            label: '大连'
-          }]
-        }],
         // value:"",
         // 表格的数据
-         tableData: [
-           //key值
-           {
+        tableData: [{
           // 企业姓名
-          name: 'xxxxxx公司',
+          name: '',
           // 招聘岗位
           job:'',
           // 所在城市
           city:'',
           //薪资
-          salary:'',
+          salaryMin:'',
+          salatyMax:'',
           //电话
           phone:'',
-          },
-           {
-          // 企业姓名
-          name: 'aaaaa公司',
-          // 招聘岗位
-          job:'',
-          // 所在城市
-          city:'',
-          //薪资
-          salary:'',
-          //电话
-          phone:'',
-          },
-          {
-          // 企业姓名
-          name: 'bbbbb公司',
-          // 招聘岗位
-          job:'',
-          // 所在城市
-          city:'',
-          //薪资
-          salary:'',
-          //电话
-          phone:'',
-          }
-        ],
-         dialogTableVisible: false,
+        }],
+        value: true,
+        current: 1,
+        size: 10,
+        total: 1,
+        dialogTableVisible: false,
         dialogFormVisible: false,
         formLabelWidth: '90px',
         currentRow: null,
@@ -191,11 +149,75 @@ export default {
         //多选的状态转换
         ButShowChange:true,
         multipleTable:[],
+        id: '',
+        behind: {
+          name: this.name,
+          job: this.job,
+          city: this.city,
+          salaryMin: this.salaryMin,
+          salaryMax: this.salaryMax,
+          phone: this.phone
+        }
       }
     },
+
+    created() {
+      this.onSubmit()
+    },
     methods: {
+          //查询
           onSubmit() {
-            console.log('submit!');
+            this.formInline.current = this.current
+            this.formInline.size = this.size
+            api.search(this.formInline).then(response=>{
+              const resp = response.data
+              console.log(resp)
+              this.tableData = resp.data.list
+              this.total = resp.data.totalcount
+              this.size = resp.data.size
+              this.current = resp.data.current
+            }).catch((error) => {})
+          },
+           //增加
+          handleAdd(behind){
+            api.add(this.behind).then(response=>{
+              console.log(behind)
+              this.onSubmit()
+            })
+          },
+
+          //编辑
+          handleEdit(index, row) {
+            console.log(index, row);
+          },
+
+          //删除
+          handleDelete(index, row) {
+            console.log(index, row);
+            this.$confirm('你确认删除吗？','提示',{
+                confirmButtonText:"确认",
+                cancelButtonText:"取消"
+            }).then(()=>{
+              api.delete(this.id).then(response=>{
+              const resp = response.data
+              this.$message({
+                message:resp,
+                type:'success'
+              })
+              this.onSubmit()
+            })
+            })
+          },
+
+          //改变每页显示数量
+          handleSizeChange(val){
+            this.size=val
+            this.onSubmit()
+          },
+          //改变当前页
+          handleCurrentChange(current){
+            this.current=current
+            this.onSubmit()
           },
           //打印
           changeVue(){
@@ -209,15 +231,12 @@ export default {
               this.$router.push('/pdfTest');
             }.bind(this),2000);
         },
+
           cellstyle(row, column, rowIndex, columnIndex){
             return "text-align: center";
           },
-          handleEdit(index, row) {
-            console.log(index, row);
-          },
-          handleDelete(index, row) {
-            console.log(index, row);
-          },
+          
+          //全选
           selectALL(selection,first){
             if(!first){
               this.isAllSelect=!this.isAllSelect;
@@ -287,5 +306,8 @@ export default {
 // .el-checkbox__inner{
 //   display:none !important;
 // }
+.el-pagination {
+    text-align: center; 
+}
 
 </style>
