@@ -23,7 +23,7 @@ export default {
     //增加信息
     add(behind){
         return request({
-            url: '/company/list_companies',
+            url: '/company/insertcompany',
             method: 'post',
             data: behind
         })

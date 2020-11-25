@@ -22,17 +22,17 @@
 
       <el-form :inline="true" :model="formInline" class="demo-form-inline" >
         <el-form-item label="就业地区 ">
-        <el-input v-model="formInline.city" placeholder="就业地区"></el-input>
+        <el-input v-model="formInline.expectCity" placeholder="就业地区"></el-input>
       </el-form-item>
       <el-form-item label="薪资待遇" inline="true" label-width="70px">
         <!-- <el-col :span="11"> -->
-          <el-input v-model="formInline.salaryMin" placeholder="最小薪资" style="width:208px"></el-input>
+          <el-input v-model="formInline.expectSalaryMin" placeholder="最小薪资" style="width:208px"></el-input>
         <!-- </el-col> -->
         <!-- <el-col :span="2" style="text-align: center;"> -->
           <span style=" font-size: 20px;text-align: center;">~</span>
           <!-- </el-col> -->
         <!-- <el-col :span="11"> -->
-          <el-input v-model="formInline.salaryMax" placeholder="最大薪资"  style="width:208px;"></el-input>
+          <el-input v-model="formInline.expectSalaryMax" placeholder="最大薪资"  style="width:208px;"></el-input>
         <!-- </el-col> -->
       </el-form-item>
       <!-- <el-form-item label="是否本行业就业" label-width="110px">
@@ -73,12 +73,12 @@
       width="">
     </el-table-column>
     <el-table-column
-      prop="city"
-      label="就业地区"
+      prop="expectCity"
+      label="期望就业地区"
       width="">
     </el-table-column>
     <el-table-column
-      prop="salaryMax"
+      prop="expectSalaryMax"
       label="薪资待遇"
       width="">
     </el-table-column>
@@ -244,13 +244,13 @@
     </el-table-column>
      <el-table-column
       label="就业岗位"
-      prop="job"
+      prop="employmentJob"
       v-if="false">
     </el-table-column>
 
      <el-table-column
       label="就业城市"
-      prop="city"
+      prop="employmentCity"
       v-if="false">
     </el-table-column>
      <el-table-column
@@ -265,13 +265,13 @@
       <template slot-scope="scope">
         <!-- <el-button @click="handleClick(scope.row)" type="text" size="small">详情</el-button> -->
         <el-button type="text" @click="handleClick(scope.row.studentId,scope.row.name,scope.row.sex
-        ,scope.row.profession,scope.row.city,scope.row.salaryMax,scope.row.classStudent,scope.row.password,scope.row.number
+        ,scope.row.profession,scope.row.expectCity,scope.row.expectSalaryMax,scope.row.classStudent,scope.row.password,scope.row.number
         ,scope.row.hukouPoliceStation,scope.row.education,scope.row.trainingMethod,scope.row.schoolSystem,scope.row.candidateNumber
         ,scope.row.admissionTime,scope.row.graduationTime,scope.row.changes,scope.row.academicDegree,scope.row.learningMethod
         ,scope.row.professionDirection,scope.row.foreignLanguage,scope.row.foreignLanguageLevel,scope.row.companyName
         ,scope.row.birthday,scope.row.nation,scope.row.politicalStatus,scope.row.maritalStatus,scope.row.phone,scope.row.qq
         ,scope.row.email,scope.row.urbanSource,scope.row.sourceArea,scope.row.sourceAreaCode,scope.row.address,scope.row.homeZipCode
-        ,scope.row.familyContact,scope.row.familyPhone,scope.row.job,scope.row.id)">详情</el-button>
+        ,scope.row.familyContact,scope.row.familyPhone,scope.row.employmentJob,scope.row.id)">详情</el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -307,11 +307,11 @@
                   <el-form-item label="专业" :label-width="formLabelWidth">
                     <el-input v-model="profession" autocomplete="off"></el-input>
                   </el-form-item>
-                    <el-form-item label="就业城市" :label-width="formLabelWidth">
-                    <el-input v-model="city" autocomplete="off"></el-input>
+                    <el-form-item label="期望就业城市" :label-width="formLabelWidth">
+                    <el-input v-model="expectCity" autocomplete="off"></el-input>
                     </el-form-item>
                     <el-form-item label="薪资范围" :label-width="formLabelWidth">
-                    <el-input v-model="salaryMax" autocomplete="off"></el-input>
+                    <el-input v-model="expectSalaryMax" autocomplete="off"></el-input>
                   </el-form-item>
                 </el-form>
                 <!-- <el-form :inline="true" :model="formInline" class="demo-form-inline">
@@ -481,15 +481,15 @@
           <el-collapse-item title="期望工作的信息" name="2">
             <el-form :inline="true" :model="formInline" class="demo-form-inline">
                   <el-form-item label="就业岗位" :label-width="formLabelWidth">
-                      <el-input v-model="job" autocomplete="off"></el-input>
+                      <el-input v-model="employmentJob" autocomplete="off"></el-input>
                     </el-form-item>
                   <el-form-item label="就业薪资" :label-width="formLabelWidth">
-                  <el-input v-model="salaryMax" autocomplete="off"></el-input>
+                  <el-input v-model="employmentsalary" autocomplete="off"></el-input>
                 </el-form-item>
                 </el-form>
                 <el-form :inline="true" :model="formInline" class="demo-form-inline">
                   <el-form-item label="就业城市" :label-width="formLabelWidth">
-                      <el-input v-model="city" autocomplete="off"></el-input>
+                      <el-input v-model="employmentCity" autocomplete="off"></el-input>
                     </el-form-item>
                   <el-form-item label="就业岗位ID" :label-width="formLabelWidth">
                   <el-input v-model="id" autocomplete="off"></el-input>
@@ -499,18 +499,18 @@
           <el-collapse-item title="实际就业的信息" name="3">
             <el-form :inline="true" :model="formInline" class="demo-form-inline">
                   <el-form-item label="就业岗位" :label-width="formLabelWidth">
-                      <el-input v-model="tableData.id" autocomplete="off"></el-input>
+                      <el-input v-model="employmentJob" autocomplete="off"></el-input>
                     </el-form-item>
                   <el-form-item label="就业薪资" :label-width="formLabelWidth">
-                  <el-input v-model="tableData.name" autocomplete="off"></el-input>
+                  <el-input v-model="employmentsalary" autocomplete="off"></el-input>
                 </el-form-item>
               </el-form>
               <el-form :inline="true" :model="formInline" class="demo-form-inline">
                   <el-form-item label="就业城市" :label-width="formLabelWidth">
-                      <el-input v-model="tableData.id" autocomplete="off"></el-input>
+                      <el-input v-model="employmentCity" autocomplete="off"></el-input>
                     </el-form-item>
                   <el-form-item label="城市代码" :label-width="formLabelWidth">
-                  <el-input v-model="tableData.name" autocomplete="off"></el-input>
+                  <el-input v-model="employmentCityCode" autocomplete="off"></el-input>
                 </el-form-item>
                 </el-form>
                 <el-form :inline="true" :model="formInline" class="demo-form-inline">
@@ -549,12 +549,12 @@ export default {
           profession:'',
           // 班级
           classStudent:'',
-          // 就业城市
-          city:'',
+          // 期望就业城市
+          expectCity:'',
           // 最小薪资
-          salaryMin:'',
+          expectSalaryMin:'',
           // 最大薪资
-          salaryMax:'',
+          expectSalaryMax:'',
           // 是否本行业就业
           thisIndustry:'',
           // 公司名称
@@ -572,8 +572,8 @@ export default {
          name: '',
          sex: '',
          profession: '',
-         city: '',
-         salaryMax:'',
+         expectCity: '',
+         employmentsalary:'',
          classStudent: '',
          password: '',
          hometown:'',
@@ -606,7 +606,8 @@ export default {
          homeZipCode:'',
          familyContact:'',
          familyPhone:'',
-         job:'',
+         employmentJob:'',
+         employmentCityCode:'',
          id:'',
          teacher:'',
          dialogTableVisible: false,
@@ -632,18 +633,18 @@ export default {
         }.bind(this),2000);     
     },
     //手动点击弹出框需要的参数
-    handleClick(studentId,name,sex,profession,city,salaryMax,classStudent,password,number,hukouPoliceStation
+    handleClick(studentId,name,sex,profession,city,expectSalaryMax,classStudent,password,number,hukouPoliceStation
     ,education,trainingMethod,schoolSystem,candidateNumber,admissionTime,graduationTime,changes,academicDegree
     ,learningMethod,professionDirection,foreignLanguage,foreignLanguageLevel,companyName,birthday,nation
     ,politicalStatus,maritalStatus,phone,qq,email,urbanSource,sourceArea,sourceAreaCode,address,homeZipCode
-    ,familyContact,familyPhone,job,id){
+    ,familyContact,familyPhone,employmentJob,id){
          this.dialogFormVisible = true
          this.studentId = studentId
          this.name = name
          this.sex = sex
          this.profession = profession
          this.city = city
-         this.salaryMax = salaryMax
+         this.expectSalaryMax = expectSalaryMax
          this.classStudent = classStudent
          this.password = password
          this.number = number
@@ -675,7 +676,7 @@ export default {
          this.homeZipCode = homeZipCode
          this.familyContact = familyContact
          this.familyPhone = familyPhone
-         this.job = job
+         this.employmentJob = employmentJob
          this.id = id
     },
     //查询功能

@@ -182,7 +182,7 @@ export default {
           handleAdd(behind){
             api.add(this.behind).then(response=>{
               console.log(behind)
-              this.onSubmit()
+              //this.onSubmit()
             })
           },
 
