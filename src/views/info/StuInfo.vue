@@ -73,19 +73,54 @@
       width="">
     </el-table-column>
     <el-table-column
+      prop="expectSalary"
+      label="薪资"
+      width="">
+    </el-table-column>
+    <el-table-column
       prop="expectCity"
-      label="期望就业地区"
+      label="就业地区"
       width="">
     </el-table-column>
     <el-table-column
-      prop="expectSalaryMax"
-      label="薪资待遇"
-      width="">
+      prop="schoolCode"
+      label="院校代码"
+      v-if="false">
     </el-table-column>
     <el-table-column
-      prop="companyName"
-      label="就业公司名称"
-      width="">
+      prop="fileUnit"
+      label="档案单位"
+      v-if="false">
+    </el-table-column>
+    <el-table-column
+      prop="difficultyCategory"
+      label="困难生类别"
+      v-if="false">
+    </el-table-column>
+    <el-table-column
+      prop="professionalDirection"
+      label="专业方向"
+      v-if="false">
+    </el-table-column>
+     <el-table-column
+      prop="teacher"
+      label="是否是师范生"
+      v-if="false">
+    </el-table-column>
+    <el-table-column
+      prop="help"
+      label="是否是精准扶贫对象"
+      v-if="false">
+    </el-table-column>
+    <el-table-column
+      prop="fileTransferIn"
+      label="档案是否转入学校"
+      v-if="false">
+    </el-table-column>
+    <el-table-column
+      prop="hukouTransferIn"
+      label="户口是否转入学校"
+      v-if="false">
     </el-table-column>
     <el-table-column
       prop="classStudent"
@@ -242,20 +277,58 @@
       prop="familyPhone"
       v-if="false">
     </el-table-column>
+
+    <!-- 期望就业 -->
      <el-table-column
+      label="就业岗位"
+      prop="expectJob"
+      v-if="false">
+    </el-table-column>
+    <el-table-column
+      label="最低薪资"
+      prop="expectSalaryMin"
+      v-if="false">
+    </el-table-column>
+      <el-table-column
+      label="最高薪资"
+      prop="expectSalaryMax"
+      v-if="false">
+      </el-table-column>
+     <el-table-column
+      label="就业城市"
+      prop="expectCity"
+      v-if="false">
+    </el-table-column>
+     <el-table-column
+      label="城市代码"
+      prop="expectCityCode"
+      v-if="false">
+    </el-table-column>
+    
+    <!-- 实际就业 -->
+    <el-table-column
       label="就业岗位"
       prop="employmentJob"
       v-if="false">
     </el-table-column>
-
-     <el-table-column
+    <el-table-column
+      label="就业薪资"
+      prop="employmentSalary"
+      v-if="false">
+    </el-table-column>
+    <el-table-column
+      label="公司名称"
+      prop="employmentName"
+      v-if="false">
+      </el-table-column>
+      <el-table-column
       label="就业城市"
       prop="employmentCity"
       v-if="false">
-    </el-table-column>
+      </el-table-column>
      <el-table-column
-      label="就业岗位ID"
-      prop="id"
+      label="城市代码"
+      prop="employmentCityCode"
       v-if="false">
     </el-table-column>
     <el-table-column
@@ -264,14 +337,17 @@
       width="100">
       <template slot-scope="scope">
         <!-- <el-button @click="handleClick(scope.row)" type="text" size="small">详情</el-button> -->
-        <el-button type="text" @click="handleClick(scope.row.studentId,scope.row.name,scope.row.sex
-        ,scope.row.profession,scope.row.expectCity,scope.row.expectSalaryMax,scope.row.classStudent,scope.row.password,scope.row.number
+        <el-button type="text" @click="handleClick(scope.row.studentId,scope.row.name,scope.row.sex,scope.row.profession,scope.row.schoolCode
+        ,scope.row.fileUnit,scope.row.difficultyCategory,scope.row.professionalDirection,scope.row.teacher,scope.row.help,scope.row.fileTransferIn
+        ,scope.row.hukouTransferIn,scope.row.expectCity,scope.row.expectSalary,scope.row.classStudent,scope.row.password,scope.row.number
         ,scope.row.hukouPoliceStation,scope.row.education,scope.row.trainingMethod,scope.row.schoolSystem,scope.row.candidateNumber
         ,scope.row.admissionTime,scope.row.graduationTime,scope.row.changes,scope.row.academicDegree,scope.row.learningMethod
         ,scope.row.professionDirection,scope.row.foreignLanguage,scope.row.foreignLanguageLevel,scope.row.companyName
         ,scope.row.birthday,scope.row.nation,scope.row.politicalStatus,scope.row.maritalStatus,scope.row.phone,scope.row.qq
         ,scope.row.email,scope.row.urbanSource,scope.row.sourceArea,scope.row.sourceAreaCode,scope.row.address,scope.row.homeZipCode
-        ,scope.row.familyContact,scope.row.familyPhone,scope.row.employmentJob,scope.row.id)">详情</el-button>
+        ,scope.row.familyContact,scope.row.familyPhone,scope.row.expectJob,scope.row.expectSalaryMin,scope.row.expectSalaryMax
+        ,scope.row.expectCityCode,scope.row.employmentJob,scope.row.employmentSalary,scope.row.employmentCity
+        ,scope.row.employmentCityCode,scope.row.employmentName)">详情</el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -307,32 +383,26 @@
                   <el-form-item label="专业" :label-width="formLabelWidth">
                     <el-input v-model="profession" autocomplete="off"></el-input>
                   </el-form-item>
-                    <el-form-item label="期望就业城市" :label-width="formLabelWidth">
-                    <el-input v-model="expectCity" autocomplete="off"></el-input>
+                   <el-form-item label="院校代码" :label-width="formLabelWidth">
+                    <el-input v-model="schoolCode" autocomplete="off"></el-input>
                     </el-form-item>
-                    <el-form-item label="薪资范围" :label-width="formLabelWidth">
-                    <el-input v-model="expectSalaryMax" autocomplete="off"></el-input>
+                    <el-form-item label="档案单位" :label-width="formLabelWidth">
+                    <el-input v-model="fileUnit" autocomplete="off"></el-input>
                   </el-form-item>
                 </el-form>
                 <!-- <el-form :inline="true" :model="formInline" class="demo-form-inline">
                   </el-form> -->
                   <el-form :inline="true" :model="formInline" class="demo-form-inline">
-                    <el-form-item label="是否本行业就业" label-width="120px">
-                    <el-radio-group>
-                      <el-radio label="是"></el-radio>
-                      <el-radio label="否"></el-radio>
-                    </el-radio-group>
-                    </el-form-item>
-                    <el-form-item label="是否是师范生" v-model="teacher" label-width="120px">
-                          <el-radio-group>
-                            <el-radio label="是"></el-radio>
-                            <el-radio label="否"></el-radio>
+                    <el-form-item label="是否是师范生" v-model="teacher" label-width="180px">
+                          <el-radio-group v-model="teacher">
+                            <el-radio :label="true">是</el-radio>
+                            <el-radio :label="false">否</el-radio>
                           </el-radio-group>
                       </el-form-item>
-                      <el-form-item label="是否是精准扶贫对象" label-width="140px">
-                    <el-radio-group>
-                          <el-radio label="是"></el-radio>
-                          <el-radio label="否"></el-radio>
+                      <el-form-item label="是否是精准扶贫对象" v-model="help" label-width="180px">
+                    <el-radio-group v-model="help">
+                          <el-radio :label="true">是</el-radio>
+                          <el-radio :label="false">否</el-radio>
                         </el-radio-group>
                     </el-form-item>
                    
@@ -342,9 +412,9 @@
                      <el-form-item label="班级" :label-width="formLabelWidth">
                     <el-input v-model="classStudent" autocomplete="off"></el-input>
                   </el-form-item>
-                      <el-form-item label="密码" :label-width="formLabelWidth">
+                      <!-- <el-form-item label="密码" :label-width="formLabelWidth">
                       <el-input v-model="password" autocomplete="off"></el-input>
-                    </el-form-item>
+                    </el-form-item> -->
                       <el-form-item label="籍贯" :label-width="formLabelWidth">
                       <el-input v-model="hukouPoliceStation" autocomplete="off"></el-input>
                     </el-form-item>
@@ -372,8 +442,8 @@
                       </el-form-item>
                 </el-form>
                 <el-form :inline="true" :model="formInline" class="demo-form-inline">
-                      <el-form-item label="学制" :label-width="formLabelWidth">
-                        <el-input v-model="schoolSystem" autocomplete="off"></el-input>
+                      <el-form-item label="困难生类别" :label-width="formLabelWidth">
+                        <el-input v-model="difficultyCategory" autocomplete="off"></el-input>
                       </el-form-item>
                        <el-form-item label="毕业时间" :label-width="formLabelWidth">
                         <el-input v-model="graduationTime" autocomplete="off"></el-input>
@@ -390,7 +460,7 @@
                         <el-input v-model="learningMethod" autocomplete="off"></el-input>
                       </el-form-item>
                     <el-form-item label="专业方向" :label-width="formLabelWidth">
-                      <el-input v-model="professionDirection" autocomplete="off"></el-input>
+                      <el-input v-model="professionalDirection" autocomplete="off"></el-input>
                     </el-form-item>
                 </el-form>
               <el-form :inline="true" :model="formInline" class="demo-form-inline">
@@ -400,9 +470,9 @@
                     <el-form-item label="外语级别" label-width="90px">
                       <el-input v-model="foreignLanguageLevel" autocomplete="off"></el-input>
                     </el-form-item>
-                     <el-form-item label="公司名称" :label-width="formLabelWidth">
+                     <!-- <el-form-item label="公司名称" :label-width="formLabelWidth">
                       <el-input v-model="companyName" autocomplete="off"></el-input>
-                    </el-form-item>
+                    </el-form-item> -->
                 </el-form>
                 </el-form> 
                 <el-form :inline="true" :model="formInline" class="demo-form-inline">
@@ -461,16 +531,16 @@
                 </el-form-item>
                 </el-form> 
                  <el-form :inline="true" :model="formInline" class="demo-form-inline">
-                    <el-form-item label="档案是否转入学校">
-                    <el-radio-group>
-                      <el-radio label="是"></el-radio>
-                          <el-radio label="否"></el-radio>
-                        </el-radio-group>
+                    <el-form-item label="档案是否转入学校" label-width="180px">
+                      <el-radio-group v-model="fileTransferIn">
+                        <el-radio :label="true">是</el-radio>
+                        <el-radio :label="false">否</el-radio>
+                      </el-radio-group>
                     </el-form-item>
-                    <el-form-item label="户籍是否转入学校">
-                    <el-radio-group>
-                      <el-radio label="是"></el-radio>
-                      <el-radio label="否"></el-radio>
+                    <el-form-item label="户籍是否转入学校" label-width="180px">
+                    <el-radio-group v-model="hukouTransferIn">
+                      <el-radio :label="true">是</el-radio>
+                      <el-radio :label="false">否</el-radio>
                         </el-radio-group>
                     </el-form-item>
                     <el-form-item>
@@ -481,18 +551,21 @@
           <el-collapse-item title="期望工作的信息" name="2">
             <el-form :inline="true" :model="formInline" class="demo-form-inline">
                   <el-form-item label="就业岗位" :label-width="formLabelWidth">
-                      <el-input v-model="employmentJob" autocomplete="off"></el-input>
+                      <el-input v-model="expectJob" autocomplete="off"></el-input>
                     </el-form-item>
-                  <el-form-item label="就业薪资" :label-width="formLabelWidth">
-                  <el-input v-model="employmentsalary" autocomplete="off"></el-input>
+                  <el-form-item label="最低薪资" :label-width="formLabelWidth">
+                  <el-input v-model="expectSalaryMin" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="最高薪资" :label-width="formLabelWidth">
+                  <el-input v-model="expectSalaryMax" autocomplete="off"></el-input>
                 </el-form-item>
                 </el-form>
                 <el-form :inline="true" :model="formInline" class="demo-form-inline">
                   <el-form-item label="就业城市" :label-width="formLabelWidth">
-                      <el-input v-model="employmentCity" autocomplete="off"></el-input>
+                      <el-input v-model="expectCity" autocomplete="off"></el-input>
                     </el-form-item>
-                  <el-form-item label="就业岗位ID" :label-width="formLabelWidth">
-                  <el-input v-model="id" autocomplete="off"></el-input>
+                  <el-form-item label="城市代码" :label-width="formLabelWidth">
+                  <el-input v-model="expectCityCode" autocomplete="off"></el-input>
                 </el-form-item>
                 </el-form>
           </el-collapse-item>
@@ -502,7 +575,10 @@
                       <el-input v-model="employmentJob" autocomplete="off"></el-input>
                     </el-form-item>
                   <el-form-item label="就业薪资" :label-width="formLabelWidth">
-                  <el-input v-model="employmentsalary" autocomplete="off"></el-input>
+                  <el-input v-model="employmentSalary" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="公司名称" :label-width="formLabelWidth">
+                  <el-input v-model="employmentName" autocomplete="off"></el-input>
                 </el-form-item>
               </el-form>
               <el-form :inline="true" :model="formInline" class="demo-form-inline">
@@ -512,11 +588,6 @@
                   <el-form-item label="城市代码" :label-width="formLabelWidth">
                   <el-input v-model="employmentCityCode" autocomplete="off"></el-input>
                 </el-form-item>
-                </el-form>
-                <el-form :inline="true" :model="formInline" class="demo-form-inline">
-                  <el-form-item label="就业岗位ID" :label-width="formLabelWidth">
-                      <el-input v-model="tableData.id" autocomplete="off"></el-input>
-                    </el-form-item>
                 </el-form>
           </el-collapse-item>
           <el-collapse-item title="学分的信息" name="4">
@@ -564,7 +635,7 @@ export default {
         // value:"",
         // 表格的数据
          tableData: [],
-         value:true,
+         value: '',
          current: 1,
          total: 1,
          size: 5,    
@@ -572,12 +643,17 @@ export default {
          name: '',
          sex: '',
          profession: '',
-         expectCity: '',
-         employmentsalary:'',
          classStudent: '',
          password: '',
          hometown:'',
          number:'',
+         fileUnit:'',
+         difficultyCategory:'',
+         professionalDirection:'',
+         teacher: false,
+         help: false,
+         fileTransferIn: false,
+         hukouTransferIn: false,
          education:'',
          trainingMethod:'',
          schoolSystem:'',
@@ -599,6 +675,7 @@ export default {
          phone:'',
          email:'',
          qq:'',
+         schoolCode:'',
          urbanSource:'',
          sourceArea:'',
          sourceAreaCode:'',
@@ -606,18 +683,27 @@ export default {
          homeZipCode:'',
          familyContact:'',
          familyPhone:'',
+         expectCity:'',
+         expectCityCode:'',
+         expectSalary:'',
+         expectSalaryMin:'',
+         expectSalaryMax:'',
+         expectJob:'',
          employmentJob:'',
+         employmentSalary:'',
+         employmentName:'',
+         employmentCity:'',
          employmentCityCode:'',
-         id:'',
-         teacher:'',
+         expectCityCode: '',
          dialogTableVisible: false,
          dialogFormVisible: false,
-        formLabelWidth: '90px',
+         formLabelWidth: '90px',
       }
     },
     created(){
-      this.search()
+      this.submit()
     },
+
     methods: {
       changeVue(){
          const h = this.$createElement;
@@ -632,19 +718,30 @@ export default {
           this.$router.push('/pdfTest');
         }.bind(this),2000);     
     },
+
     //手动点击弹出框需要的参数
-    handleClick(studentId,name,sex,profession,city,expectSalaryMax,classStudent,password,number,hukouPoliceStation
+    handleClick(studentId,name,sex,profession,schoolCode,fileUnit,difficultyCategory,professionalDirection
+    ,teacher,help,fileTransferIn,hukouTransferIn,expectCity,expectSalary,classStudent,password,number,hukouPoliceStation
     ,education,trainingMethod,schoolSystem,candidateNumber,admissionTime,graduationTime,changes,academicDegree
     ,learningMethod,professionDirection,foreignLanguage,foreignLanguageLevel,companyName,birthday,nation
     ,politicalStatus,maritalStatus,phone,qq,email,urbanSource,sourceArea,sourceAreaCode,address,homeZipCode
-    ,familyContact,familyPhone,employmentJob,id){
+    ,familyContact,familyPhone,expectJob,expectSalaryMin,expectSalaryMax,expectCityCode,employmentJob
+    ,employmentSalary,employmentCity,employmentCityCode,employmentName){
          this.dialogFormVisible = true
          this.studentId = studentId
          this.name = name
          this.sex = sex
          this.profession = profession
-         this.city = city
-         this.expectSalaryMax = expectSalaryMax
+         this.schoolCode = schoolCode
+         this.fileUnit = fileUnit
+         this.difficultyCategory = difficultyCategory
+         this.professionalDirection = professionalDirection
+         this.teacher = teacher
+         this.help = help
+         this.fileTransferIn = fileTransferIn
+         this.hukouTransferIn = hukouTransferIn
+         this.expectCity = expectCity
+         this.expectSalary = expectSalary
          this.classStudent = classStudent
          this.password = password
          this.number = number
@@ -676,11 +773,33 @@ export default {
          this.homeZipCode = homeZipCode
          this.familyContact = familyContact
          this.familyPhone = familyPhone
+         this.expectJob = expectJob
+         this.expectSalaryMin = expectSalaryMin
+         this.expectSalaryMax = expectSalaryMax
+         this.expectCityCode = expectCityCode
          this.employmentJob = employmentJob
-         this.id = id
+         this.employmentSalary = employmentSalary
+         this.employmentCity = employmentCity
+         this.employmentCityCode = employmentCityCode
+         this.employmentName = employmentName
     },
-    //查询功能
+
+    //点击查询功能
       search(){
+        this.formInline.current = 1
+        this.formInline.size = this.size     
+        api.fetch(this.formInline).then(response=>{
+            const res = response.data
+            console.log(res)
+            this.tableData = res.data.list
+            this.total = res.data.totalCount
+            this.size = res.data.size
+            this.current = res.data.current
+            //this.current = 1 当current不是1时，查询不到具体数据
+        })
+      },
+
+      submit() {
         this.formInline.current = this.current
         this.formInline.size = this.size     
         api.fetch(this.formInline).then(response=>{
@@ -690,22 +809,20 @@ export default {
             this.total = res.data.totalCount
             this.size = res.data.size
             this.current = res.data.current
-            this.current = 1
         })
       },
+
       //改变每页显示条数
       handleSizeChange(val){
         this.size=val
         this.search()
       },
+
       //改变当前页
       handleCurrentChange(current){
         this.current=current
-        this.search()
+        this.submit()
         },
-      // 问题: current一旦不是1,就搜索不到学生的信息,
-      // 解决办法: 不管前端传什么数值,都可以回调,或者在前端,设置规则:当传一个值的时候,也可以正常显示,
-
 
       cellstyle(row, column, rowIndex, columnIndex){
         return "text-align: center";

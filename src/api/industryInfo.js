@@ -30,23 +30,42 @@ export default {
     },
 
     //删除信息
-    delete(deleteInfo){
+    delete(id){
         return request({
-            url: '',
+            url: '/company/deletecompany',
             method: 'delete',
             data: {
-
+                id
             }
+        })
+    },
+
+    //批量删除
+    deleteMore(ID){
+        console.log(ID)
+        return request({
+            url: '/company/deletecompanies',
+            method: 'delete',
+            data: ID         
         })
     },
 
     //更改信息
     change(changeInfo){
+        console.log(changeInfo)
         return request({
-            url: '',
+            url: '/company/updatecompany',
             method: 'put',
             data: {
-
+                id: changeInfo.id,
+                name: changeInfo.name,
+                salaryMin: changeInfo.salaryMin,
+                salaryMax: changeInfo.salaryMax,
+                job: changeInfo.job,
+                city: changeInfo.city,
+                current: changeInfo.current,
+                size: changeInfo.size,
+                phone: changeInfo.phone
             }
         })
     }

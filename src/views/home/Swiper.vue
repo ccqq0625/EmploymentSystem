@@ -3,7 +3,7 @@
       <!-- <p>这是轮播图</p> -->
       <el-carousel :interval="5000" arrow="always">
         <el-carousel-item v-for="item in imagesBox" :key="item">
-        <!-- <img :src="item.idView" class="image"> -->
+        <img :src="item.idView" class="image">
       </el-carousel-item>
       </el-carousel>
   </div>
@@ -15,10 +15,10 @@ export default {
     data(){
       return{
         imagesBox:[
-          // {id:0,idView:require("../../assets/img/@6@MDS[%4BMK69421Q1`4W1.png")},
-          // {id:1,idView:require("../../assets/img/CNT_OBUBM01I4PZ(%W_VQ0P.png")},
-          // {id:2,idView:require("../../assets/img/icons.png")},
-          // {id:3,idView:require("../../assets/img/PKWC~%AL1{(~93JHU%}BM_0.png")}
+           {id:0,idView:require("../../assets/img/1.png")},
+           {id:1,idView:require("../../assets/img/2.png")},
+           {id:2,idView:require("../../assets/img/3.png")},
+           {id:3,idView:require("../../assets/img/4.png")}
           ],
         fiveNews: []
       }
@@ -32,22 +32,21 @@ export default {
         margin: 0;
         width: 100%;
         margin-bottom: 30px;
+        height: 400px;
+    }
+    .el-carousel__container{
+      height: 400px;
     }
     .el-carousel__item h3 {
-    color:red;
     font-size: 18px;
-    opacity: 0.75;
     line-height: 300px;
     margin: 0;
   }
-  
-  .el-carousel__item:nth-child(2n) {
-    background-color: aqua;
-    
-  }
-  
-  .el-carousel__item:nth-child(2n+1) {
-    background-color: green;
-    
-  }
+   .image{
+     width: 100%;
+     height: 100%;
+     background-attachment: fixed;
+     background-size: 100%;
+   }
+
 </style>

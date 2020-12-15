@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1 class="h">学生就业公司匹配</h1>
      <el-table
     :header-cell-style="cellstyle"
     :cell-style="cellstyle"
@@ -8,12 +9,13 @@
     min-height="45%">
      <el-table-column
       type="index"
-      width="50">
+      width="100"
+      label="序号"
+      text-align="center">
     </el-table-column>
     <el-table-column
-      prop="id"
-      label="学号"
-      width="">
+      prop="studentId"
+      label="学号">
     </el-table-column>
     <el-table-column
       prop="name"
@@ -21,42 +23,86 @@
       width="">
     </el-table-column>
     <el-table-column
-      prop="major"
+      prop="profession"
       label="专业"
       width="">
+    </el-table-column>
+    <el-table-column
+      prop="city"
+      label="城市"
+      width=""
+      v-if="false">
+    </el-table-column>
+    <el-table-column
+      prop="job"
+      label="岗位"
+      width=""
+      v-if="false">
+    </el-table-column>
+    <el-table-column
+      prop="salaryMin"
+      label="最小值"
+      width=""
+      v-if="false">
+    </el-table-column>
+    <el-table-column
+      prop="salaryMax"
+      label="最大值"
+      width=""
+      v-if="false">
+    </el-table-column>
+    <el-table-column
+      prop="companys"
+      label="公司"
+      width=""
+      v-if="false">
     </el-table-column>
     <el-table-column
       fixed="right"
       label="操作"
       width="100">
-      <template slot-scope="scope">
+      <!-- <template slot-scope="scope"> -->
+        <template slot-scope="scope">
         <!-- <el-button @click="handleClick(scope.row)" type="text" size="small">详情</el-button> -->
-        <el-button type="text" @click="dialogFormVisible = true">详情</el-button>
+        <el-button type="text" @click="getInfo(scope.row.name,scope.row.city,scope.row.job,
+        scope.row.salary,scope.row.companys)">详情</el-button>
       </template>
     </el-table-column>
   </el-table>
+   <el-pagination
+       align='center'
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      :current-page="currentPage"
+      :page-sizes="[5,8,10]"
+      :page-size="pageSize"
+      prev-text="上一页"
+      next-text="下一页"
+      layout="total, sizes,prev, pager,next, jumper"
+      :total="total">
+    </el-pagination>
 
       <div>
       <!-- 详情：弹出框 -->
-      <el-dialog title="详细信息" :visible.sync="dialogFormVisible" id="pdfDom" width="60%">
+      <el-dialog title="详情" :visible.sync="dialogFormVisible" id="pdfDom" width="60%">
          <el-collapse
          v-model="activeName">
           <el-collapse-item title="学生期望职位" name="1">
             <el-form :inline="true" :model="formInline" class="demo-form-inline">
-                  <el-form-item label="就业岗位" :label-width="formLabelWidth">
-                      <el-input v-model="tableData.id" autocomplete="off"></el-input>
+              <el-form-item label="姓名:" :label-width="formLabelWidth" prop="name">
+                      <el-input v-model="formInline.name" autocomplete="off" disabled></el-input>
+                  </el-form-item>
+                  <el-form-item label="期望岗位:" :label-width="formLabelWidth" prop="studentId">
+                      <el-input v-model="formInline.job" autocomplete="off" disabled></el-input>
                     </el-form-item>
-                  <el-form-item label="就业薪资" :label-width="formLabelWidth">
-                  <el-input v-model="tableData.name" autocomplete="off"></el-input>
+                  <el-form-item label="期望薪资:" :label-width="formLabelWidth" prop="salary">
+                  <el-input v-model="formInline.salary" autocomplete="off"   disabled></el-input>
                 </el-form-item>
                 </el-form>
                 <el-form :inline="true" :model="formInline" class="demo-form-inline">
-                  <el-form-item label="就业城市" :label-width="formLabelWidth">
-                      <el-input v-model="tableData.id" autocomplete="off"></el-input>
+                  <el-form-item label="期望城市:" :label-width="formLabelWidth" prop="city"> 
+                      <el-input v-model="formInline.city" autocomplete="off" disabled></el-input>
                     </el-form-item>
-                  <el-form-item label="就业岗位ID" :label-width="formLabelWidth">
-                  <el-input v-model="tableData.name" autocomplete="off"></el-input>
-                </el-form-item>
                 </el-form>
           </el-collapse-item>
           <el-collapse-item title="职位匹配结果" name="2">
@@ -75,14 +121,13 @@
                     label="企业名称">
                   </el-table-column>
                   <el-table-column
-                    property="job"
+                    prop="job"
                     label="招聘岗位"
                     width="">
-                    
                   </el-table-column>
                   <el-table-column
                     property="salary"
-                    label="薪资待遇"
+                    label="期望薪资"
                     width="">
                   </el-table-column>
                   <el-table-column
@@ -97,9 +142,9 @@
                     </el-table-column>
                     <!-- 匹配度 -->
                     <el-table-column
-                    property="MatchScore"
+                    property="suitability"
                     sortable
-                    label="匹配度"
+                    label="匹配度(%)"
                     width="">
                   </el-table-column>
                 </el-table>
@@ -111,8 +156,7 @@
 </template>
 
 <script>
-
-
+import employmentApi from '@/api/employment'
 export default {
     name:"PostMatch",
     components:{
@@ -120,92 +164,88 @@ export default {
     },
     data(){
         return{
-          activeName:['2'],
-          dialogFormVisible: false,
+            title:'33',
+            currentPage:1,
+            pageSize:8,
+            total:1,
+            activeName:['2'],
+            dialogFormVisible: false,
             formLabelWidth:'',
-            tableData:[
-              //测试对象1
-                {
-                    // 学号
-                    id: '111',
-                    // 学生姓名
-                    name: 'xxxxxx',
-                    // 专业
-                    major:'计算机科学与技术',
-                },
-                //测试对象2
-                 {
-                    // 学号
-                    id: '122',
-                    // 学生姓名
-                    name: 'yyyyy',
-                    // 专业
-                    major:'软件工程',
-                }
-            ],
+            tableData:[],
              formInline: {
+               //姓名
+                name:'',
                 // 学号
-                id: '',
+                studentId: '',
                 // 学生姓名
                 name: '',
                 // 专业
-                major:'',
-                // 班级
-                class:'',
+                profession:'',
+                // 工作
+                job:'',
                 // 就业城市
                 city:'',
                 // 最小薪资
                 salaryMin:'',
                 // 最大薪资
                 salaryMax:'',
+                salary:'',
                 // 是否本行业就业
-                sele:'',
-                // 公司名称
-                comName:'',
+                companys:[]
               },
-            MatTableData:[
-              //测试对象1
-              {
-                  name:"a公司",
-                  MatchScore:88,
-              },
-              //测试对象2
-              {
-                  name:"b公司",
-                  MatchScore:77,
-              },
-              //测试对象3
-              {
-                  name:"b公司",
-                  MatchScore:66,
-              },
-              {
-                  name:"b公司",
-                  MatchScore:66,
-              },
-              {
-                  name:"b公司",
-                  MatchScore:66,
-              },
-              {
-                  name:"b公司",
-                  MatchScore:66,
-              },
-            ]
-
+            MatTableData:[]
         }
     },
+    created(){
+      this.fetch()
+    },
     methods:{
+      handleSizeChange(val) {
+        this.pageSize=val
+        this.fetch()
+      },
+      handleCurrentChange(val) {
+        this.currentPage=val
+        this.fetch()
+      },
        cellstyle(row, column, rowIndex, columnIndex){
         return "text-align: center";
       },
+      fetch(){
+        employmentApi.fetchData(this.pageSize,this.currentPage).then(response=>{
+          const resp=response.data
+          this.tableData=resp.data.list
+          this.total=resp.data.totalCount
+          console.log(resp.data)
+          // var arr=new Array()
+          //   arr=resp.data.list
+          //   for(let i=0;i<res.data.list.length;i++){
+          //     arr[i].salary=arr[i].SalaryMin+"~"+arr[i].SalaryMax
+          //     this.tableData=arr
+          //   }
+        })
+      },
+      getInfo(name,city,job,salary,companys){
+        this.dialogFormVisible=true
+        this.formInline.name=name
+        this.formInline.city=city
+        this.formInline.job=job
+        this.formInline.salary=salary
+        this.MatTableData=companys
+      }
     }
-
 }
 </script>
 
 <style lang="scss" scoped>
-.el-table{
-    margin-top: 5%;
+// .el-table{
+//     margin-top: 5%;
+// }
+.h{
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 10px 0;
+  color:#666699;
 }
 </style>

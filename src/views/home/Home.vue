@@ -25,10 +25,10 @@ export default {
 </script>
 
 <style>
-/* .search-input{
-    margin-top: 35px;
-}
-.crumbs{
+  /* .search-input{
+    margin: 0;
+} */
+/*.crumbs{
     margin-left: 60px;
     padding: 10px;
     border:1px solid #C0C0C0 ;
