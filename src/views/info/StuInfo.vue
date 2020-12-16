@@ -35,16 +35,7 @@
           <el-input v-model="formInline.salaryMax" placeholder="最大薪资"  style="width:208px;"></el-input>
         <!-- </el-col> -->
       </el-form-item>
-      <!-- <el-form-item label="是否本行业就业" label-width="110px">
-        <el-select v-model="formInline.sele" placeholder="是/否">
-            <el-option label="是" value="Yes"></el-option>
-            <el-option label="否" value="No"></el-option>
-        </el-select>
-      </el-form-item> -->
-      <!-- <el-form-item label="公司名称">
-        <el-input v-model="formInline.comName" placeholder="公司名称"></el-input>
-      </el-form-item>
-      <el-form-item> -->
+      <el-form-item>
         <el-button type="primary" @click="search()">查询</el-button>
         <el-button type="primary" @click="reset()">重置</el-button>
       </el-form-item>
@@ -348,7 +339,7 @@
         ,scope.row.email,scope.row.urbanSource,scope.row.sourceArea,scope.row.sourceAreaCode,scope.row.address,scope.row.homeZipCode
         ,scope.row.familyContact,scope.row.familyPhone,scope.row.expectJob,scope.row.expectSalaryMin,scope.row.expectSalaryMax
         ,scope.row.expectCityCode,scope.row.employmentJob,scope.row.employmentSalary,scope.row.employmentCity
-        ,scope.row.employmentCityCode,scope.row.employmentName)">详情</el-button>
+        ,scope.row.employmentCityCode,scope.row.employmentName,scope.row)">详情</el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -367,6 +358,7 @@
   <!-- 弹出框 -->
   <div>
       <el-dialog title="详细信息" :visible.sync="dialogFormVisible" id="pdfDom" width="80%">
+        <el-button type="primary"  @click="changeVue()" class="btn">打印PDF</el-button>
          <el-collapse>
           <el-collapse-item title="基本信息" name="1">
                     <el-form :inline="true" :model="formInline" class="demo-form-inline">
@@ -475,7 +467,7 @@
                       <el-input v-model="companyName" autocomplete="off"></el-input>
                     </el-form-item> -->
                 </el-form>
-                </el-form> 
+              
                 <el-form :inline="true" :model="formInline" class="demo-form-inline">
                     <el-form-item label="出生日期" :label-width="formLabelWidth">
                       <el-input v-model="birthday" autocomplete="off"></el-input>
@@ -544,9 +536,7 @@
                       <el-radio :label="false">否</el-radio>
                         </el-radio-group>
                     </el-form-item>
-                    <el-form-item>
-                      <el-button type="primary"  @click="changeVue()" style="margin-left:180px">打印PDF</el-button>
-                    </el-form-item>
+                    
                  </el-form>
           </el-collapse-item>
           <el-collapse-item title="期望工作的信息" name="2">
@@ -604,6 +594,8 @@
 import htmlToPdf from '../.././utils/htmlToPdf';
 import api from '../.././api/infomation'
 import { AcroFormChildClass } from 'jspdf';
+import Tool from '../../tool';
+
 
 export default {
     name:"StuInfo",
@@ -694,6 +686,7 @@ export default {
          dialogTableVisible: false,
          dialogFormVisible: false,
          formLabelWidth: '90px',
+         obj:{},
       }
     },
     created(){
@@ -707,12 +700,12 @@ export default {
         this.$notify({
           title: '提示',
           message: h('i', { style: 'color: teal'}, '准备打印，即将跳转PDF预览页'),
-          duration: 2000
+          duration: 1000
         });
 
-        setTimeout(function(){
-          this.$router.push('/pdfTest');
-        }.bind(this),2000);     
+       setTimeout(function(){
+          this.$router.push('/pdfMain');
+        }.bind(this),1000);    
     },
 
     //手动点击弹出框需要的参数
@@ -722,7 +715,7 @@ export default {
     ,learningMethod,professionDirection,foreignLanguage,foreignLanguageLevel,companyName,birthday,nation
     ,politicalStatus,maritalStatus,phone,qq,email,urbanSource,sourceArea,sourceAreaCode,address,homeZipCode
     ,familyContact,familyPhone,expectJob,expectSalaryMin,expectSalaryMax,expectCityCode,employmentJob
-    ,employmentSalary,employmentCity,employmentCityCode,employmentName){
+    ,employmentSalary,employmentCity,employmentCityCode,employmentName,obj){
          this.dialogFormVisible = true
          this.studentId = studentId
          this.name = name
@@ -778,6 +771,11 @@ export default {
          this.employmentCity = employmentCity
          this.employmentCityCode = employmentCityCode
          this.employmentName = employmentName
+         this.obj=obj
+        // 传输数据
+         setTimeout(function(){
+           Tool.$emit('ALLData',obj);
+        },4000); 
     },
 
     //点击查询功能
@@ -863,6 +861,10 @@ export default {
 .el-pagination {
     text-align: center; 
 }
- 
+ .btn{
+   position: absolute;
+   top: 10px;
+   right: 70px;
+ }
 
 </style>
