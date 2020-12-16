@@ -357,6 +357,7 @@
   <!-- 弹出框 -->
   <div>
       <el-dialog title="详细信息" :visible.sync="dialogFormVisible" id="pdfDom" width="80%">
+        <el-button type="primary"  @click="changeVue()" class="btn">打印PDF</el-button>
          <el-collapse>
           <el-collapse-item title="基本信息" name="1">
                     <el-form :inline="true" :model="formInline" class="demo-form-inline">
@@ -534,9 +535,7 @@
                       <el-radio :label="false">否</el-radio>
                         </el-radio-group>
                     </el-form-item>
-                    <el-form-item>
-                      <el-button type="primary"  @click="changeVue()" style="margin-left:180px">打印PDF</el-button>
-                    </el-form-item>
+                    
                  </el-form>
           </el-collapse-item>
           <el-collapse-item title="期望工作的信息" name="2">
@@ -705,12 +704,12 @@ export default {
         this.$notify({
           title: '提示',
           message: h('i', { style: 'color: teal'}, '准备打印，即将跳转PDF预览页'),
-          duration: 2000
+          duration: 1000
         });
 
        setTimeout(function(){
           this.$router.push('/pdfMain');
-        }.bind(this),2000);    
+        }.bind(this),1000);    
     },
 
     //手动点击弹出框需要的参数
@@ -780,7 +779,7 @@ export default {
         // 传输数据
          setTimeout(function(){
            Tool.$emit('ALLData',obj);
-        },5000); 
+        },4000); 
     },
 
     //点击查询功能
@@ -857,6 +856,10 @@ export default {
 .el-pagination {
     text-align: center; 
 }
- 
+ .btn{
+   position: absolute;
+   top: 10px;
+   right: 70px;
+ }
 
 </style>

@@ -143,26 +143,11 @@ export default {
             console.log('---PDF')
                   this.$nextTick(function(){
                      
-                    //  console.log(obj.hukouTransferIn,"obj.hukouTransferIn")
-                    //   console.log(obj.fileTransferIn,"obj.fileTransferIn")
-                    //   console.log(obj.help,"obj.help")
-                    //   console.log(obj.teacher,"obj.teacher")
                     obj.hukouTransferIn=obj.hukouTransferIn?"是":"否";                   
                     obj.fileTransferIn=obj.fileTransferIn?"是":"否";
                    obj.help=obj.help?"是":"否";
                      obj.teacher= obj.teacher?"是":"否";
 
-                    // if(obj.hukouTransferIn=="是"||obj.hukouTransferIn==true){ obj.hukouTransferIn="是"}
-                    // else {obj.hukouTransferIn="否"}
-
-                    //  if(obj.fileTransferIn=="是"||obj.fileTransferIn==true){ obj.fileTransferIn="是"}
-                    // else {obj.fileTransferIn="否"}
-
-                    // if(obj.help=="是"||obj.help==true){ obj.fileTransferIn="是"}
-                    // else {obj.fileTransferIn="否"}
-
-                    // if(obj.teacher=="是"||obj.teacher==true){ obj.teacher="是"}
-                    // else {obj.teacher="否"}
                      this.formInline=obj; 
                     
                   })
@@ -171,41 +156,11 @@ export default {
           
         });
 
-       
-        //  setTimeout(() => {
-        //     this.getPdf('#pdfTest', '页面打印成pdf的测试');
-        // },9000);  
-       // this.$print(this.$refs.print);
+
          setTimeout(() => {
             this.$print(this.$refs.print);
-        },7000);  
+        },3000);  
       
-    },
-    created(){
-        // let clock=window.setInterval(() => {
-        //     this.countDownNum--;
-        //     this.messageText='此预览页将在'+this.countDownNum+'秒后关闭并返回上一个页面';
-        // },1000);   
-
-        //  this.$message({
-        //     duration:3000,
-        //     message:'此预览页将在10秒后关闭并返回上一个页面',
-        // });
-       
-
-        
-
-        //10秒后跳转上一个页面/info
-        // setTimeout(function(){
-        //   this.$router.push('/info');
-        // }.bind(this),10000);
-
-
-        // console.log("PDF预览页：")
-        // console.log(this.$store.state.allDate);
-
-        
-        
     },
     
     methods:{
