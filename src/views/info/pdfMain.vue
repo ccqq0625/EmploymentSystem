@@ -1,7 +1,9 @@
 <template>
-  <div>
+  <div class="div">
       <!-- <pdf-test :formInline="formInline" :key="formInline.id"/> -->
+       <el-button @click="go" type="primary" class="btn">返回上一页</el-button>
       <tablePDF id="print" ref="print" :formInline="formInline" :key="formInline.studentId"></tablePDF>
+     
   </div>
 </template>
 
@@ -176,7 +178,7 @@ export default {
        // this.$print(this.$refs.print);
          setTimeout(() => {
             this.$print(this.$refs.print);
-        },9000);  
+        },7000);  
       
     },
     created(){
@@ -185,12 +187,10 @@ export default {
         //     this.messageText='此预览页将在'+this.countDownNum+'秒后关闭并返回上一个页面';
         // },1000);   
 
-         this.$message({
-            //dangerouslyUseHTMLString: true,
-            //10秒
-            duration:3000,
-            message:'此预览页将在10秒后关闭并返回上一个页面',
-        });
+        //  this.$message({
+        //     duration:3000,
+        //     message:'此预览页将在10秒后关闭并返回上一个页面',
+        // });
        
 
         
@@ -209,6 +209,12 @@ export default {
     },
     
     methods:{
+        go(){
+            history.go(-1)
+            setTimeout(()=>{
+                location.reload()
+            },500)
+        }
     }
 }
 </script>
@@ -218,6 +224,9 @@ export default {
     align-items: center;
     text-align: center ! important;
     /* padding:20px 70px ! important; */
+    background-color: white;
+}
+.div{
     background-color: white;
 }
 
