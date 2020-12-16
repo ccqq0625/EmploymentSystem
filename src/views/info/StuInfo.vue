@@ -16,23 +16,23 @@
         </el-select>
       </el-form-item>
       <el-form-item label="班级" label-width="70px">
-        <el-input v-model="formInline.calssStudent" placeholder="班级"></el-input>
+        <el-input v-model="formInline.classStudent" placeholder="班级"></el-input>
       </el-form-item>
       </el-form>
 
       <el-form :inline="true" :model="formInline" class="demo-form-inline" >
         <el-form-item label="就业地区 ">
-        <el-input v-model="formInline.expectCity" placeholder="就业地区"></el-input>
+        <el-input v-model="formInline.city" placeholder="就业地区"></el-input>
       </el-form-item>
       <el-form-item label="薪资待遇" inline="true" label-width="70px">
         <!-- <el-col :span="11"> -->
-          <el-input v-model="formInline.expectSalaryMin" placeholder="最小薪资" style="width:208px"></el-input>
+          <el-input v-model="formInline.salaryMin" placeholder="最小薪资" style="width:208px"></el-input>
         <!-- </el-col> -->
         <!-- <el-col :span="2" style="text-align: center;"> -->
           <span style=" font-size: 20px;text-align: center;">~</span>
           <!-- </el-col> -->
         <!-- <el-col :span="11"> -->
-          <el-input v-model="formInline.expectSalaryMax" placeholder="最大薪资"  style="width:208px;"></el-input>
+          <el-input v-model="formInline.salaryMax" placeholder="最大薪资"  style="width:208px;"></el-input>
         <!-- </el-col> -->
       </el-form-item>
       <!-- <el-form-item label="是否本行业就业" label-width="110px">
@@ -46,6 +46,7 @@
       </el-form-item>
       <el-form-item> -->
         <el-button type="primary" @click="search()">查询</el-button>
+        <el-button type="primary" @click="reset()">重置</el-button>
       </el-form-item>
     </el-form>
 
@@ -620,17 +621,12 @@ export default {
           profession:'',
           // 班级
           classStudent:'',
-          // 期望就业城市
-          expectCity:'',
+          // 就业城市
+          city:'',
           // 最小薪资
-          expectSalaryMin:'',
+          salaryMin:'',
           // 最大薪资
-          expectSalaryMax:'',
-          // 是否本行业就业
-          thisIndustry:'',
-          // 公司名称
-          companyName:'',
-
+          salaryMax:'',
         },     
         // value:"",
         // 表格的数据
@@ -827,6 +823,15 @@ export default {
       cellstyle(row, column, rowIndex, columnIndex){
         return "text-align: center";
       },
+      reset() {
+        this.formInline.studentId = ''
+        this.formInline.name = ''
+        this.formInline.profession = ''
+        this.formInline.classStudent = ''
+        this.formInline.city = ''
+        this.formInline.salaryMin = ''
+        this.formInline.salaryMax = ''
+      }
     },
     components:{
 

@@ -19,7 +19,7 @@
         <el-input v-model="formInline.city" placeholder="就业地区"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">查询</el-button>
+        <el-button type="primary" @click="onSubmit()">查询</el-button>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="handleAdd">新增</el-button>
@@ -28,6 +28,7 @@
         <!-- <el-button type="primary" @click="toggleSelection(tableData)" v-if='ButShowChange'>多选</el-button> -->
         <el-button type="primary" @click="ButShow()" v-if='ButShowChange'>多选</el-button>
         <el-button type="primary" @click="DelSelect()" v-if='!ButShowChange'>确认删除</el-button>
+        <el-button type="primary" @click="reset()">重置</el-button>
       </el-form-item>
     </el-form>
 
@@ -101,28 +102,28 @@
   >
   <div class="demo-drawer__content">
     <el-form>
-      <el-form-item label="账号" :label-width="formLabelWidth" prop="username">
+      <el-form-item label="账号" :label-width="formLabelWidth">
         <el-input v-model="currenttableData.username"  autocomplete="off"></el-input>
       </el-form-item>
-     <el-form-item label="密码" :label-width="formLabelWidth" prop="password">
+     <el-form-item label="密码" :label-width="formLabelWidth">
         <el-input v-model="currenttableData.password" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="企业名称" :label-width="formLabelWidth" prop="name">
+      <el-form-item label="企业名称" :label-width="formLabelWidth">
         <el-input v-model="currenttableData.name" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="招聘岗位" :label-width="formLabelWidth" prop="job">
+      <el-form-item label="招聘岗位" :label-width="formLabelWidth">
         <el-input v-model="currenttableData.job" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="所在城市" :label-width="formLabelWidth" prop="city">
+      <el-form-item label="所在城市" :label-width="formLabelWidth">
         <el-input v-model="currenttableData.city" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="最小薪资" :label-width="formLabelWidth" prop="salaryMin">
+      <el-form-item label="最小薪资" :label-width="formLabelWidth">
         <el-input v-model="currenttableData.salaryMin" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="最大薪资" :label-width="formLabelWidth" prop="salaryMax">
+      <el-form-item label="最大薪资" :label-width="formLabelWidth">
         <el-input v-model="currenttableData.salaryMax" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="联系电话" :label-width="formLabelWidth" prop="phone">
+      <el-form-item label="联系电话" :label-width="formLabelWidth">
         <el-input v-model="currenttableData.phone" autocomplete="off"></el-input>
       </el-form-item>
     </el-form>
@@ -168,13 +169,8 @@
       width="">
     </el-table-column>
     <el-table-column
-      prop="salaryMin"
-      label="最低薪资"
-      width="">
-    </el-table-column>
-    <el-table-column
-      prop="salaryMax"
-      label="最高薪资"
+      prop="salary"
+      label="薪资范围"
       width="">
     </el-table-column>
       <el-table-column
@@ -244,6 +240,7 @@ export default {
         name: '',
         job: '',
         city: '',
+        salary: '',
         salaryMin: '',
         salaryMax: '',
         phone: '',
@@ -359,8 +356,8 @@ export default {
             this.currenttableData.phone = row.phone
             this.currenttableData.job = row.job
             this.currenttableData.city = row.city
-            this.currenttableData.salaryMax = row.salaryMax
             this.currenttableData.salaryMin = row.salaryMin
+            this.currenttableData.salaryMax = row.salaryMax
             this.currenttableData.phone = row.phone
             this.currenttableData.id = this.tableData[index].id
             //console.log(index, row);
@@ -541,6 +538,14 @@ export default {
             this.editdialog=false;
             clearTimeout(this.timer);
           },
+
+          reset() {
+            this.formInline.name = ''
+            this.formInline.salaryMin = ''
+            this.formInline.salaryMax = ''
+            this.formInline.job = ''
+            this.formInline.city = ''
+          }
     },
     components:{
 

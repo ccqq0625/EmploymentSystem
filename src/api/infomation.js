@@ -14,9 +14,7 @@ export default {
                 classStudent: all.classStudent,
                 city: all.city,
                 salaryMin: all.salaryMin,
-                salatyMax: all.salatyMax,
-                thisIndustry: all.thisIndustry,
-                companyName: all.companyName,
+                salaryMax: all.salaryMax,
                 current: all.current,
                 size: all.size
             }
