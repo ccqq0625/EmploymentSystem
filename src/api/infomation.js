@@ -3,7 +3,8 @@ import request from '@/utils/request.js'
 export default {
     //查询
     fetch(all){
-        console.log(all)
+        console.log(all);
+
         return request({
             url: '/student/list_students',
             method: 'post',

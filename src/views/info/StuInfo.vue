@@ -35,16 +35,7 @@
           <el-input v-model="formInline.expectSalaryMax" placeholder="最大薪资"  style="width:208px;"></el-input>
         <!-- </el-col> -->
       </el-form-item>
-      <!-- <el-form-item label="是否本行业就业" label-width="110px">
-        <el-select v-model="formInline.sele" placeholder="是/否">
-            <el-option label="是" value="Yes"></el-option>
-            <el-option label="否" value="No"></el-option>
-        </el-select>
-      </el-form-item> -->
-      <!-- <el-form-item label="公司名称">
-        <el-input v-model="formInline.comName" placeholder="公司名称"></el-input>
-      </el-form-item>
-      <el-form-item> -->
+      <el-form-item>
         <el-button type="primary" @click="search()">查询</el-button>
       </el-form-item>
     </el-form>
@@ -347,7 +338,7 @@
         ,scope.row.email,scope.row.urbanSource,scope.row.sourceArea,scope.row.sourceAreaCode,scope.row.address,scope.row.homeZipCode
         ,scope.row.familyContact,scope.row.familyPhone,scope.row.expectJob,scope.row.expectSalaryMin,scope.row.expectSalaryMax
         ,scope.row.expectCityCode,scope.row.employmentJob,scope.row.employmentSalary,scope.row.employmentCity
-        ,scope.row.employmentCityCode,scope.row.employmentName)">详情</el-button>
+        ,scope.row.employmentCityCode,scope.row.employmentName,scope.row)">详情</el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -474,7 +465,7 @@
                       <el-input v-model="companyName" autocomplete="off"></el-input>
                     </el-form-item> -->
                 </el-form>
-                </el-form> 
+              
                 <el-form :inline="true" :model="formInline" class="demo-form-inline">
                     <el-form-item label="出生日期" :label-width="formLabelWidth">
                       <el-input v-model="birthday" autocomplete="off"></el-input>
@@ -603,6 +594,8 @@
 import htmlToPdf from '../.././utils/htmlToPdf';
 import api from '../.././api/infomation'
 import { AcroFormChildClass } from 'jspdf';
+import Tool from '../../tool';
+
 
 export default {
     name:"StuInfo",
@@ -698,6 +691,7 @@ export default {
          dialogTableVisible: false,
          dialogFormVisible: false,
          formLabelWidth: '90px',
+         obj:{},
       }
     },
     created(){
@@ -714,9 +708,9 @@ export default {
           duration: 2000
         });
 
-        setTimeout(function(){
-          this.$router.push('/pdfTest');
-        }.bind(this),2000);     
+       setTimeout(function(){
+          this.$router.push('/pdfMain');
+        }.bind(this),2000);    
     },
 
     //手动点击弹出框需要的参数
@@ -726,7 +720,7 @@ export default {
     ,learningMethod,professionDirection,foreignLanguage,foreignLanguageLevel,companyName,birthday,nation
     ,politicalStatus,maritalStatus,phone,qq,email,urbanSource,sourceArea,sourceAreaCode,address,homeZipCode
     ,familyContact,familyPhone,expectJob,expectSalaryMin,expectSalaryMax,expectCityCode,employmentJob
-    ,employmentSalary,employmentCity,employmentCityCode,employmentName){
+    ,employmentSalary,employmentCity,employmentCityCode,employmentName,obj){
          this.dialogFormVisible = true
          this.studentId = studentId
          this.name = name
@@ -782,6 +776,11 @@ export default {
          this.employmentCity = employmentCity
          this.employmentCityCode = employmentCityCode
          this.employmentName = employmentName
+         this.obj=obj
+        // 传输数据
+         setTimeout(function(){
+           Tool.$emit('ALLData',obj);
+        },5000); 
     },
 
     //点击查询功能

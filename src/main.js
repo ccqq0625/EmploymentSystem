@@ -7,8 +7,12 @@ import './assets/css/reset.scss';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
-import htmlToPdf from './utils/htmlToPdf'//页面转PDF
-Vue.use(htmlToPdf)
+// import htmlToPdf from './utils/htmlToPdf'
+//页面转PDF
+// Vue.use(htmlToPdf)
+
+import Print from './plugins/print/Print'
+Vue.use(Print)
 
 Vue.use(ElementUI);
 Vue.config.productionTip = false;
