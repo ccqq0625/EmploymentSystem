@@ -65,7 +65,7 @@
         <template slot-scope="scope">
         <!-- <el-button @click="handleClick(scope.row)" type="text" size="small">详情</el-button> -->
         <el-button type="text" @click="getInfo(scope.row.name,scope.row.city,scope.row.job,
-        scope.row.salary,scope.row.companys)">详情</el-button>
+        scope.row.salary,scope.row.companys,scope.row)">详情</el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -85,6 +85,7 @@
       <div>
       <!-- 详情：弹出框 -->
       <el-dialog title="详情" :visible.sync="dialogFormVisible" id="pdfDom" width="60%">
+        <el-button type="primary"  @click="printPdf()" class="btn">打印PDF</el-button>
          <el-collapse
          v-model="activeName">
           <el-collapse-item title="学生期望职位" name="1">
@@ -156,6 +157,10 @@
 </template>
 
 <script>
+import htmlToPdf from '../.././utils/htmlToPdf';
+import api from '../.././api/infomation'
+import { AcroFormChildClass } from 'jspdf';
+import Tool from '../../tool';
 import employmentApi from '@/api/employment'
 export default {
     name:"PostMatch",
@@ -193,7 +198,8 @@ export default {
                 // 是否本行业就业
                 companys:[]
               },
-            MatTableData:[]
+            MatTableData:[],
+            obj:{}
         }
     },
     created(){
@@ -216,7 +222,6 @@ export default {
           const resp=response.data
           this.tableData=resp.data.list
           this.total=resp.data.totalCount
-          console.log(resp.data)
           // var arr=new Array()
           //   arr=resp.data.list
           //   for(let i=0;i<res.data.list.length;i++){
@@ -225,13 +230,29 @@ export default {
           //   }
         })
       },
-      getInfo(name,city,job,salary,companys){
+      getInfo(name,city,job,salary,companys,obj){
         this.dialogFormVisible=true
         this.formInline.name=name
         this.formInline.city=city
         this.formInline.job=job
         this.formInline.salary=salary
         this.MatTableData=companys
+        this.obj=obj
+         setTimeout(function(){
+           Tool.$emit('ALLData',obj);
+        },4000); 
+      },
+      printPdf(){
+        const h = this.$createElement;
+        this.$notify({
+          title: '提示',
+          message: h('i', { style: 'color: teal'}, '准备打印，即将跳转PDF预览页'),
+          duration: 1000
+        });
+
+       setTimeout(function(){
+          this.$router.push('/pdf');
+        }.bind(this),1000);    
       }
     }
 }
@@ -248,4 +269,9 @@ export default {
   margin: 10px 0;
   color:#666699;
 }
+ .btn{
+   position: absolute;
+   top: 10px;
+   right: 70px;
+ }
 </style>

@@ -696,7 +696,6 @@ export default {
     methods: {
       changeVue(){
          const h = this.$createElement;
-
         this.$notify({
           title: '提示',
           message: h('i', { style: 'color: teal'}, '准备打印，即将跳转PDF预览页'),

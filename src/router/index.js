@@ -22,6 +22,7 @@ const Co32Main=() => import('../components/College/Com/Co32Main');
 const Login=() =>import('../views/login/Login');
 const Register=() =>import('../views/register/Register');
 const pdfMain=() => import('../views/info/pdfMain');
+const pdf=() => import('../views/postmatch/pdf');
 Vue.use(VueRouter);
 
 const routes = [
@@ -132,6 +133,13 @@ const routes = [
   {
     path:'/pdfMain',
     component:pdfMain,
+    meta:{
+      navShow:false
+    }
+  },
+  {
+    path:'/pdf',
+    component:pdf,
     meta:{
       navShow:false
     }
