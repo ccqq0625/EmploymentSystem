@@ -221,7 +221,7 @@ table{
     // height: 70%;
     padding-bottom: 500px;
     font-weight: 500;
-    font-size: 15px;
+    font-size: 18px;
    width: 640px;
    height: 637px;
 
