@@ -5,6 +5,7 @@
         <el-breadcrumb class="title" separator="/">
           <el-breadcrumb-item :to="{ path: '/show' }"><span style="font-size:20px">计算机工程学院</span></el-breadcrumb-item>
           <el-breadcrumb-item><span style="font-size:20px">软件工程</span></el-breadcrumb-item>
+          <el-button type="primary" class="btn" @click="replace()">返回首页</el-button>
         </el-breadcrumb>
     </div>
     <el-divider class="divde"></el-divider>
@@ -405,8 +406,16 @@ let option5 = {
       },
       handleClick(tab, event) {
         // console.log(tab, event);
+      },
+      replace(){
+          this.$router.replace('/home')
+          if(this.$router.history.current.path=='/home')
+          {
+              location.reload()
+              //this.$router.go(0)
+          }
+           
       }
-        
     }
     
 }
