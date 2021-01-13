@@ -79,6 +79,8 @@ export default {
 
 <style  lang="scss" scoped>
 body{
+    width:100%;
+    height:100%;
     background-color: white; 
 
 }
@@ -88,16 +90,13 @@ center{
 h1{
     margin-top: 40px;
     margin-bottom: 30px;
-    font-weight: 800;
-    font-size: 40px;
+    font-weight: 600;
+    font-size: 32px;
 }
 #pdfTest{
      background-color: white;
-     background-size: 100% auto;
      width: 100%;
      height: 100%;
-     margin-bottom: 40px;
-     
 }
 div{
     background-color: white;
@@ -106,12 +105,10 @@ table{
     align-content: center;
     padding-bottom: 500px;
     font-weight: 500;
-    font-size: 15px;
-   width: 800px;
+    font-size: 18px;
+   width: 710px;
    height: 637px;
    margin: 0 auto;
-
-   
 }
 th,td{
     border: black solid 1px;

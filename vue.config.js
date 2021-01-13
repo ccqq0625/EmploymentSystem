@@ -30,5 +30,5 @@ module.exports = {
     productionSourceMap:false,
     outputDir:'dist',//构建输出目录
     assetsDir:'static',//静态资源目录(js,css,img,fonts)
-    publicPath:'/dist/'
+    publicPath:'/employmentsystem/'
 }

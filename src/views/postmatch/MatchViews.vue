@@ -156,7 +156,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .match-views{
     margin-top: 20px;
     height: 100%;

@@ -5,8 +5,8 @@
         <el-breadcrumb class="title" separator="/">
           <el-breadcrumb-item :to="{ path: '/show' }"><span style="font-size:20px">计算机工程学院</span></el-breadcrumb-item>
           <el-breadcrumb-item><span style="font-size:20px">软件工程</span></el-breadcrumb-item>
-          <el-button type="primary" class="btn" @click="replace()">返回首页</el-button>
         </el-breadcrumb>
+        <el-button type="primary" class="btn" @click="replace()">返回首页</el-button>
     </div>
     <el-divider class="divde"></el-divider>
     <div class="bag">
@@ -409,24 +409,29 @@ let option5 = {
       },
       replace(){
           this.$router.replace('/home')
+          setTimeout(()=>{
           if(this.$router.history.current.path=='/home')
           {
               location.reload()
               //this.$router.go(0)
           }
+          },300)
            
       }
+        
     }
     
 }
 </script>
 
 <style>
-    /* body{
+    body{
+        width:100%;
+        height: 100%;
         margin: 0;
         padding: 0;
-        background-color: oldlace;
-    } */
+        background-color: white;
+    }
     h1{
         text-align: center;
         padding: 0;

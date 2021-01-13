@@ -43,34 +43,46 @@
 
   </div>
 <div>
-   <el-table
-    :header-cell-style="cellstyle"
-    :cell-style="cellstyle"
+     <el-table
+    :row-style="{height:13+'px'}"
+    :cell-style="{padding:13+'px'}"
     :data="tableData"
+    highlight-current-row
     style="width: 100%"
     min-height="45%">
     <el-table-column
+      type="index"
+      label="序号"
+      align="center"
+      width="100">
+    </el-table-column>
+    <el-table-column
       prop="studentId"
+      align="center"
       label="学号"
       width="">
     </el-table-column>
     <el-table-column
       prop="name"
+      align="center"
       label="姓名"
       width="">
     </el-table-column>
     <el-table-column
       prop="profession"
+      align="center"
       label="专业"
       width="">
     </el-table-column>
     <el-table-column
       prop="expectSalary"
+      align="center"
       label="薪资"
       width="">
     </el-table-column>
     <el-table-column
       prop="expectCity"
+      align="center"
       label="就业地区"
       width="">
     </el-table-column>
@@ -326,6 +338,7 @@
     <el-table-column
       fixed="right"
       label="操作"
+      align="center"
       width="100">
       <template slot-scope="scope">
         <!-- <el-button @click="handleClick(scope.row)" type="text" size="small">详情</el-button> -->
@@ -851,9 +864,9 @@ export default {
 .el-dialog__body{
   padding-right:0 10px;
 }
-.el-table-column{
-  padding: 25px;
-}
+// .el-table-column{
+//   padding: 25px;
+// }
 .info-from[data-v-8dbae5ca]{
   text-align: left;
 }

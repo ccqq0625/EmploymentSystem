@@ -23,6 +23,7 @@ const Login=() =>import('../views/login/Login');
 const Register=() =>import('../views/register/Register');
 const pdfMain=() => import('../views/info/pdfMain');
 const pdf=() => import('../views/postmatch/pdf');
+const BigScreen=()=> import('../views/bigDataShow/index.vue')
 Vue.use(VueRouter);
 
 const routes = [
@@ -143,6 +144,13 @@ const routes = [
     meta:{
       navShow:false
     }
+  },
+  {
+    path:'/bigScreen',
+    component:BigScreen,
+    meta:{
+      navShow:false
+    }
   }
  
 ];
@@ -150,7 +158,7 @@ const routes = [
 const router = new VueRouter({
   routes,
   mode:'history',
-  base:'/dist/'
+  base:'/employmentsystem/'
 });
 
 const originalPush = VueRouter.prototype.push

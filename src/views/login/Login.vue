@@ -33,11 +33,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 @import url('../.././assets/css/style.css');
 .login-text{
 	padding: 5px;
 }
-
-
 </style>

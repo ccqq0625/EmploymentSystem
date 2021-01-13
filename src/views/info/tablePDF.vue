@@ -207,7 +207,6 @@ h2{
 #pdfTest{
     // margin-top: 50px;
      background-color: white;
-     background-size: 100% auto;
      width: 100%;
      height: 100%;
      
@@ -221,8 +220,8 @@ table{
     // height: 70%;
     padding-bottom: 500px;
     font-weight: 500;
-    font-size: 18px;
-   width: 640px;
+    font-size: 16px;
+   width: 700px;
    height: 637px;
 
    

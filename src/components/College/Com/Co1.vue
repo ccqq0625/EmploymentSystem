@@ -413,13 +413,16 @@ let option5 = {
       },
       replace(){
           this.$router.replace('/home')
+          setTimeout(()=>{
           if(this.$router.history.current.path=='/home')
           {
               location.reload()
               //this.$router.go(0)
           }
+          },300)
            
-      }  
+      }
+        
     }
     
 }
@@ -427,8 +430,11 @@ let option5 = {
 
 <style>
     body{
+        width:100%;
+        height: 100%;
         margin: 0;
         padding: 0;
+        background-color: white;
         /* background-color: oldlace; */
     }
     h1{

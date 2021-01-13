@@ -8,7 +8,7 @@
         >
     <div class="menu-sel">
     <el-menu-item index="/home">首页</el-menu-item>
-    <el-menu-item>待定页</el-menu-item>
+    <el-menu-item index="/BigScreen">大屏展示</el-menu-item>
   <!-- <el-menu-item index="/post">企业信息</el-menu-item> -->
   
   

@@ -135,8 +135,8 @@
 </el-drawer>
 
    <el-table
-    :header-cell-style="cellstyle"
-    :cell-style="cellstyle"
+   :row-style="{height:17+'px'}"
+   :cell-style="{padding:17+'px'}"
     :data="tableData"
     ref="multipleTable"
     :select-on-indeterminate="true"
@@ -151,34 +151,42 @@
     </el-table-column>
      <el-table-column
       type="index"
-      width="50">
+      label="序号"
+      align="center"
+      width="100">
     </el-table-column>
     <el-table-column
       prop="name"
+      align="center"
       label="企业名称"
       width="">
     </el-table-column>
     <el-table-column
       prop="job"
+      align="center"
       label="招聘岗位"
       width="">
     </el-table-column>
     <el-table-column
       prop="city"
+      align="center"
       label="所在城市"
       width="">
     </el-table-column>
     <el-table-column
       prop="salary"
+      align="center"
       label="薪资范围"
       width="">
     </el-table-column>
       <el-table-column
       prop="phone"
+      align="center"
       label="联系电话"
       width="">
     </el-table-column>
-    <el-table-column label="操作">
+    <el-table-column label="操作"
+    align="center">
       <template slot-scope="scope">
         <el-button
           size="mini"
@@ -573,9 +581,9 @@ export default {
 .el-dialog__body{
   padding-right:0 10px;
 }
-.el-table-column{
-  padding: 25%;
-}
+// .el-table-column{
+//   padding: 25%;
+// }
 .info-from[data-v-0344b368]{
   padding:0 15%;
 }

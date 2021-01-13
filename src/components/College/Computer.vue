@@ -426,11 +426,13 @@ let option5 = {
 
       replace(){
           this.$router.replace('/home')
+          setTimeout(()=>{
           if(this.$router.history.current.path=='/home')
           {
               location.reload()
               //this.$router.go(0)
           }
+          },300)
            
       }
 
@@ -441,16 +443,16 @@ let option5 = {
 
 <style>
     /* body{
+        width:auto;
+        height: 100%;
         margin: 0;
         padding: 0;
-        background-color: oldlace;
+        background-color:white;
     } */
-
     .btn{
         position: absolute !important;
         right: 10px !important;
-        top:53px;
-        
+        top:53px;   
     }
     h1{
         text-align: center;

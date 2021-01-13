@@ -1,7 +1,7 @@
 <template>
   <div class="swiper">
       <!-- <p>这是轮播图</p> -->
-      <el-carousel :interval="5000" arrow="always">
+      <el-carousel :interval="3000" arrow="always">
         <el-carousel-item v-for="item in imagesBox" :key="item">
         <img :src="item.idView" class="image">
       </el-carousel-item>

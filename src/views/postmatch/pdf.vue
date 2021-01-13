@@ -47,7 +47,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .pdfDemo{
     align-items: center;
     text-align: center ! important;

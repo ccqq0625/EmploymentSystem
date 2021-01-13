@@ -29,7 +29,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 @import url('../.././assets/css/style.css');
 .register-text{
 	padding: 5px;

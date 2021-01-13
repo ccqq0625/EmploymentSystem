@@ -410,13 +410,15 @@ let option5 = {
       },
       replace(){
           this.$router.replace('/home')
+          setTimeout(()=>{
           if(this.$router.history.current.path=='/home')
           {
               location.reload()
               //this.$router.go(0)
           }
+          },300)
            
-      }  
+      }
         
     }
     
