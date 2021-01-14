@@ -406,6 +406,17 @@ let option5 = {
       },
       handleClick(tab, event) {
         // console.log(tab, event);
+      },
+       replace(){
+          this.$router.replace('/home')
+          setTimeout(()=>{
+          if(this.$router.history.current.path=='/home')
+          {
+              location.reload()
+              //this.$router.go(0)
+          }
+          },300)
+           
       }
         
     }
