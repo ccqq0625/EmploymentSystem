@@ -71,8 +71,8 @@
 
 <script>
 import echarts from 'echarts'
-import $ from '../../../public/js/jquery'
-import flexible from '../../../public/js/flexible.js'
+import $ from '@/assets/js/jquery'
+import flexible from '@/assets/js/flexible.js'
 export default {
 
   mounted(){
@@ -2768,14 +2768,14 @@ li {
 }
 @font-face {
   font-family: electronicFont;
-  src: url(/font/DS-DIGIT.TTF);
+  src: url(../../assets/font/DS-DIGIT.TTF);
 }
 .div {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
   /*  背景图定位 / 背景图尺寸  cover 完全铺满容器  contain 完整显示在容器内 */
-  background: url(/images/bg.jpg) no-repeat #000;
+  background: url(../../assets/images/bg.jpg) no-repeat #000;
   background-size: cover;
   /* 行高是字体1.15倍 */
   line-height: 1.15;
@@ -2783,7 +2783,7 @@ li {
 header {
   position: relative;
   height: 1.25rem;
-  background: url(/images/head_bg.png) no-repeat top center;
+  background: url(../../assets/images/head_bg.png) no-repeat top center;
   background-size: 100% 100%;
 }
 header h1 {
@@ -2820,7 +2820,7 @@ header .showTime {
   position: relative;
   height: 3.875rem;
   border: 1px solid rgba(25, 186, 139, 0.17);
-  background: rgba(255, 255, 255, 0.04) url(/images/line.png);
+  background: rgba(255, 255, 255, 0.04) url(../../assets/images/line.png);
   padding: 0 0.1875rem 0.5rem;
   margin-bottom: 0.1875rem;
 }
@@ -2971,14 +2971,14 @@ header .showTime {
   transform: translate(-50%, -50%);
   width: 6.475rem;
   height: 6.475rem;
-  background: url(/images/map.png) no-repeat;
+  background: url(../../assets/images/map.png) no-repeat;
   background-size: 100% 100%;
   opacity: 0.3;
 }
 .map .map2 {
   width: 8.0375rem;
   height: 8.0375rem;
-  background-image: url(/images/lbx.png);
+  background-image: url(../../assets/images/lbx.png);
   opacity: 0.6;
   animation: rotate 15s linear infinite;
   z-index: 2;
@@ -2986,7 +2986,7 @@ header .showTime {
 .map .map3 {
   width: 7.075rem;
   height: 7.075rem;
-  background-image: url(/images/jt.png);
+  background-image: url(../../assets/images/jt.png);
   animation: rotate1 10s linear infinite;
 }
 @keyframes rotate {
