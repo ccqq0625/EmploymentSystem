@@ -2,7 +2,7 @@
     <div class="div">
     <header>
       <el-button type="primary" class="btn" @click="btn">返回首页</el-button>
-      <h1>可视化展板-ECharts</h1>
+      <h1>2017届计算机工程学院就业情况</h1>
       <div class="showTime"></div>
     </header>
     <section class="mainbox">
@@ -30,13 +30,13 @@
         <div class="no">
           <div class="no-hd">
             <ul>
-              <li>125811</li>
+              <li>{{sumData}}</li>
               <li>104563</li>
             </ul>
           </div>
           <div class="no-bd">
             <ul>
-              <li>前端需求人数</li>
+              <li>学院总人数</li>
               <li>市场供应人数</li>
             </ul>
           </div>
@@ -50,7 +50,7 @@
       </div>
       <div class="column">
         <div class="panel bar1">
-          <h2>柱状图-技能掌握</h2>
+          <h2>总体就业类型</h2>
           <div class="chart"></div>
           <div class="panel-footer"></div>
         </div>
@@ -74,6 +74,18 @@ import echarts from 'echarts'
 import $ from '@/assets/js/jquery'
 import flexible from '@/assets/js/flexible.js'
 export default {
+  props:{
+    Legends:{
+            type:Array
+        },
+    seriesData:{type:Array}
+  },
+  data(){
+    let self = this
+    return{
+      sumData:self.countSum(this.seriesData),
+    }
+  },
 
   mounted(){
 this.cwx()
@@ -88,6 +100,24 @@ this.Flexible()
 this.time()
 },
 methods: {
+  //计算数组中数据的总和
+  countSum(arr){
+    var sum=eval(arr.join('+'));
+    sum=parseInt(sum);
+    return sum;
+  },
+  //计算百分比
+  countPercentage(arr){
+    var j=eval(arr.join('+'));
+    j=parseFloat(j);
+    var resultArray=[];
+    for(var i=0;i<arr.length;i++){
+      arr[i]=parseFloat(arr[i]);
+      var k=(arr[i]/j)*100;
+      resultArray.push(k);
+    }
+    return resultArray;
+  },
   // 柱状图1模块
   cwx() {
     // 实例化对象
@@ -305,7 +335,6 @@ methods: {
   },
   
   // 饼形图定制
-  // 折线图定制
  cwx2() {
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.querySelector(".pie .chart"));
@@ -365,14 +394,23 @@ methods: {
       myChart.resize();
     });
   },
-  // 学习进度柱状图模块
+  // 柱状图2模块
   cwx3() {
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.querySelector(".bar1 .chart"));
-  
-    var data = [70, 34, 60, 78, 69];
-    var titlename = ["HTML5", "CSS3", "javascript", "VUE", "NODE"];
-    var valdata = [702, 350, 610, 793, 664];
+   // var data = [70, 34, 60, 78, 69];
+    console.log(this.seriesData);
+    // var titlename = ["HTML5", "CSS3", "javascript", "VUE", "NODE"];
+    //每个类型的名称
+    var titlename =this.Legends;
+    // var valdata = [702, 350, 610, 793, 664];
+    //每个类型的数量
+    var valdata =this.seriesData; 
+
+    //data是每个数值的占比
+    var data=this.countPercentage(this.seriesData).map(i => parseInt(i,0));
+    //var data=this.countPercentage(this.seriesData);
+    console.log(data);
     var myColor = ["#1089E7", "#F57474", "#56D0E3", "#F8B448", "#8B78F6"];
     var option = {
       //图标位置
@@ -456,7 +494,7 @@ methods: {
           type: "bar",
           yAxisIndex: 1,
           barCategoryGap: 50,
-          data: [100, 100, 100, 100, 100],
+          data: [100,100,100,100,100],
           barWidth: 15,
           itemStyle: {
             normal: {
