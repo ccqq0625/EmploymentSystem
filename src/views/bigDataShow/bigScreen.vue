@@ -279,55 +279,82 @@ methods: {
  cwx2() {
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.querySelector(".pie .chart"));
-  
-    var option = {
-      tooltip: {
-        trigger: "item",
-        formatter: "{a} <br/>{b}: {c} ({d}%)",
-        position: function(p) {
-          //其中p为当前鼠标的位置
-          return [p[0] + 10, p[1] - 10];
+
+
+
+   var option = {
+    color: ['pink'],
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
         }
-      },
-      legend: {
-        top: "90%",
-        itemWidth: 10,
-        itemHeight: 10,
-        data: ["0岁以下", "20-29岁", "30-39岁", "40-49岁", "50岁以上"],
-        textStyle: {
-          color: "rgba(255,255,255,.5)",
-          fontSize: "12"
-        }
-      },
-      series: [
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        top: "10px",
+        containLabel: true
+    },
+    xAxis: [
         {
-          name: "年龄分布",
-          type: "pie",
-          center: ["50%", "42%"],
-          radius: ["40%", "60%"],
-          color: [
-            "#065aab",
-            "#066eab",
-            "#0682ab",
-            "#0696ab",
-            "#06a0ab",
-            "#06b4ab",
-            "#06c8ab",
-            "#06dcab",
-            "#06f0ab"
-          ],
-          label: { show: false },
-          labelLine: { show: false },
+          type: "category",
           data: [
-            { value: 1, name: "0岁以下" },
-            { value: 4, name: "20-29岁" },
-            { value: 2, name: "30-39岁" },
-            { value: 2, name: "40-49岁" },
-            { value: 1, name: "50岁以上" }
-          ]
+            "旅游行业",
+            "教育培训",
+            "游戏行业",
+            "医疗行业",
+            "电商行业",
+            "社交行业",
+            "金融行业"
+          ],
+          axisTick: {
+            alignWithLabel: true
+          },
+          axisLabel: {
+            textStyle: {
+              color: "rgba(255,255,255,.6)",
+              fontSize: "12"
+            }
+          },
+          axisLine: {
+            show: false
+          }
         }
-      ]
-    };
+      ],
+      yAxis: [
+        {
+          type: "value",
+          axisLabel: {
+            textStyle: {
+              color: "rgba(255,255,255,.6)",
+              fontSize: "12"
+            }
+          },
+          axisLine: {
+            lineStyle: {
+              color: "rgba(255,255,255,.1)"
+              // width: 1,
+              // type: "solid"
+            }
+          },
+          splitLine: {
+            lineStyle: {
+              color: "rgba(255,255,255,.1)"
+            }
+          }
+        }
+      ],
+    series: [
+        {
+            name: '直接访问',
+            type: 'bar',
+            barWidth: '60%',
+            data: [10, 52, 200, 334, 390, 330, 220]
+        }
+    ]
+};
   
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
