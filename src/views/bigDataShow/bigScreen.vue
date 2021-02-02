@@ -60,10 +60,6 @@
           <div class="panel-footer"></div>
         </div>
         <div class="panel line1">
-          <!-- <h2></h2>
-          <div class="chart"></div>
-          <div class="panel-footer"></div> -->
-          <h1 class="h1">学生信息</h1>
           <table class="tb1">
              <tr class="th">
                     <th>姓名</th>
@@ -2879,11 +2875,5 @@ header .showTime {
   color:white;
   margin: 10px 0;
   text-align: center;
-}
-.h1{
-  color: white;
-  font-size: 20px;
-  text-align: center;
-  margin: 15px 0;
 }
 </style>
