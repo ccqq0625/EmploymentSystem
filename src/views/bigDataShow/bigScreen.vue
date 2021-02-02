@@ -16,7 +16,7 @@
           <div class="panel-footer"></div>
         </div>
         <div class="panel line">
-          <h2>折线图-人员变化</h2>
+          <h2>饼图-人员分布</h2>
           <div class="chart"></div>
           <div class="panel-footer"></div>
         </div>
@@ -54,13 +54,13 @@
           <div class="chart"></div>
           <div class="panel-footer"></div>
         </div>
-        <div class="panel line1">
-          <h2>折线图-播放量</h2>
+        <div class="panel pie1">
+          <h2>饼形图-地区分布</h2>
           <div class="chart"></div>
           <div class="panel-footer"></div>
         </div>
-        <div class="panel pie1">
-          <h2>饼形图-地区分布</h2>
+        <div class="panel line1">
+          <h2></h2>
           <div class="chart"></div>
           <div class="panel-footer"></div>
         </div>
@@ -93,7 +93,6 @@ this.cwx1()
 this.cwx2()
 this.cwx3()
 this.cwx4()
-this.cwx5()
 this.chinaMap()
 this.China()
 this.Flexible()
@@ -219,111 +218,53 @@ methods: {
     });
   },
   
-  // 折线图定制
+  // 饼图定制
   cwx1() {
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.querySelector(".line .chart"));
-  
-    // (1)准备数据
-    var data = {
-      year: [
-        [24, 40, 101, 134, 90, 230, 210, 230, 120, 230, 210, 120],
-        [40, 64, 191, 324, 290, 330, 310, 213, 180, 200, 180, 79]
-      ]
-    };
-  
-    // 2. 指定配置和数据
     var option = {
-      color: ["#00f2f1", "#ed3f35"],
-      tooltip: {
-        // 通过坐标轴来触发
-        trigger: "axis"
-      },
+   
+    color: ['#37a2da','#32c5e9','#9fe6b8','#ffdb5c','#ff9f7f','#fb7293','#e7bcf3','#8378ea'],
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    toolbox: {
+        show : true,
+       
+    },
       legend: {
-        // 距离容器10%
-        right: "10%",
-        // 修饰图例文字的颜色
+        type:"scroll",
+        orient: 'vertical',
+        left:'1%',
+        align:'left',
+        top:'middle',
         textStyle: {
-          color: "#4c9bfd"
+            color:'#8C8C8C'
+        },
+        height:100
+    },
+    series : [
+        {
+            name:'业务警种',
+            type:'pie',
+            radius : [0, 50],
+            
+          
+            data:[
+                {value:20, name:'国宝'},
+                {value:30, name:'治安'},
+                {value:25, name:'rose3'},
+                {value:25, name:'rose4'},
+                {value:20, name:'rose5'},
+                {value:35, name:'rose6'},
+                {value:30, name:'rose7'},
+                {value:40, name:'rose8'}
+            ]
         }
-        // 如果series 里面设置了name，此时图例组件的data可以省略
-        // data: ["邮件营销", "联盟广告"]
-      },
-      grid: {
-        top: "20%",
-        left: "3%",
-        right: "4%",
-        bottom: "3%",
-        show: true,
-        borderColor: "#012f4a",
-        containLabel: true
-      },
+    ]
+};
   
-      xAxis: {
-        type: "category",
-        boundaryGap: false,
-        data: [
-          "1月",
-          "2月",
-          "3月",
-          "4月",
-          "5月",
-          "6月",
-          "7月",
-          "8月",
-          "9月",
-          "10月",
-          "11月",
-          "12月"
-        ],
-        // 去除刻度
-        axisTick: {
-          show: false
-        },
-        // 修饰刻度标签的颜色
-        axisLabel: {
-          color: "rgba(255,255,255,.7)"
-        },
-        // 去除x坐标轴的颜色
-        axisLine: {
-          show: false
-        }
-      },
-      yAxis: {
-        type: "value",
-        // 去除刻度
-        axisTick: {
-          show: false
-        },
-        // 修饰刻度标签的颜色
-        axisLabel: {
-          color: "rgba(255,255,255,.7)"
-        },
-        // 修改y轴分割线的颜色
-        splitLine: {
-          lineStyle: {
-            color: "#012f4a"
-          }
-        }
-      },
-      series: [
-        {
-          name: "新增粉丝",
-          type: "line",
-          stack: "总量",
-          // 是否让线条圆滑显示
-          smooth: true,
-          data: data.year[0]
-        },
-        {
-          name: "新增游客",
-          type: "line",
-          stack: "总量",
-          smooth: true,
-          data: data.year[1]
-        }
-      ]
-    };
     // 3. 把配置和数据给实例对象
     myChart.setOption(option);
   
@@ -514,278 +455,9 @@ methods: {
       myChart.resize();
     });
   },
-  // 折线图 优秀作品
-  cwx4() {
-    // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.querySelector(".line1 .chart"));
-  
-    var option = {
-      tooltip: {
-        trigger: "axis",
-        axisPointer: {
-          lineStyle: {
-            color: "#dddc6b"
-          }
-        }
-      },
-      legend: {
-        top: "0%",
-        textStyle: {
-          color: "rgba(255,255,255,.5)",
-          fontSize: "12"
-        }
-      },
-      grid: {
-        left: "10",
-        top: "30",
-        right: "10",
-        bottom: "10",
-        containLabel: true
-      },
-  
-      xAxis: [
-        {
-          type: "category",
-          boundaryGap: false,
-          axisLabel: {
-            textStyle: {
-              color: "rgba(255,255,255,.6)",
-              fontSize: 12
-            }
-          },
-          axisLine: {
-            lineStyle: {
-              color: "rgba(255,255,255,.2)"
-            }
-          },
-  
-          data: [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "25",
-            "26",
-            "27",
-            "28",
-            "29",
-            "30"
-          ]
-        },
-        {
-          axisPointer: { show: false },
-          axisLine: { show: false },
-          position: "bottom",
-          offset: 20
-        }
-      ],
-  
-      yAxis: [
-        {
-          type: "value",
-          axisTick: { show: false },
-          axisLine: {
-            lineStyle: {
-              color: "rgba(255,255,255,.1)"
-            }
-          },
-          axisLabel: {
-            textStyle: {
-              color: "rgba(255,255,255,.6)",
-              fontSize: 12
-            }
-          },
-  
-          splitLine: {
-            lineStyle: {
-              color: "rgba(255,255,255,.1)"
-            }
-          }
-        }
-      ],
-      series: [
-        {
-          name: "播放量",
-          type: "line",
-          smooth: true,
-          symbol: "circle",
-          symbolSize: 5,
-          showSymbol: false,
-          lineStyle: {
-            normal: {
-              color: "#0184d5",
-              width: 2
-            }
-          },
-          areaStyle: {
-            normal: {
-              color: new echarts.graphic.LinearGradient(
-                0,
-                0,
-                0,
-                1,
-                [
-                  {
-                    offset: 0,
-                    color: "rgba(1, 132, 213, 0.4)"
-                  },
-                  {
-                    offset: 0.8,
-                    color: "rgba(1, 132, 213, 0.1)"
-                  }
-                ],
-                false
-              ),
-              shadowColor: "rgba(0, 0, 0, 0.1)"
-            }
-          },
-          itemStyle: {
-            normal: {
-              color: "#0184d5",
-              borderColor: "rgba(221, 220, 107, .1)",
-              borderWidth: 12
-            }
-          },
-          data: [
-            30,
-            40,
-            30,
-            40,
-            30,
-            40,
-            30,
-            60,
-            20,
-            40,
-            20,
-            40,
-            30,
-            40,
-            30,
-            40,
-            30,
-            40,
-            30,
-            60,
-            20,
-            40,
-            20,
-            40,
-            30,
-            60,
-            20,
-            40,
-            20,
-            40
-          ]
-        },
-        {
-          name: "转发量",
-          type: "line",
-          smooth: true,
-          symbol: "circle",
-          symbolSize: 5,
-          showSymbol: false,
-          lineStyle: {
-            normal: {
-              color: "#00d887",
-              width: 2
-            }
-          },
-          areaStyle: {
-            normal: {
-              color: new echarts.graphic.LinearGradient(
-                0,
-                0,
-                0,
-                1,
-                [
-                  {
-                    offset: 0,
-                    color: "rgba(0, 216, 135, 0.4)"
-                  },
-                  {
-                    offset: 0.8,
-                    color: "rgba(0, 216, 135, 0.1)"
-                  }
-                ],
-                false
-              ),
-              shadowColor: "rgba(0, 0, 0, 0.1)"
-            }
-          },
-          itemStyle: {
-            normal: {
-              color: "#00d887",
-              borderColor: "rgba(221, 220, 107, .1)",
-              borderWidth: 12
-            }
-          },
-          data: [
-            50,
-            30,
-            50,
-            60,
-            10,
-            50,
-            30,
-            50,
-            60,
-            40,
-            60,
-            40,
-            80,
-            30,
-            50,
-            60,
-            10,
-            50,
-            30,
-            70,
-            20,
-            50,
-            10,
-            40,
-            50,
-            30,
-            70,
-            20,
-            50,
-            10,
-            40
-          ]
-        }
-      ]
-    };
-  
-    // 使用刚指定的配置项和数据显示图表。
-    myChart.setOption(option);
-    window.addEventListener("resize", function() {
-      myChart.resize();
-    });
-  },
-  
+ 
   // 点位分布统计模块
-  cwx5() {
+  cwx4() {
     // 1. 实例化对象
     var myChart = echarts.init(document.querySelector(".pie1  .chart"));
     // 2. 指定配置项和数据
@@ -915,6 +587,7 @@ methods: {
     枣庄: [117.323, 34.8926],
     柳州: [109.3799, 24.9774],
     株洲: [113.5327, 27.0319],
+    襄阳: [112.3896,31.6628],
     武汉: [114.3896, 30.6628],
     汕头: [117.1692, 23.3405],
     江门: [112.6318, 22.1484],
@@ -978,25 +651,23 @@ methods: {
   };
 
   var XAData = [
-    [{ name: "西安" }, { name: "北京", value: 100 }],
-    [{ name: "西安" }, { name: "上海", value: 100 }],
-    [{ name: "西安" }, { name: "广州", value: 100 }],
-    [{ name: "西安" }, { name: "西宁", value: 100 }],
-    [{ name: "西安" }, { name: "拉萨", value: 100 }]
+    [{ name: "襄阳" }, { name: "襄阳", value: 100 }],
+    [{ name: "襄阳" }, { name: "上海", value: 100 }],
+    [{ name: "襄阳" }, { name: "西安", value: 100 }]
   ];
 
   var XNData = [
-    [{ name: "西宁" }, { name: "北京", value: 100 }],
-    [{ name: "西宁" }, { name: "上海", value: 100 }],
-    [{ name: "西宁" }, { name: "广州", value: 100 }],
-    [{ name: "西宁" }, { name: "西安", value: 100 }],
-    [{ name: "西宁" }, { name: "银川", value: 100 }]
+    [{ name: "襄阳" }, { name: "武汉", value: 100 }],
+    [{ name: "襄阳" }, { name: "深圳", value: 100 }],
   ];
 
   var YCData = [
-    [{ name: "拉萨" }, { name: "北京", value: 100 }],
-    [{ name: "拉萨" }, { name: "潍坊", value: 100 }],
-    [{ name: "拉萨" }, { name: "哈尔滨", value: 100 }]
+    [{ name: "襄阳" }, { name: "成都", value: 100 }],
+    [{ name: "襄阳" }, { name: "南宁", value: 100 }],
+    [{ name: "襄阳" }, { name: "北京", value: 100 }],
+    [{ name: "襄阳" }, { name: "重庆", value: 100 }],
+    [{ name: "襄阳" }, { name: "南京", value: 100 }],
+    [{ name: "襄阳" }, { name: "杭州", value: 100 }],
   ];
 
   var planePath =
@@ -1021,7 +692,7 @@ methods: {
     return res;
   };
 
-  var color = ["#fff", "#fff", "#fff"]; //航线的颜色
+ 	var color = ['white','white','white']; //航线的颜色
   var series = [];
   [
     ["西安", XAData],
@@ -1054,7 +725,7 @@ methods: {
         type: "lines",
         zlevel: 2,
         symbol: ["none", "arrow"],
-        symbolSize: 10,
+        symbolSize: 5,
         effect: {
           show: true,
           period: 6,
@@ -1088,7 +759,7 @@ methods: {
           }
         },
         symbolSize: function(val) {
-          return val[2] / 8;
+          return val[2] / 12;
         },
         itemStyle: {
           normal: {
@@ -1137,7 +808,7 @@ methods: {
       },
       roam: false,
       //   放大我们的地图
-      zoom: 1,
+      zoom: 1.05,
       itemStyle: {
         normal: {
           areaColor: "rgba(43, 196, 243, 0.42)",
