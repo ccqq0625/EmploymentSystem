@@ -60,9 +60,35 @@
           <div class="panel-footer"></div>
         </div>
         <div class="panel line1">
-          <h2></h2>
+          <!-- <h2></h2>
           <div class="chart"></div>
-          <div class="panel-footer"></div>
+          <div class="panel-footer"></div> -->
+          <h1 class="h1">学生信息</h1>
+          <table class="tb1">
+             <tr class="th">
+                    <th>姓名</th>
+                    <th class="the"></th>
+                    <th>期望岗位</th>
+                    <th class="the"></th>
+                    <th>期望薪资</th>
+                    <th class="the"></th>
+                    <th>期望城市</th>
+              </tr>
+          </table>
+          <div id="review_box">
+            <table id="comment1">
+                <tr v-for="(item,index) in arr" :key="index">
+                  <td>{{item.name}}</td>
+                  <td class="tde"></td>
+                  <td>{{item.job}}</td>
+                  <td class="tde"></td>
+                  <td>{{item.salary}}</td>
+                  <td class="tde"></td>
+                  <td>{{item.city}}</td>
+                </tr>
+            </table>
+          <table id="comment2"></table>
+          </div>
         </div>
       </div>
     </section>
@@ -84,6 +110,26 @@ export default {
     let self = this
     return{
       sumData:self.countSum(this.seriesData),
+      arr:[
+        {name:'117',job:'3377',salary:'3000',city:'55777'},
+        {name:'227',job:'557',salary:'6000.00',city:'55777'},
+        {name:'1',job:'333',salary:'wwwf',city:'rrr77'},
+        {name:'155151',job:'444',salary:'wwvw',city:'rvrr'},
+        {name:'155141',job:'555',salary:'www',city:'rrr'},
+        {name:'11e3341',job:'666',salary:'www',city:'rrr'},
+        {name:'117',job:'3377',salary:'3000',city:'55777'},
+        {name:'227',job:'557',salary:'6000.00',city:'55777'},
+        {name:'1',job:'333',salary:'wwwf',city:'rrr77'},
+        {name:'155151',job:'444',salary:'wwvw',city:'rvrr'},
+        {name:'155141',job:'555',salary:'www',city:'rrr'},
+        {name:'11e3341',job:'666',salary:'www',city:'rrr'},
+        {name:'117',job:'3377',salary:'3000',city:'55777'},
+        {name:'227',job:'557',salary:'6000.00',city:'55777'},
+        {name:'1',job:'333',salary:'wwwf',city:'rrr77'},
+        {name:'155151',job:'444',salary:'wwvw',city:'rvrr'},
+        {name:'155141',job:'555',salary:'www',city:'rrr'},
+        {name:'11e3341',job:'666',salary:'www',city:'rrr'},
+      ]
     }
   },
 
@@ -97,6 +143,7 @@ this.chinaMap()
 this.China()
 this.Flexible()
 this.time()
+this.roll(50)
 },
 methods: {
   //计算数组中数据的总和
@@ -2484,7 +2531,38 @@ btn(){
           }
           },300)
 
-}
+},
+
+ roll(t) {
+  var ul1 = document.getElementById("comment1");
+  var ul2 = document.getElementById("comment2");
+  var ulbox = document.getElementById("review_box");
+  ul2.innerHTML = ul1.innerHTML;
+  ulbox.scrollTop = 0; // 开始无滚动时设为0
+  var timer = setInterval(this.rollStart, t); // 设置定时器，参数t用在这为间隔时间（单位毫秒），参数t越小，滚动速度越快
+  // 鼠标移入div时暂停滚动
+  ulbox.onmouseover =  ()=> {
+   clearInterval(timer);
+  }
+  // 鼠标移出div后继续滚动
+  ulbox.onmouseout =  ()=> {
+   timer = setInterval(this.rollStart, t);
+  }
+ },
+ // 开始滚动函数
+  rollStart() {
+  // 上面声明的DOM对象为局部对象需要再次声明
+  var ul1 = document.getElementById("comment1");
+  var ul2 = document.getElementById("comment2");
+  var ulbox = document.getElementById("review_box");
+  // 正常滚动不断给scrollTop的值+1,当滚动高度大于列表内容高度时恢复为0
+  if (ulbox.scrollTop >= ul1.scrollHeight) {
+   ulbox.scrollTop = 0;
+  } else {
+   ulbox.scrollTop++;
+  }
+ }
+
     },
 }
 
@@ -2779,4 +2857,33 @@ header .showTime {
         width: 70px;
         height: 30px;
     }
+* {
+ margin: 0;
+ padding: 0;
+}
+#review_box {
+ width: 100%;
+ height: 160px; /* 必须 */
+ overflow: hidden;/* 必须 */
+ margin: 10px auto;
+ text-align: center;
+ color: white;
+}
+
+.the,.tde{
+  width: .875rem;
+  height: .375rem;
+  
+}
+.tb1{
+  color:white;
+  margin: 10px 0;
+  text-align: center;
+}
+.h1{
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  margin: 15px 0;
+}
 </style>
