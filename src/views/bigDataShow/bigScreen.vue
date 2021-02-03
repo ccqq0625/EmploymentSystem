@@ -533,7 +533,7 @@ methods: {
             normal: {
               show: true,
               position: "inside",
-              formatter: "{c}%"
+              formatter: "                 {c}%"
             }
           }
         },
