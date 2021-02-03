@@ -7,26 +7,28 @@
     </header>
     <section class="mainbox">
       <div class="column">
-        <div class="panel bar">
-          <h2>
-            柱状图-就业行业 <a href="javascript:void(0);">2019</a>
-            <a href="javacript:void(0);"> 2020</a>
-          </h2>
+        <!-- 左一条形图 -->
+        <div class="panel bar1">
+          <h2>全院毕业去向选择</h2>
           <div class="chart"></div>
           <div class="panel-footer"></div>
         </div>
+      <!-- 左二饼状图 -->
         <div class="panel line">
-          <h2>饼图-人员分布</h2>
+          <h2>全院就业类型</h2>
           <div class="chart"></div>
           <div class="panel-footer"></div>
         </div>
+        <!-- 左三公职类型柱状图 -->
         <div class="panel pie">
-          <h2>饼形图-年龄分布</h2>
+          <h2>全院考公类型</h2>
           <div class="chart"></div>
           <div class="panel-footer"></div>
         </div>
       </div>
+
       <div class="column">
+
         <div class="no">
           <div class="no-hd">
             <ul>
@@ -37,10 +39,11 @@
           <div class="no-bd">
             <ul>
               <li>学院总人数</li>
-              <li>市场供应人数</li>
+              <li>已就业人数</li>
             </ul>
           </div>
         </div>
+
         <div class="map">
           <div class="chart"></div>
           <div class="map1"></div>
@@ -48,12 +51,18 @@
           <div class="map3"></div>
         </div>
       </div>
+
       <div class="column">
-        <div class="panel bar1">
-          <h2>总体就业类型</h2>
+
+        <div class="panel bar">
+          <h2>
+            柱状图-就业行业 <a href="javascript:void(0);">2019</a>
+            <a href="javacript:void(0);"> 2020</a>
+          </h2>
           <div class="chart"></div>
           <div class="panel-footer"></div>
         </div>
+
         <div class="panel pie1">
           <h2>饼形图-地区分布</h2>
           <div class="chart"></div>
@@ -97,10 +106,14 @@ import $ from '@/assets/js/jquery'
 import flexible from '@/assets/js/flexible.js'
 export default {
   props:{
-    Legends:{
-            type:Array
-        },
-    seriesData:{type:Array}
+    // 左一总体情况
+    Legends:{type:Array},
+    seriesData:{type:Array},
+    // 就业类型饼图数据
+    datacwx1:{type:Array,},
+    // 考公类型柱状图
+    Legends2:{type:Array},
+    seriesData2:{type:Array},
   },
   data(){
     let self = this
@@ -262,6 +275,7 @@ methods: {
   },
   
   // 饼图定制
+  // 左二饼状图：就业类型
   cwx1() {
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.querySelector(".line .chart"));
@@ -289,21 +303,22 @@ methods: {
     },
     series : [
         {
-            name:'业务警种',
+            name:'数据',
             type:'pie',
             radius : [0, 50],
             
+            data:this.datacwx1,
+            //让数据直接显示在页面上。不通过鼠标
+            itemStyle: {
+                normal: {
+                     label: {
+                         show: true,
+                        //  position: 'inner',
+                         formatter: '{b}({d}%)'
+                         }
+                        }
+                    }
           
-            data:[
-                {value:20, name:'国宝'},
-                {value:30, name:'治安'},
-                {value:25, name:'rose3'},
-                {value:25, name:'rose4'},
-                {value:20, name:'rose5'},
-                {value:35, name:'rose6'},
-                {value:30, name:'rose7'},
-                {value:40, name:'rose8'}
-            ]
         }
     ]
 };
@@ -324,9 +339,9 @@ methods: {
     var myChart = echarts.init(document.querySelector(".pie .chart"));
 
 
-
+// 左三
    var option = {
-    color: ['pink'],
+    color: ['rgba(180, 170, 220, 0.8)'],
     tooltip: {
         trigger: 'axis',
         axisPointer: {            // 坐标轴指示器，坐标轴触发有效
@@ -343,15 +358,16 @@ methods: {
     xAxis: [
         {
           type: "category",
-          data: [
-            "旅游行业",
-            "教育培训",
-            "游戏行业",
-            "医疗行业",
-            "电商行业",
-            "社交行业",
-            "金融行业"
-          ],
+          // data: [
+          //   "旅游行业",
+          //   "教育培训",
+          //   "游戏行业",
+          //   "医疗行业",
+          //   "电商行业",
+          //   "社交行业",
+          //   "金融行业"
+          // ],
+          data:this.Legends2,
           axisTick: {
             alignWithLabel: true
           },
@@ -389,14 +405,32 @@ methods: {
           }
         }
       ],
-    series: [
-        {
-            name: '直接访问',
-            type: 'bar',
-            barWidth: '60%',
-            data: [10, 52, 200, 334, 390, 330, 220]
-        }
-    ]
+    // series: [
+    //     {
+    //         name: '数据',
+    //         type: 'bar',
+    //         barWidth: '60%',
+    //         data:this.seriesData2,
+    //     }
+    // ],
+     series: [{
+                data: this.seriesData2,
+                type: 'bar',
+                color: 'rgba(180, 170, 220, 0.8)',
+                itemStyle: {        //上方显示数值
+                normal: {
+                    label: {
+                        show: true, //开启显示
+                        position: 'top', //在上方显示
+                        textStyle: { //数值样式
+                            color: 'white',
+                            fontSize: 16
+                        }
+                    }
+                }
+            }
+               
+            }]
 };
   
     // 使用刚指定的配置项和数据显示图表。
@@ -405,12 +439,12 @@ methods: {
       myChart.resize();
     });
   },
-  // 柱状图2模块
+  // 总体类型
   cwx3() {
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.querySelector(".bar1 .chart"));
    // var data = [70, 34, 60, 78, 69];
-    console.log(this.seriesData);
+   
     // var titlename = ["HTML5", "CSS3", "javascript", "VUE", "NODE"];
     //每个类型的名称
     var titlename =this.Legends;
@@ -419,9 +453,12 @@ methods: {
     var valdata =this.seriesData; 
 
     //data是每个数值的占比
-    var data=this.countPercentage(this.seriesData).map(i => parseInt(i,0));
+    var data=this.countPercentage(this.seriesData).map(i => {
+      return i.toFixed(2)
+    });
+    
     //var data=this.countPercentage(this.seriesData);
-    console.log(data);
+    //console.log(data);
     var myColor = ["#1089E7", "#F57474", "#56D0E3", "#F8B448", "#8B78F6"];
     var option = {
       //图标位置
