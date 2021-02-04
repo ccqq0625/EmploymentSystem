@@ -83,13 +83,13 @@
           <div id="review_box">
             <table id="comment1">
                 <tr v-for="(item,index) in arr" :key="index">
-                  <td>{{item.name}}</td>
+                  <td><div style="width: 50px">{{item.name}}</div></td>
                   <td class="tde"></td>
-                  <td>{{item.job}}</td>
+                  <td><div style="width: 80px">{{item.job}}</div></td>
                   <td class="tde"></td>
-                  <td>{{item.salary}}</td>
+                  <td><div style="width: 80px">{{item.salary}}</div></td>
                   <td class="tde"></td>
-                  <td>{{item.city}}</td>
+                  <td><div style="width: 120px">{{item.city}}</div></td>
                 </tr>
             </table>
           <table id="comment2"></table>
@@ -104,6 +104,7 @@
 import echarts from 'echarts'
 import $ from '@/assets/js/jquery'
 import flexible from '@/assets/js/flexible.js'
+import api from '@/api/screenShow.js'
 export default {
   props:{
     // 左一总体情况
@@ -114,34 +115,22 @@ export default {
     // 考公类型柱状图
     Legends2:{type:Array},
     seriesData2:{type:Array},
+    //地区饼图
+    areaData:{type:Array},
+    //滚动
+    scorllData:{type:Array}
   },
   data(){
     let self = this
+
     return{
       sumData:self.countSum(this.seriesData),
-      arr:[
-        {name:'117',job:'3377',salary:'3000',city:'55777'},
-        {name:'227',job:'557',salary:'6000.00',city:'55777'},
-        {name:'1',job:'333',salary:'wwwf',city:'rrr77'},
-        {name:'155151',job:'444',salary:'wwvw',city:'rvrr'},
-        {name:'155141',job:'555',salary:'www',city:'rrr'},
-        {name:'11e3341',job:'666',salary:'www',city:'rrr'},
-        {name:'117',job:'3377',salary:'3000',city:'55777'},
-        {name:'227',job:'557',salary:'6000.00',city:'55777'},
-        {name:'1',job:'333',salary:'wwwf',city:'rrr77'},
-        {name:'155151',job:'444',salary:'wwvw',city:'rvrr'},
-        {name:'155141',job:'555',salary:'www',city:'rrr'},
-        {name:'11e3341',job:'666',salary:'www',city:'rrr'},
-        {name:'117',job:'3377',salary:'3000',city:'55777'},
-        {name:'227',job:'557',salary:'6000.00',city:'55777'},
-        {name:'1',job:'333',salary:'wwwf',city:'rrr77'},
-        {name:'155151',job:'444',salary:'wwvw',city:'rvrr'},
-        {name:'155141',job:'555',salary:'www',city:'rrr'},
-        {name:'11e3341',job:'666',salary:'www',city:'rrr'},
-      ]
+      arr: this.scorllData
     }
   },
-
+  created(){
+    this.scroll()
+},
   mounted(){
 this.cwx()
 this.cwx1()
@@ -155,6 +144,13 @@ this.time()
 this.roll(50)
 },
 methods: {
+  scroll(){
+        //调用滚动接口
+          api.infoScroll().then(response => {
+            const resp5 = response.data
+            this.arr = resp5.data
+          })
+      },
   //计算数组中数据的总和
   countSum(arr){
     var sum=eval(arr.join('+'));
@@ -306,8 +302,8 @@ methods: {
             name:'数据',
             type:'pie',
             radius : [0, 50],
-            
             data:this.datacwx1,
+
             //让数据直接显示在页面上。不通过鼠标
             itemStyle: {
                 normal: {
@@ -601,16 +597,16 @@ methods: {
           radius: ["10%", "70%"],
           center: ["50%", "42%"],
           roseType: "radius",
-          data: [
-            { value: 20, name: "云南" },
-            { value: 26, name: "北京" },
-            { value: 24, name: "山东" },
-            { value: 25, name: "河北" },
-            { value: 20, name: "江苏" },
-            { value: 25, name: "浙江" },
-            { value: 30, name: "深圳" },
-            { value: 42, name: "广东" }
-          ],
+          data: this.areaData,
+          itemStyle: {
+                normal: {
+                     label: {
+                         show: true,
+                        //  position: 'inner',
+                         formatter: '{b}({d}%)'
+                         }
+                        }
+                    },
           // 修饰饼形图文字相关的样式 label对象
           label: {
             fontSize: 10
@@ -2612,6 +2608,9 @@ btn(){
 }
 li {
   list-style: none;
+}
+td {
+  font-size: 10px;
 }
 @font-face {
   font-family: electronicFont;
