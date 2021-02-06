@@ -297,15 +297,17 @@ methods: {
        
     },
       legend: {
-        type:"scroll",
-        orient: 'vertical',
-        left:'1%',
+        //type:"scroll",
+        //orient: 'vertical',
+        //left:'1',
+        //right:'0',
         align:'left',
-        top:'middle',
+        top:'90%',
+        itemWidth: 10,
         textStyle: {
             color:'#8C8C8C'
         },
-        height:100
+        height:150
     },
     series : [
         {
@@ -2535,6 +2537,7 @@ time(){
             mt +
             "月" +
             day +
+            "日"+
             "-" +
             h +
             "时" +
@@ -2861,6 +2864,7 @@ header .showTime {
 }
 .line .chart{
     height: 200px;
+    padding: 0;
 }
 .pie .chart{
     height: 200px;
