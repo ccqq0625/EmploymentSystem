@@ -5,7 +5,12 @@
         :datacwx1="datacwx1"
         :Legends2="Legends2" :seriesData2="seriesData2"
         :areaData="areaData"
-        :scrollData="scrollData">
+        :scrollData="scrollData"
+        :totalNum="totalNum"
+        :employedNum="employedNum"
+        :salaryLeg="salaryLeg"
+        :salaryData="salaryData"
+        >
         </big-screen>
     </div>
 </template>
@@ -32,7 +37,13 @@ export default {
             //右2地区分布
             areaData:[],
             //信息滚动
-            scrollData:[]
+            scrollData:[],
+            // 学院总人数和已就业人数
+            totalNum:0,
+            employedNum:0,
+            // 薪资
+            salaryLeg:[],
+            salaryData:[],
         }
     },
     mounted(){
@@ -67,6 +78,24 @@ export default {
           api.showAreaCount().then(response => {
             const resp4 = response.data
             this.areaData = resp4.data
+          })
+          // 获取全院总人数和已就业人数
+          api.digitalShow().then(response => {
+            const resp5=response.data
+            this.totalNum=resp5.data.计算机工程学院,
+            this.employedNum=resp5.data.就业
+          })
+          // 薪资
+          api.getSalary().then(response => {
+            const resp6=response.data.data
+            resp6.forEach(e => {
+              this.salaryLeg.push(e.name)
+            });
+            resp6.forEach(e => {
+              this.salaryData.push(e.value)
+            })
+            console.log(this.salaryLeg)
+            console.log(this.salaryData)
           })
 
           //调用滚动接口  由于vue页面的加载顺序 需要把数组先挂载 所以放在bigScreen会方便一些

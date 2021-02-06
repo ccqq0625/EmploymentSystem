@@ -9,19 +9,19 @@
       <div class="column">
         <!-- 左一条形图 -->
         <div class="panel bar1">
-          <h2>全院毕业去向选择</h2>
+          <h2>条形图-总体分布</h2>
           <div class="chart"></div>
           <div class="panel-footer"></div>
         </div>
       <!-- 左二饼状图 -->
         <div class="panel line">
-          <h2>全院就业类型</h2>
+          <h2>饼状图-就业分布</h2>
           <div class="chart"></div>
           <div class="panel-footer"></div>
         </div>
         <!-- 左三公职类型柱状图 -->
         <div class="panel pie">
-          <h2>全院考公类型</h2>
+          <h2>柱状图-考公分布</h2>
           <div class="chart"></div>
           <div class="panel-footer"></div>
         </div>
@@ -32,8 +32,8 @@
         <div class="no">
           <div class="no-hd">
             <ul>
-              <li>{{sumData}}</li>
-              <li>104563</li>
+              <li>{{totalNum}}</li>
+              <li>{{employedNum}}</li>
             </ul>
           </div>
           <div class="no-bd">
@@ -56,8 +56,9 @@
 
         <div class="panel bar">
           <h2>
-            柱状图-就业行业 <a href="javascript:void(0);">2019</a>
-            <a href="javacript:void(0);"> 2020</a>
+            柱状图-薪资分布
+            <!-- <a href="javascript:void(0);">2019</a>
+            <a href="javacript:void(0);"> 2020</a> -->
           </h2>
           <div class="chart"></div>
           <div class="panel-footer"></div>
@@ -118,13 +119,20 @@ export default {
     //地区饼图
     areaData:{type:Array},
     //滚动
-    scorllData:{type:Array}
+    scorllData:{type:Array},
+    // 学院总人数和已就业人数
+    totalNum:{type:Number},
+    employedNum:{type:Number},
+    // 薪资
+    salaryLeg:{type:Array},
+    salaryData:{type:Array},
+
   },
   data(){
     let self = this
 
     return{
-      sumData:self.countSum(this.seriesData),
+      //sumData:self.countSum(this.seriesData),
       arr: this.scorllData
     }
   },
@@ -152,11 +160,11 @@ methods: {
           })
       },
   //计算数组中数据的总和
-  countSum(arr){
-    var sum=eval(arr.join('+'));
-    sum=parseInt(sum);
-    return sum;
-  },
+  // countSum(arr){
+  //   var sum=eval(arr.join('+'));
+  //   sum=parseInt(sum);
+  //   return sum;
+  // },
   //计算百分比
   countPercentage(arr){
     var j=eval(arr.join('+'));
@@ -169,7 +177,7 @@ methods: {
     }
     return resultArray;
   },
-  // 柱状图1模块
+  // 薪资
   cwx() {
     // 实例化对象
     var myChart = echarts.init(document.querySelector(".bar .chart"));
@@ -185,7 +193,7 @@ methods: {
       },
       grid: {
         left: "0%",
-        top: "10px",
+        top: "19px",
         right: "0%",
         bottom: "4%",
         containLabel: true
@@ -193,22 +201,14 @@ methods: {
       xAxis: [
         {
           type: "category",
-          data: [
-            "旅游行业",
-            "教育培训",
-            "游戏行业",
-            "医疗行业",
-            "电商行业",
-            "社交行业",
-            "金融行业"
-          ],
+          data:this.salaryLeg,
           axisTick: {
             alignWithLabel: true
           },
           axisLabel: {
             textStyle: {
               color: "rgba(255,255,255,.6)",
-              fontSize: "12"
+              fontSize: "10"
             }
           },
           axisLine: {
@@ -241,12 +241,22 @@ methods: {
       ],
       series: [
         {
-          name: "直接访问",
+          name: "数据",
           type: "bar",
-          barWidth: "35%",
-          data: [200, 300, 300, 900, 1500, 1200, 600],
+          barWidth: "40%",
+          data:this.salaryData,
           itemStyle: {
-            barBorderRadius: 5
+            barBorderRadius: 5,
+             normal: {
+                    label: {
+                        show: true, //开启显示
+                        position: 'top', //在上方显示
+                        textStyle: { //数值样式
+                            color: 'white',
+                            fontSize: 13
+                        }
+                    }
+                }
           }
         }
       ]
@@ -259,15 +269,15 @@ methods: {
     });
   
     // 数据变化
-    var dataAll = [
-      { year: "2019", data: [200, 300, 300, 900, 1500, 1200, 600] },
-      { year: "2020", data: [300, 400, 350, 800, 1800, 1400, 700] }
-    ];
+    // var dataAll = [
+    //   { year: "2019", data: [200, 300, 300, 900, 1500, 1200, 600] },
+    //   { year: "2020", data: [300, 400, 350, 800, 1800, 1400, 700] }
+    // ];
   
-    $(".bar h2 ").on("click", "a", function() {
-      option.series[0].data = dataAll[$(this).index()].data;
-      myChart.setOption(option);
-    });
+    // $(".bar h2 ").on("click", "a", function() {
+    //   option.series[0].data = dataAll[$(this).index()].data;
+    //   myChart.setOption(option);
+    // });
   },
   
   // 饼图定制
@@ -354,15 +364,6 @@ methods: {
     xAxis: [
         {
           type: "category",
-          // data: [
-          //   "旅游行业",
-          //   "教育培训",
-          //   "游戏行业",
-          //   "医疗行业",
-          //   "电商行业",
-          //   "社交行业",
-          //   "金融行业"
-          // ],
           data:this.Legends2,
           axisTick: {
             alignWithLabel: true
@@ -401,17 +402,11 @@ methods: {
           }
         }
       ],
-    // series: [
-    //     {
-    //         name: '数据',
-    //         type: 'bar',
-    //         barWidth: '60%',
-    //         data:this.seriesData2,
-    //     }
-    // ],
-     series: [{
+     series:[
+       {
                 data: this.seriesData2,
                 type: 'bar',
+                barWidth: "30%",
                 color: 'rgba(180, 170, 220, 0.8)',
                 itemStyle: {        //上方显示数值
                 normal: {
