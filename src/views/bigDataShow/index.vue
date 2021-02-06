@@ -1,7 +1,7 @@
 <template>
     <div>
         <big-screen
-        v-if="flag4&&flag5&&flag6" :Legends="Legends" :seriesData="seriesData"
+        v-if="flag1&&flag2&&flag3&&flag4&&flag5&&flag6" :Legends="Legends" :seriesData="seriesData"
         :datacwx1="datacwx1"
         :Legends2="Legends2" :seriesData2="seriesData2"
         :areaData="areaData"
@@ -25,6 +25,9 @@ export default {
         return{
             //柱状图2的坐标内容
             Legends: [],
+            flag1:false,
+            flag2:false,
+            flag3:false,
             flag4:false,
             flag5:false,
             flag6:false,
@@ -78,12 +81,15 @@ export default {
           api.showAreaCount().then(response => {
             const resp4 = response.data
             this.areaData = resp4.data
+            this.flag3=true
           })
           // 获取全院总人数和已就业人数
           api.digitalShow().then(response => {
             const resp5=response.data
             this.totalNum=resp5.data.计算机工程学院,
             this.employedNum=resp5.data.就业
+            this.flag1=true
+
           })
           // 薪资
           api.getSalary().then(response => {
@@ -96,6 +102,8 @@ export default {
             })
             console.log(this.salaryLeg)
             console.log(this.salaryData)
+            this.flag2=true
+
           })
 
           //调用滚动接口  由于vue页面的加载顺序 需要把数组先挂载 所以放在bigScreen会方便一些

@@ -588,7 +588,7 @@ methods: {
       ],
       series: [
         {
-          name: "点位统计",
+          name: "地区分布",
           type: "pie",
           // 如果radius是百分比则必须加引号
           radius: ["10%", "70%"],
