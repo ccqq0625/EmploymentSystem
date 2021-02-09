@@ -9,19 +9,19 @@
       <div class="column">
         <!-- 左一条形图 -->
         <div class="panel bar1">
-          <h2>条形图-总体分布</h2>
+          <h2>总体分布</h2>
           <div class="chart"></div>
           <div class="panel-footer"></div>
         </div>
       <!-- 左二饼状图 -->
         <div class="panel line">
-          <h2>饼状图-就业分布</h2>
+          <h2>就业分布</h2>
           <div class="chart"></div>
           <div class="panel-footer"></div>
         </div>
         <!-- 左三公职类型柱状图 -->
         <div class="panel pie">
-          <h2>柱状图-考公分布</h2>
+          <h2>公职分布</h2>
           <div class="chart"></div>
           <div class="panel-footer"></div>
         </div>
@@ -56,7 +56,7 @@
 
         <div class="panel bar">
           <h2>
-            柱状图-薪资分布
+           薪资分布
             <!-- <a href="javascript:void(0);">2019</a>
             <a href="javacript:void(0);"> 2020</a> -->
           </h2>
@@ -65,19 +65,20 @@
         </div>
 
         <div class="panel pie1">
-          <h2>饼形图-地区分布</h2>
+          <h2>地区分布</h2>
           <div class="chart"></div>
           <div class="panel-footer"></div>
         </div>
         <div class="panel line1">
           <table class="tb1">
              <tr class="th">
+                 <th class="the1"></th>
                     <th>姓名</th>
                     <th class="the"></th>
                     <th>期望岗位</th>
                     <th class="the"></th>
                     <th>期望薪资</th>
-                    <th class="the"></th>
+                    <th class="the2"></th>
                     <th>期望城市</th>
               </tr>
           </table>
@@ -2894,21 +2895,31 @@ header .showTime {
 }
 #review_box {
  width: 100%;
- height: 160px; /* 必须 */
+ height: 220px; /* 必须 */
  overflow: hidden;/* 必须 */
  margin: 10px auto;
  text-align: center;
  color: white;
 }
-
+.the1{
+   width: .200rem;
+}
+.the2{
+   width: .980rem;
+}
 .the,.tde{
-  width: .875rem;
+  // width: .875rem;
+  width: .900rem;
   height: .375rem;
+   text-align: right;
   
 }
 .tb1{
   color:white;
   margin: 10px 0;
   text-align: center;
+}
+th{
+  text-align: right;
 }
 </style>
