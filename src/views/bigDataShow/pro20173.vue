@@ -13,7 +13,7 @@
         background-color="inherit"
         text-color="#fff">
         <el-submenu index="1">
-            <template slot="title">其他年级选择</template>
+            <template slot="title"><i class="el-icon-document">其他年级选择</i></template>
             <el-submenu index="1-1">
                 <template slot="title">2017</template>
                 <el-menu-item index="/pro20171">计算机科学与技术</el-menu-item>
@@ -41,7 +41,7 @@
         </el-submenu>
       </el-menu>
       </div>
-      <h1>2017届计算机工程学院就业情况</h1>
+      <h1>2017届物联网工程就业情况</h1>
       <div class="showTime"></div>
     </header>
     <section class="mainbox">

@@ -1,3 +1,4 @@
+import { Select } from "element-ui";
 import Vue from "vue";
 import VueRouter from "vue-router";
 
@@ -24,6 +25,9 @@ const Register=() =>import('../views/register/Register');
 const pdfMain=() => import('../views/info/pdfMain');
 const pdf=() => import('../views/postmatch/pdf');
 const BigScreen=()=> import('../views/bigDataShow/index.vue')
+const pro20171=()=> import('../views/bigDataShow/pro20171.vue')
+const pro20172=()=> import('../views/bigDataShow/pro20172.vue')
+const pro20173=()=> import('../views/bigDataShow/pro20173.vue')
 Vue.use(VueRouter);
 
 const routes = [
@@ -151,6 +155,21 @@ const routes = [
     meta:{
       navShow:false
     }
+  },
+  {
+    path: '/pro20171',
+    name: 'pro20171',
+    component: pro20171,
+  },
+  {
+    path: '/pro20172',
+    name: 'pro20172',
+    component: pro20172,
+  },
+  {
+    path: '/pro20173',
+    name: 'pro20173',
+    component: pro20173,
   }
  
 ];

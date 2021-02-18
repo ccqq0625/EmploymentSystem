@@ -13,12 +13,12 @@
         background-color="inherit"
         text-color="#fff">
         <el-submenu index="1">
-            <template slot="title">其他年级选择</template>
+            <template slot="title"><i class="el-icon-document">其他年级选择</i></template>
             <el-submenu index="1-1">
                 <template slot="title">2017</template>
-                <el-menu-item index="/pro20171">计算机科学与技术</el-menu-item>
-                <el-menu-item index="/pro20172">软件工程</el-menu-item>
-                <el-menu-item index="/pro20173">物联网工程</el-menu-item>
+                <el-menu-item index="/Pro20171">计算机科学与技术</el-menu-item>
+                <el-menu-item index="/Pro20172">软件工程</el-menu-item>
+                <el-menu-item index="/Pro20173">物联网工程</el-menu-item>
             </el-submenu>
             <el-submenu index="1-2">
                 <template slot="title">2018</template>
@@ -41,7 +41,7 @@
         </el-submenu>
       </el-menu>
       </div>
-      <h1>2017届计算机工程学院就业情况</h1>
+      <h1>2017届计算机科学与技术就业情况</h1>
       <div class="showTime"></div>
     </header>
     <section class="mainbox">
@@ -145,7 +145,6 @@
 import echarts from 'echarts'
 import $ from '@/assets/js/jquery'
 import flexible from '@/assets/js/flexible.js'
-import api from '@/api/screenShow.js'
 export default {
   props:{
     // 左一总体情况
@@ -178,7 +177,7 @@ export default {
     }
   },
   created(){
-    this.scroll()
+    
 },
   mounted(){
 this.cwx()
@@ -193,13 +192,6 @@ this.time()
 this.roll(50)
 },
 methods: {
-  scroll(){
-        //调用滚动接口
-          api.infoScroll().then(response => {
-            const resp5 = response.data
-            this.arr = resp5.data
-          })
-      },
   //计算数组中数据的总和
   // countSum(arr){
   //   var sum=eval(arr.join('+'));
@@ -207,6 +199,13 @@ methods: {
   //   return sum;
   // },
   //计算百分比
+  scroll(){
+        //调用滚动接口
+          api.infoScroll().then(response => {
+            const resp5 = response.data
+            this.arr = resp5.data
+          })
+      },
   countPercentage(arr){
     var j=eval(arr.join('+'));
     j=parseFloat(j);
@@ -487,12 +486,12 @@ methods: {
     var valdata =this.seriesData; 
 
     //data是每个数值的占比
-    var data=this.countPercentage(this.seriesData).map(i => {
-      return i.toFixed(2)
-    });
+    // var data=this.countPercentage(this.seriesData).map(i => {
+    //   return i.toFixed(2)
+    // });
     
-    //var data=this.countPercentage(this.seriesData);
-    //console.log(data);
+    var data=this.countPercentage(this.seriesData);
+    // console.log(data);
     var myColor = ["#1089E7", "#F57474", "#56D0E3", "#F8B448", "#8B78F6"];
     var option = {
       //图标位置
