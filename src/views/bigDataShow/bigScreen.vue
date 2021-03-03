@@ -791,23 +791,23 @@ methods: {
   };
 
   var XAData = [
-    [{ name: "襄阳" }, { name: "襄阳", value: 100 }],
-    [{ name: "襄阳" }, { name: "上海", value: 100 }],
-    [{ name: "襄阳" }, { name: "西安", value: 100 }]
+    [{ name: "襄阳" }, { name: "襄阳", value: 20 }],
+    [{ name: "襄阳" }, { name: "北京", value: 22 }],
+    [{ name: "襄阳" }, { name: "杭州", value: 30 }]
   ];
 
   var XNData = [
-    [{ name: "襄阳" }, { name: "武汉", value: 100 }],
-    [{ name: "襄阳" }, { name: "深圳", value: 100 }],
+    [{ name: "襄阳" }, { name: "武汉", value: 91 }],
+    [{ name: "襄阳" }, { name: "广州", value: 20 }],
   ];
 
   var YCData = [
-    [{ name: "襄阳" }, { name: "成都", value: 100 }],
-    [{ name: "襄阳" }, { name: "南宁", value: 100 }],
-    [{ name: "襄阳" }, { name: "北京", value: 100 }],
-    [{ name: "襄阳" }, { name: "重庆", value: 100 }],
-    [{ name: "襄阳" }, { name: "南京", value: 100 }],
-    [{ name: "襄阳" }, { name: "杭州", value: 100 }],
+    // [{ name: "襄阳" }, { name: "成都", value: 100 }],
+    // [{ name: "襄阳" }, { name: "南宁", value: 100 }],
+    // [{ name: "襄阳" }, { name: "北京", value: 100 }],
+    // [{ name: "襄阳" }, { name: "重庆", value: 100 }],
+    // [{ name: "襄阳" }, { name: "南京", value: 100 }],
+    // [{ name: "襄阳" }, { name: "杭州", value: 100 }],
   ];
 
   var planePath =
@@ -899,7 +899,8 @@ methods: {
           }
         },
         symbolSize: function(val) {
-          return val[2] / 12;
+          // return val[2] / 12;
+          return 10
         },
         itemStyle: {
           normal: {
@@ -2690,7 +2691,7 @@ header .showTime {
   color: rgba(255, 255, 255, 0.7);
 }
 .mainbox {
-    height: 100%;
+  height: 100%;
   min-width: 1024px;
   max-width: 1920px;
   padding: 0.125rem 0.125rem 0;
@@ -2923,7 +2924,7 @@ header .showTime {
     height: 200px;
 }
 .map .chart{
-    height: 500px;
+    height: 450px;
 }
 .btn{
         position: absolute !important;
@@ -2938,7 +2939,7 @@ header .showTime {
 }
 #review_box {
  width: 100%;
- height: 220px; /* 必须 */
+ height: 200px; /* 必须 */
  overflow: hidden;/* 必须 */
  margin: 10px auto;
  text-align: center;

@@ -13,7 +13,7 @@ export default {
                 classStudent:pageClassStudent,
                 list:[
                     "公职",
-                    "参军就业",
+                    "参军入伍",
                     "升学出国",
                     "就业",
                     "暂不就业"
