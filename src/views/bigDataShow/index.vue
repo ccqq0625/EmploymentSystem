@@ -17,20 +17,19 @@
 
 <script>
 import BigScreen from './bigScreen'
-import dataApi from '@/api/dataShow.js'
 import api from '@/api/screenShow.js'
 
 export default {
     data(){
         return{
-            //柱状图2的坐标内容
-            Legends: [],
             flag1:false,
             flag2:false,
             flag3:false,
             flag4:false,
             flag5:false,
             flag6:false,
+            //柱状图2的坐标内容
+            Legends: [],
             seriesData:[],
             // 就业类型饼图数据
             datacwx1:[],
@@ -49,62 +48,61 @@ export default {
             salaryData:[],
         }
     },
-    mounted(){
+    mounted:function(){
       this.fecthData()   
       },
     methods:{
          fecthData(){
-          dataApi.fecth('计算机工程学院',null,null).then(Response=>{
-            const resp=Response.data
-            this.datacwx=resp.data.listData
-            this.Legends=resp.data.listName
-            this.seriesData=resp.data.listValue
+          api.getToatlData('计算机工程学院',null,null,null).then(Response=>{
+            //console.log("总体");
+            const resp0=Response.data.data
+            //console.log(resp0)
+            this.Legends=resp0.listName
+            this.seriesData=resp0.listValue
             this.flag4=true
           })
-
-          dataApi.workFecth('计算机工程学院',null,null).then(Response=>{
-            const resp1=Response.data
-            this.datacwx1=resp1.data.listData
-            this.Legends1=resp1.data.listName
-            this.seriesData1=resp1.data.listValue
-            this.flag5=true
+          
+          api.getWorkData('计算机工程学院',null,null,null).then(Response=>{
+              //this.Legends1=Response.data.data.listName
+              this.datacwx1=Response.data.data.listData
+              //this.seriesData1=Response.data.data.listValue
+              this.flag5=true
           })
 
-          dataApi.eduFecth('计算机工程学院',null,null).then(Response=>{
-            const resp2=Response.data
-            this.datacwx2=resp2.data.listData
-            this.Legends2=resp2.data.listName
-            this.seriesData2=resp2.data.listValue
-            this.flag6=true
+           api.getOfficeData('计算机工程学院',null,null,null).then(Response=>{
+              this.Legends2=Response.data.data.listName
+              this.seriesData2=Response.data.data.listValue
+              this.flag6=true
           })
-          //调用地区接口
-          api.showAreaCount().then(response => {
-            const resp4 = response.data
-            this.areaData = resp4.data
-            this.flag3=true
-          })
-          // 获取全院总人数和已就业人数
-          api.digitalShow().then(response => {
-            const resp5=response.data
-            this.totalNum=resp5.data.计算机工程学院,
-            this.employedNum=resp5.data.就业
-            this.flag1=true
 
-          })
-          // 薪资
-          api.getSalary().then(response => {
-            const resp6=response.data.data
+            // 薪资
+          api.getSalary('计算机工程学院',null,null,null).then(response => {
+             const resp6=response.data.data
             resp6.forEach(e => {
               this.salaryLeg.push(e.name)
             });
             resp6.forEach(e => {
               this.salaryData.push(e.value)
             })
-            console.log(this.salaryLeg)
-            console.log(this.salaryData)
             this.flag2=true
-
           })
+
+          //调用地区接口
+          api.showAreaCount('计算机工程学院',null,null,null).then(response => {
+            const resp4 = response.data
+            this.areaData = resp4.data
+            this.flag3=true
+          })
+          // 获取全院总人数和已就业人数
+          api.digitalShow('计算机工程学院',null,null,null,'就业').then(response => {
+            const resp5=response.data
+            this.totalNum=resp5.data.总人数,
+            this.employedNum=resp5.data.就业
+            this.flag1=true
+            console.log(resp5)
+
+           })
+        
 
           //调用滚动接口  由于vue页面的加载顺序 需要把数组先挂载 所以放在bigScreen会方便一些
           // api.infoScroll().then(response => {

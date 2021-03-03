@@ -41,7 +41,7 @@
         </el-submenu>
       </el-menu>
       </div>
-      <h1>2017届计算机工程学院就业情况</h1>
+      <h1>计算机工程学院就业情况</h1>
       <div class="showTime"></div>
     </header>
     <section class="mainbox">
@@ -195,7 +195,7 @@ this.roll(50)
 methods: {
   scroll(){
         //调用滚动接口
-          api.infoScroll().then(response => {
+          api.infoScroll('计算机工程学院',null,null,null).then(response => {
             const resp5 = response.data
             this.arr = resp5.data
           })
@@ -388,7 +388,7 @@ methods: {
     var myChart = echarts.init(document.querySelector(".pie .chart"));
 
 
-// 左三
+// 左三：公职
    var option = {
     color: ['rgba(180, 170, 220, 0.8)'],
     tooltip: {
@@ -473,7 +473,7 @@ methods: {
       myChart.resize();
     });
   },
-  // 总体类型
+  // 总体分布
   cwx3() {
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.querySelector(".bar1 .chart"));
@@ -491,8 +491,6 @@ methods: {
       return i.toFixed(2)
     });
     
-    //var data=this.countPercentage(this.seriesData);
-    //console.log(data);
     var myColor = ["#1089E7", "#F57474", "#56D0E3", "#F8B448", "#8B78F6"];
     var option = {
       //图标位置

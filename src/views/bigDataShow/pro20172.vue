@@ -41,7 +41,7 @@
         </el-submenu>
       </el-menu>
       </div>
-      <h1>2017届软件工程就业情况</h1>
+      <h1>2017届软件工程专业就业情况</h1>
       <div class="showTime"></div>
     </header>
     <section class="mainbox">
@@ -77,7 +77,7 @@
           </div>
           <div class="no-bd">
             <ul>
-              <li>学院总人数</li>
+              <li>专业总人数</li>
               <li>已就业人数</li>
             </ul>
           </div>
@@ -491,8 +491,6 @@ methods: {
       return i.toFixed(2)
     });
     
-    //var data=this.countPercentage(this.seriesData);
-    //console.log(data);
     var myColor = ["#1089E7", "#F57474", "#56D0E3", "#F8B448", "#8B78F6"];
     var option = {
       //图标位置

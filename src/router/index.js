@@ -25,9 +25,9 @@ const Register=() =>import('../views/register/Register');
 const pdfMain=() => import('../views/info/pdfMain');
 const pdf=() => import('../views/postmatch/pdf');
 const BigScreen=()=> import('../views/bigDataShow/index.vue')
-const pro20171=()=> import('../views/bigDataShow/pro20171.vue')
-const pro20172=()=> import('../views/bigDataShow/pro20172.vue')
-const pro20173=()=> import('../views/bigDataShow/pro20173.vue')
+const index20171=()=> import('../views/bigDataShow/index20171.vue')
+const index20172=()=> import('../views/bigDataShow/index20172.vue')
+const index20173=()=> import('../views/bigDataShow/index20173.vue')
 Vue.use(VueRouter);
 
 const routes = [
@@ -158,18 +158,18 @@ const routes = [
   },
   {
     path: '/pro20171',
-    name: 'pro20171',
-    component: pro20171,
+    name: 'index20171',
+    component: index20171,
   },
   {
     path: '/pro20172',
-    name: 'pro20172',
-    component: pro20172,
+    name: 'index20172',
+    component: index20172,
   },
   {
     path: '/pro20173',
-    name: 'pro20173',
-    component: pro20173,
+    name: 'index20173',
+    component: index20173,
   }
  
 ];

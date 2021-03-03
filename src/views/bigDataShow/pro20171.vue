@@ -1,6 +1,7 @@
 <template>
     <div class="div">
     <header>
+      <div></div>
       <el-button type="primary" class="btn" @click="btn">返回首页</el-button>
         <div class="nav">
         <el-menu
@@ -13,12 +14,12 @@
         background-color="inherit"
         text-color="#fff">
         <el-submenu index="1">
-            <template slot="title"><i class="el-icon-document">其他年级选择</i></template>
+            <template slot="title">其他年级选择</template>
             <el-submenu index="1-1">
                 <template slot="title">2017</template>
-                <el-menu-item index="/Pro20171">计算机科学与技术</el-menu-item>
-                <el-menu-item index="/Pro20172">软件工程</el-menu-item>
-                <el-menu-item index="/Pro20173">物联网工程</el-menu-item>
+                <el-menu-item index="/pro20171">计算机科学与技术</el-menu-item>
+                <el-menu-item index="/pro20172">软件工程</el-menu-item>
+                <el-menu-item index="/pro20173">物联网工程</el-menu-item>
             </el-submenu>
             <el-submenu index="1-2">
                 <template slot="title">2018</template>
@@ -41,7 +42,7 @@
         </el-submenu>
       </el-menu>
       </div>
-      <h1>2017届计算机科学与技术就业情况</h1>
+      <h1>2017级计算机科学与技术专业就业情况</h1>
       <div class="showTime"></div>
     </header>
     <section class="mainbox">
@@ -77,7 +78,7 @@
           </div>
           <div class="no-bd">
             <ul>
-              <li>学院总人数</li>
+              <li>专业总人数</li>
               <li>已就业人数</li>
             </ul>
           </div>
@@ -145,7 +146,9 @@
 import echarts from 'echarts'
 import $ from '@/assets/js/jquery'
 import flexible from '@/assets/js/flexible.js'
+import api from '@/api/screenShow.js'
 export default {
+  name:"Pro20171",
   props:{
     // 左一总体情况
     Legends:{type:Array},
@@ -177,7 +180,7 @@ export default {
     }
   },
   created(){
-    
+    this.scroll()
 },
   mounted(){
 this.cwx()
@@ -192,6 +195,13 @@ this.time()
 this.roll(50)
 },
 methods: {
+  scroll(){
+        //调用滚动接口
+          api.infoScroll(null,'17','计算机科学与技术',null).then(response => {
+            const resp5 = response.data
+            this.arr = resp5.data
+          })
+      },
   //计算数组中数据的总和
   // countSum(arr){
   //   var sum=eval(arr.join('+'));
@@ -199,13 +209,6 @@ methods: {
   //   return sum;
   // },
   //计算百分比
-  scroll(){
-        //调用滚动接口
-          api.infoScroll().then(response => {
-            const resp5 = response.data
-            this.arr = resp5.data
-          })
-      },
   countPercentage(arr){
     var j=eval(arr.join('+'));
     j=parseFloat(j);
@@ -308,16 +311,7 @@ methods: {
       myChart.resize();
     });
   
-    // 数据变化
-    // var dataAll = [
-    //   { year: "2019", data: [200, 300, 300, 900, 1500, 1200, 600] },
-    //   { year: "2020", data: [300, 400, 350, 800, 1800, 1400, 700] }
-    // ];
-  
-    // $(".bar h2 ").on("click", "a", function() {
-    //   option.series[0].data = dataAll[$(this).index()].data;
-    //   myChart.setOption(option);
-    // });
+    
   },
   
   // 饼图定制
@@ -387,7 +381,7 @@ methods: {
     var myChart = echarts.init(document.querySelector(".pie .chart"));
 
 
-// 左三
+// 左三：公职
    var option = {
     color: ['rgba(180, 170, 220, 0.8)'],
     tooltip: {
@@ -472,7 +466,7 @@ methods: {
       myChart.resize();
     });
   },
-  // 总体类型
+  // 总体分布
   cwx3() {
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.querySelector(".bar1 .chart"));
@@ -486,12 +480,12 @@ methods: {
     var valdata =this.seriesData; 
 
     //data是每个数值的占比
-    // var data=this.countPercentage(this.seriesData).map(i => {
-    //   return i.toFixed(2)
-    // });
+    var data=this.countPercentage(this.seriesData).map(i => {
+      return i.toFixed(2)
+    });
     
-    var data=this.countPercentage(this.seriesData);
-    // console.log(data);
+    //var data=this.countPercentage(this.seriesData);
+    //console.log(data);
     var myColor = ["#1089E7", "#F57474", "#56D0E3", "#F8B448", "#8B78F6"];
     var option = {
       //图标位置
@@ -2971,4 +2965,5 @@ th{
   left: 200px;
   width: 200px;
 }
+
 </style>
