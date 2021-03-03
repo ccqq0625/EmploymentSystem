@@ -1,6 +1,7 @@
 <template>
     <div class="div">
     <header>
+      <div></div>
       <el-button type="primary" class="btn" @click="btn">返回首页</el-button>
         <div class="nav">
         <el-menu
@@ -16,7 +17,6 @@
             <template slot="title">其他年级选择</template>
             <el-submenu index="1-1">
                 <template slot="title">2017</template>
-                <el-menu-item index="/pro2017">年级总体</el-menu-item>
                 <el-menu-item index="/pro20171">计算机科学与技术</el-menu-item>
                 <el-menu-item index="/pro20172">软件工程</el-menu-item>
                 <el-menu-item index="/pro20173">物联网工程</el-menu-item>
@@ -42,7 +42,7 @@
         </el-submenu>
       </el-menu>
       </div>
-      <h1>计算机工程学院就业情况</h1>
+      <h1>2017级总体就业情况</h1>
       <div class="showTime"></div>
     </header>
     <section class="mainbox">
@@ -78,7 +78,7 @@
           </div>
           <div class="no-bd">
             <ul>
-              <li>学院总人数</li>
+              <li>专业总人数</li>
               <li>已就业人数</li>
             </ul>
           </div>
@@ -148,6 +148,7 @@ import $ from '@/assets/js/jquery'
 import flexible from '@/assets/js/flexible.js'
 import api from '@/api/screenShow.js'
 export default {
+  name:"Pro20171",
   props:{
     // 左一总体情况
     Legends:{type:Array},
@@ -196,7 +197,7 @@ this.roll(50)
 methods: {
   scroll(){
         //调用滚动接口
-          api.infoScroll('计算机工程学院',null,null,null).then(response => {
+          api.infoScroll(null,'17','计算机科学与技术',null).then(response => {
             const resp5 = response.data
             this.arr = resp5.data
           })
@@ -310,16 +311,7 @@ methods: {
       myChart.resize();
     });
   
-    // 数据变化
-    // var dataAll = [
-    //   { year: "2019", data: [200, 300, 300, 900, 1500, 1200, 600] },
-    //   { year: "2020", data: [300, 400, 350, 800, 1800, 1400, 700] }
-    // ];
-  
-    // $(".bar h2 ").on("click", "a", function() {
-    //   option.series[0].data = dataAll[$(this).index()].data;
-    //   myChart.setOption(option);
-    // });
+    
   },
   
   // 饼图定制
@@ -492,6 +484,8 @@ methods: {
       return i.toFixed(2)
     });
     
+    //var data=this.countPercentage(this.seriesData);
+    //console.log(data);
     var myColor = ["#1089E7", "#F57474", "#56D0E3", "#F8B448", "#8B78F6"];
     var option = {
       //图标位置
@@ -2971,4 +2965,5 @@ th{
   left: 200px;
   width: 200px;
 }
+
 </style>

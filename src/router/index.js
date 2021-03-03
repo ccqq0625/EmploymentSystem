@@ -25,6 +25,7 @@ const Register=() =>import('../views/register/Register');
 const pdfMain=() => import('../views/info/pdfMain');
 const pdf=() => import('../views/postmatch/pdf');
 const BigScreen=()=> import('../views/bigDataShow/index.vue')
+const index2017=()=> import('../views/bigDataShow/index2017.vue')
 const index20171=()=> import('../views/bigDataShow/index20171.vue')
 const index20172=()=> import('../views/bigDataShow/index20172.vue')
 const index20173=()=> import('../views/bigDataShow/index20173.vue')
@@ -155,6 +156,11 @@ const routes = [
     meta:{
       navShow:false
     }
+  },
+  {
+    path: '/pro2017',
+    name: 'index2017',
+    component: index2017,
   },
   {
     path: '/pro20171',
