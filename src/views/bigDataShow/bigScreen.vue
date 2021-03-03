@@ -802,12 +802,12 @@ methods: {
   ];
 
   var YCData = [
-    // [{ name: "襄阳" }, { name: "成都", value: 100 }],
-    // [{ name: "襄阳" }, { name: "南宁", value: 100 }],
-    // [{ name: "襄阳" }, { name: "北京", value: 100 }],
-    // [{ name: "襄阳" }, { name: "重庆", value: 100 }],
-    // [{ name: "襄阳" }, { name: "南京", value: 100 }],
-    // [{ name: "襄阳" }, { name: "杭州", value: 100 }],
+    [{ name: "襄阳" }, { name: "深圳", value: 12 }],
+    [{ name: "襄阳" }, { name: "上海", value: 11 }],
+    [{ name: "襄阳" }, { name: "贵阳", value: 7 }],
+    [{ name: "襄阳" }, { name: "苏州", value: 6 }],
+    [{ name: "襄阳" }, { name: "南京", value: 7 }],
+  
   ];
 
   var planePath =
@@ -900,7 +900,7 @@ methods: {
         },
         symbolSize: function(val) {
           // return val[2] / 12;
-          return 10
+          return 7
         },
         itemStyle: {
           normal: {

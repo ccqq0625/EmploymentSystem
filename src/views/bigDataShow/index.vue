@@ -46,6 +46,7 @@ export default {
             // 薪资
             salaryLeg:[],
             salaryData:[],
+            arr:[]
         }
     },
     mounted:function(){
@@ -72,6 +73,7 @@ export default {
            api.getOfficeData('计算机工程学院',null,null,null).then(Response=>{
               this.Legends2=Response.data.data.listName
               this.seriesData2=Response.data.data.listValue
+              console.log(this.seriesData2)
               this.flag6=true
           })
 
@@ -91,6 +93,14 @@ export default {
           api.showAreaCount('计算机工程学院',null,null,null).then(response => {
             const resp4 = response.data
             this.areaData = resp4.data
+            let temp=0;
+            this.arr=resp4.data
+            for(let i=5;i<this.arr.length-1;i++){
+              temp=temp+this.arr[i].value
+            }
+            this.arr[this.arr.length-1].value=this.arr[this.arr.length-1].value+temp
+            this.arr.splice(5,5)
+            console.log(this.arr)
             this.flag3=true
           })
           // 获取全院总人数和已就业人数
