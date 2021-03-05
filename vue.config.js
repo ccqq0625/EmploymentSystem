@@ -30,5 +30,14 @@ module.exports = {
     productionSourceMap:false,
     outputDir:'dist',//构建输出目录
     assetsDir:'static',//静态资源目录(js,css,img,fonts)
-    publicPath:'/employmentsystem/'
+    publicPath:'/employmentsystem/',
+    pwa: {
+        iconPaths: {
+            favicon32: 'favicon.ico',
+            favicon16: 'favicon.ico',
+            appleTouchIcon: 'favicon.ico',
+            maskIcon: 'favicon.ico',
+            msTileImage: 'favicon.ico'
+        }
+    }
 }

@@ -14,35 +14,11 @@
         background-color="inherit"
         text-color="#fff">
         <el-submenu index="1">
-            <template slot="title">其他年级选择</template>
-            <el-submenu index="1-1">
-                <template slot="title">2017</template>
-                <el-menu-item index="/pro2017">年级总体</el-menu-item>
-                <el-menu-item index="/pro20171">计算机科学与技术</el-menu-item>
-                <el-menu-item index="/pro20172">软件工程</el-menu-item>
-                <el-menu-item index="/pro20173">物联网工程</el-menu-item>
-            </el-submenu>
-            <el-submenu index="1-2">
-                <template slot="title">2018</template>
-                <el-menu-item index="/pro2018">年级总体</el-menu-item>
-                <el-menu-item index="/pro20181">计算机科学与技术</el-menu-item>
-                <el-menu-item index="/pro20182">软件工程</el-menu-item>
-                <el-menu-item index="/pro20183">物联网工程</el-menu-item>
-            </el-submenu>
-            <el-submenu index="1-3">
-                <template slot="title">2019</template>
-                <el-menu-item index="/pro2019">年级总体</el-menu-item>
-                <el-menu-item index="/pro20191">计算机科学与技术</el-menu-item>
-                <el-menu-item index="/pro20192">软件工程</el-menu-item>
-                <el-menu-item index="/pro20193">物联网工程</el-menu-item>
-            </el-submenu>
-            <el-submenu index="1-4">
-                <template slot="title">2020</template>
-                <el-menu-item index="/pro2020">年级总体</el-menu-item>
-                <el-menu-item index="/pro20201">计算机科学与技术</el-menu-item>
-                <el-menu-item index="/pro20202">软件工程</el-menu-item>
-                <el-menu-item index="/pro20203">物联网工程</el-menu-item>
-            </el-submenu>
+            <template slot="title">专业选择</template>
+            <el-menu-item index="/pro2018">年级总体</el-menu-item>
+            <el-menu-item index="/pro20181">计算机科学与技术</el-menu-item>
+            <el-menu-item index="/pro20182">软件工程</el-menu-item>
+            <el-menu-item index="/pro20183">物联网工程</el-menu-item>
         </el-submenu>
       </el-menu>
       </div>

@@ -467,6 +467,7 @@ export default {
               //   this.tableData.splice(mul,1);
               // });
               this.ButShowChange=!this.ButShowChange;
+              if(delarr.length > 0){
               this.$confirm('你确认删除吗？','提示',{
                 confirmButtonText:"确认",
                 cancelButtonText:"取消"
@@ -479,7 +480,13 @@ export default {
               })
               //this.onSubmit()
             })
-            })
+            })}
+            else{
+              this.ButShowChange=!this.ButShowChange;
+              this.$alert('<strong>请先勾选需要删除的信息</strong>' ,{
+              dangerouslyUseHTMLString: true
+        });
+            }
           },
           CheckboxShow(){
             return !this.ButShowChange;
