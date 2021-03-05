@@ -29,6 +29,18 @@ const index2017=()=> import('../views/bigDataShow/index2017.vue')
 const index20171=()=> import('../views/bigDataShow/index20171.vue')
 const index20172=()=> import('../views/bigDataShow/index20172.vue')
 const index20173=()=> import('../views/bigDataShow/index20173.vue')
+const index2018=()=> import('../views/bigDataShow/index2018.vue')
+const index20181=()=> import('../views/bigDataShow/index20181.vue')
+const index20182=()=> import('../views/bigDataShow/index20182.vue')
+const index20183=()=> import('../views/bigDataShow/index20183.vue')
+const index2019=()=> import('../views/bigDataShow/index2019.vue')
+const index20191=()=> import('../views/bigDataShow/index20191.vue')
+const index20192=()=> import('../views/bigDataShow/index20192.vue')
+const index20193=()=> import('../views/bigDataShow/index20193.vue')
+const index2020=()=> import('../views/bigDataShow/index2020.vue')
+const index20201=()=> import('../views/bigDataShow/index20201.vue')
+const index20202=()=> import('../views/bigDataShow/index20202.vue')
+const index20203=()=> import('../views/bigDataShow/index20203.vue')
 Vue.use(VueRouter);
 
 const routes = [
@@ -176,7 +188,67 @@ const routes = [
     path: '/pro20173',
     name: 'index20173',
     component: index20173,
-  }
+  },
+  {
+    path: '/pro2018',
+    name: 'index2018',
+    component: index2018,
+  },
+  {
+    path: '/pro20181',
+    name: 'index20181',
+    component: index20181,
+  },
+  {
+    path: '/pro20182',
+    name: 'index20182',
+    component: index20182,
+  },
+  {
+    path: '/pro20183',
+    name: 'index20183',
+    component: index20183,
+  },
+  {
+    path: '/pro2019',
+    name: 'index2019',
+    component: index2019,
+  },
+  {
+    path: '/pro20191',
+    name: 'index20191',
+    component: index20191,
+  },
+  {
+    path: '/pro20192',
+    name: 'index20192',
+    component: index20192,
+  },
+  {
+    path: '/pro20193',
+    name: 'index20193',
+    component: index20193,
+  },
+  {
+    path: '/pro2020',
+    name: 'index2020',
+    component: index2020,
+  },
+  {
+    path: '/pro20201',
+    name: 'index20201',
+    component: index20201,
+  },
+  {
+    path: '/pro20202',
+    name: 'index20202',
+    component: index20202,
+  },
+  {
+    path: '/pro20203',
+    name: 'index20203',
+    component: index20203,
+  },
  
 ];
 

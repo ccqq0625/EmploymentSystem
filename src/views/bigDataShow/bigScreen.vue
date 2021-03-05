@@ -23,21 +23,24 @@
             </el-submenu>
             <el-submenu index="1-2">
                 <template slot="title">2018</template>
-                <el-menu-item index="1-2-1">计算机科学与技术</el-menu-item>
-                <el-menu-item index="1-2-2">软件工程</el-menu-item>
-                <el-menu-item index="1-2-3">物联网工程</el-menu-item>
+                <el-menu-item index="/pro2018">年级总体</el-menu-item>
+                <el-menu-item index="/pro20181">计算机科学与技术</el-menu-item>
+                <el-menu-item index="/pro20182">软件工程</el-menu-item>
+                <el-menu-item index="/pro20183">物联网工程</el-menu-item>
             </el-submenu>
             <el-submenu index="1-3">
                 <template slot="title">2019</template>
-                <el-menu-item index="1-3-1">计算机科学与技术</el-menu-item>
-                <el-menu-item index="1-3-2">软件工程</el-menu-item>
-                <el-menu-item index="1-3-3">物联网工程</el-menu-item>
+                <el-menu-item index="/pro2019">年级总体</el-menu-item>
+                <el-menu-item index="/pro20191">计算机科学与技术</el-menu-item>
+                <el-menu-item index="/pro20192">软件工程</el-menu-item>
+                <el-menu-item index="/pro20193">物联网工程</el-menu-item>
             </el-submenu>
             <el-submenu index="1-4">
                 <template slot="title">2020</template>
-                <el-menu-item index="1-4-1">计算机科学与技术</el-menu-item>
-                <el-menu-item index="1-4-2">软件工程</el-menu-item>
-                <el-menu-item index="1-4-3">物联网工程</el-menu-item>
+                <el-menu-item index="/pro2020">年级总体</el-menu-item>
+                <el-menu-item index="/pro20201">计算机科学与技术</el-menu-item>
+                <el-menu-item index="/pro20202">软件工程</el-menu-item>
+                <el-menu-item index="/pro20203">物联网工程</el-menu-item>
             </el-submenu>
         </el-submenu>
       </el-menu>
@@ -178,9 +181,6 @@ export default {
       activeIndex: '1'
     }
   },
-  created(){
-    this.scroll()
-},
   mounted(){
 this.cwx()
 this.cwx1()
@@ -191,7 +191,8 @@ this.chinaMap()
 this.China()
 this.Flexible()
 this.time()
-this.roll(50)
+this.roll(60)
+this.scroll()
 },
 methods: {
   scroll(){
@@ -309,17 +310,6 @@ methods: {
     window.addEventListener("resize", function() {
       myChart.resize();
     });
-  
-    // 数据变化
-    // var dataAll = [
-    //   { year: "2019", data: [200, 300, 300, 900, 1500, 1200, 600] },
-    //   { year: "2020", data: [300, 400, 350, 800, 1800, 1400, 700] }
-    // ];
-  
-    // $(".bar h2 ").on("click", "a", function() {
-    //   option.series[0].data = dataAll[$(this).index()].data;
-    //   myChart.setOption(option);
-    // });
   },
   
   // 饼图定制

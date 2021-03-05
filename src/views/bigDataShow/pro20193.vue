@@ -46,7 +46,7 @@
         </el-submenu>
       </el-menu>
       </div>
-      <h1>2017级总体就业情况</h1>
+      <h1>2019级物联网专业就业情况</h1>
       <div class="showTime"></div>
     </header>
     <section class="mainbox">
